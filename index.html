@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="theme-color" content="#080d18"><link rel="manifest" href="./manifest.webmanifest">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"><meta name="theme-color" content="#080d18"><link rel="manifest" href="./manifest.webmanifest">
 <title>Nexo — Gestão Financeira</title>
 <style>
 :root{--bg:#080d18;--panel:#101827;--panel2:#172338;--line:#25344a;--text:#f3f6fc;--muted:#8e9bb0;--blue:#7da9ff;--green:#54d6a7;--purple:#b8a4ff;--orange:#f5bd76;--red:#ff8792;--radius:19px}
@@ -301,6 +301,138 @@ body:not(.authenticated) .auth-screen{display:flex}
 .budget-category-chip:hover,.budget-category-chip.selected{border-color:#6fa4ff;background:linear-gradient(145deg,#244779,#1a3151);color:#fff;box-shadow:0 0 0 1px #6fa4ff33}
 .budget-category-chip.custom{border-style:dashed;color:#9fc0ff}
 @media(max-width:700px){.budget-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.budget-category-chip{font-size:11px;padding:10px 6px;min-height:40px}}
+
+/* MOBILE FINAL — enquadramento nativo e composição alinhada à referência aprovada */
+@media (max-width:700px){
+  html, body { width:100%; min-width:0; max-width:100%; margin:0; overflow-x:hidden; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  body.mobile-f { font-size:14px; }
+  body.mobile-f .app, body.mobile-f .main, body.mobile-f .content,
+  body.mobile-f .section.active { width:100%; min-width:0; max-width:100%; }
+  body.mobile-f .topbar { width:100%; height:62px; min-height:62px; padding:8px 14px; gap:8px; box-sizing:border-box; }
+  body.mobile-f .topbar-brand { min-width:0; flex:1 1 auto; overflow:hidden; }
+  body.mobile-f .topbar-brand .brand-mark { width:40px; height:40px; flex:0 0 40px; }
+  body.mobile-f .topbar-brand > div:last-child { min-width:0; }
+  body.mobile-f .topbar-brand b { font-size:16px; line-height:1.1; }
+  body.mobile-f .topbar-brand .mobile-brand-subtitle { display:block; font-size:10px; line-height:1.2; white-space:nowrap; }
+  body.mobile-f .topbar-controls { flex:0 0 auto; width:auto; gap:8px; }
+  body.mobile-f .avatar-menu-trigger { width:40px; height:40px; flex:0 0 40px; }
+  body.mobile-f .content { padding:15px 14px calc(100px + env(safe-area-inset-bottom)); margin:0; }
+  body.mobile-f .section.active#dashboard { display:flex; flex-direction:column; gap:0; }
+  body.mobile-f .dashboard-heading { order:1; display:block; margin:4px 0 14px; }
+  body.mobile-f .dashboard-heading h1 { font-size:24px; line-height:1.2; margin:0 0 4px; letter-spacing:-.55px; }
+  body.mobile-f .dashboard-heading p { font-size:12px; line-height:1.4; margin:0; }
+  body.mobile-f .dashboard-heading .actions { display:none; }
+  body.mobile-f .dashboard-stats { order:2; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin:0 0 12px; }
+  body.mobile-f .dashboard-stats .card { min-width:0; min-height:118px; padding:12px; border-radius:16px; }
+  body.mobile-f .dashboard-stats .card:first-child { grid-column:1/-1; min-height:132px; padding:16px 17px; }
+  body.mobile-f .dashboard-stats .card:first-child .stat-value { font-size:30px; margin:12px 0 6px; }
+  body.mobile-f .dashboard-stats .card:not(:first-child) .stat-value { font-size:19px; margin:9px 0 4px; }
+  body.mobile-f .dashboard-main-grid, body.mobile-f .dashboard-bottom-grid { display:contents; }
+  body.mobile-f .dashboard-chart-card { order:3; margin:0 0 11px; padding:14px; border-radius:16px; }
+  body.mobile-f .dashboard-chart-card .chart { height:145px; gap:6px; }
+  body.mobile-f .dashboard-chart-card .bar-labels { font-size:9px; }
+  /* Mantém os recursos reais do dashboard visíveis, em vez de esconder atalhos */
+  body.mobile-f .dashboard-bottom-grid > .card:nth-child(1) { order:4; }
+  body.mobile-f .dashboard-bottom-grid > .card:nth-child(2) { order:5; }
+  body.mobile-f .dashboard-bottom-grid > .card:nth-child(3) { order:6; }
+  body.mobile-f .dashboard-bottom-grid > .card:nth-child(4) { order:7; }
+  body.mobile-f .dashboard-bottom-grid > .card { width:100%; min-width:0; margin:0 0 11px; padding:14px; border-radius:16px; }
+  body.mobile-f .dashboard-shortcuts { display:block !important; order:8; width:100%; min-width:0; margin:0 0 12px; padding:14px; border-radius:16px; }
+  body.mobile-f .dashboard-shortcuts .dashboard-card-heading { margin-bottom:11px; }
+  body.mobile-f .shortcut-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; }
+  body.mobile-f .shortcut-grid button { min-width:0; min-height:74px; padding:7px 3px; border-radius:12px; font-size:9px; line-height:1.2; overflow-wrap:anywhere; }
+  body.mobile-f .shortcut-grid button span { font-size:19px; }
+  body.mobile-f .mobile-nav { position:fixed; left:0; right:0; bottom:0; width:100%; height:calc(68px + env(safe-area-inset-bottom)); min-height:68px; box-sizing:border-box; grid-template-columns:repeat(4,minmax(0,1fr)); padding:5px 8px calc(5px + env(safe-area-inset-bottom)); z-index:50; }
+  body.mobile-f .mobile-nav button { width:100%; min-width:0; height:54px; font-size:9px; }
+  body.mobile-f .mobile-nav button span { font-size:19px; }
+  body.mobile-f .mobile-more { top:62px; bottom:calc(68px + env(safe-area-inset-bottom)); left:0; right:0; width:100%; }
+  body.mobile-f .mobile-more-sheet { padding:14px 14px 20px; }
+  body.mobile-f .mobile-more-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+  body.mobile-f .mobile-more-grid button { min-width:0; min-height:84px; padding:8px 4px; }
+  body.mobile-f .mobile-more-grid button b { overflow-wrap:anywhere; }
+  body.mobile-f .section.active:not(#dashboard) { padding-bottom:12px; }
+  body.mobile-f .section.active:not(#dashboard) .page-head { gap:10px; }
+  body.mobile-f .section.active:not(#dashboard) .page-head h1 { font-size:23px; line-height:1.2; }
+  body.mobile-f .section.active#transactions .toolbar { grid-template-columns:1fr 1fr; }
+  body.mobile-f .section.active#transactions .toolbar input:first-child { grid-column:1/-1; }
+  body.mobile-f .modal { width:100%; max-width:100%; }
+  body.mobile-f .modal-box { width:100%; max-width:100%; }
+}
+@media (max-width:380px){
+ body.mobile-f .content { padding-left:11px; padding-right:11px; }
+ body.mobile-f .dashboard-stats .card:first-child .stat-value { font-size:27px; }
+ body.mobile-f .shortcut-grid { gap:5px; }
+ body.mobile-f .shortcut-grid button { font-size:8px; }
+ body.mobile-f .mobile-more-grid { gap:6px; }
+ body.mobile-f .mobile-more-grid button { min-height:78px; }
+}
+
+
+
+/* NEXO PRO — ajuste final de escala e fidelidade mobile */
+@media (max-width:700px){
+  html{width:100%;min-width:320px;max-width:100%;overflow-x:clip; -webkit-text-size-adjust:100%; text-size-adjust:100%;}
+  body.mobile-f{width:100%;min-width:320px;max-width:100%;margin:0;overflow-x:clip;zoom:1;}
+  body.mobile-f .app,body.mobile-f .main,body.mobile-f .content,body.mobile-f .section.active{width:100%;min-width:0;max-width:100%;}
+  body.mobile-f .app{display:block;min-height:100svh;}
+  body.mobile-f .main{min-height:100svh;overflow:clip;}
+  body.mobile-f .topbar{width:100%;height:64px;min-height:64px;padding:8px 15px;display:flex;flex-wrap:nowrap;gap:8px;}
+  body.mobile-f .topbar-brand{min-width:0;flex:1 1 auto;overflow:hidden;}
+  body.mobile-f .topbar-brand .brand-mark{width:40px;height:40px;flex:0 0 40px;}
+  body.mobile-f .topbar-brand b{font-size:16px;line-height:1.1;}
+  body.mobile-f .topbar-brand .mobile-brand-subtitle{display:block;font-size:10px;white-space:nowrap;}
+  body.mobile-f .topbar-brand .desktop-crumb{display:none;}
+  body.mobile-f .topbar-controls{width:auto;flex:0 0 auto;display:flex;gap:8px;}
+  body.mobile-f .top-add,body.mobile-f .top-logout{display:none!important;}
+  body.mobile-f .avatar-menu-trigger{width:40px;height:40px;flex:0 0 40px;}
+  body.mobile-f .content{padding:14px 14px calc(88px + env(safe-area-inset-bottom));margin:0;}
+  body.mobile-f .section.active#dashboard{display:flex;flex-direction:column;gap:0;}
+  body.mobile-f .dashboard-heading{order:1;display:block;margin:7px 0 14px;padding:0;}
+  body.mobile-f .dashboard-heading h1{font-size:25px;line-height:1.18;letter-spacing:-.55px;margin:0 0 5px;}
+  body.mobile-f .dashboard-heading p{font-size:12px;line-height:1.4;margin:0;color:#a6b6cc;}
+  body.mobile-f .dashboard-heading .actions,body.mobile-f .dashboard-eyebrow{display:none!important;}
+  body.mobile-f .dashboard-stats{order:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 13px;}
+  body.mobile-f .dashboard-stats>.card{min-width:0;min-height:122px;padding:13px;border-radius:17px;}
+  body.mobile-f .dashboard-stats>.card:first-child{grid-column:1/-1;min-height:136px;padding:17px 18px;}
+  body.mobile-f .dashboard-stats>.card:first-child .stat-value{font-size:30px;line-height:1.1;}
+  body.mobile-f .dashboard-stats>.card:nth-child(2),body.mobile-f .dashboard-stats>.card:nth-child(3){display:flex;}
+  body.mobile-f .dashboard-stats>.card:nth-child(4){display:none;}
+  body.mobile-f .dashboard-main-grid,body.mobile-f .dashboard-bottom-grid{display:contents;}
+  body.mobile-f .dashboard-chart-card{order:3;width:100%;margin:0 0 11px;padding:15px 14px;border-radius:17px;}
+  body.mobile-f .dashboard-chart-card .chart{height:145px;gap:6px;}
+  body.mobile-f .dashboard-chart-card .bar-labels{font-size:9px;}
+  body.mobile-f .dashboard-shortcuts{display:none!important;}
+  body.mobile-f .dashboard-bottom-grid>.card{width:100%;min-width:0;margin:0 0 11px;padding:14px;border-radius:17px;}
+  body.mobile-f .dashboard-bottom-grid>.card:nth-child(1){order:4;}
+  body.mobile-f .dashboard-bottom-grid>.card:nth-child(2){order:5;}
+  body.mobile-f .dashboard-bottom-grid>.card:nth-child(3){order:6;}
+  body.mobile-f .dashboard-bottom-grid>.card:nth-child(4){order:7;}
+  body.mobile-f .dashboard-bottom-grid .dashboard-card-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  body.mobile-f .dashboard-bottom-grid .list-row{padding:11px 0;}
+  body.mobile-f .mobile-nav{display:grid!important;position:fixed;left:0;right:0;bottom:0;width:100%;height:calc(68px + env(safe-area-inset-bottom));min-height:68px;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;gap:3px;padding:5px 8px calc(5px + env(safe-area-inset-bottom));z-index:50;box-sizing:border-box;}
+  body.mobile-f .mobile-nav button{width:100%;max-width:none;height:54px;min-width:0;display:grid;align-content:center;justify-items:center;gap:4px;font-size:9px;}
+  body.mobile-f .mobile-nav button span{font-size:19px;line-height:1;}
+  body.mobile-f .mobile-more{top:64px;bottom:calc(68px + env(safe-area-inset-bottom));left:0;right:0;width:100%;}
+  body.mobile-f .mobile-more.open{display:block;}
+  body.mobile-f .mobile-more-sheet{width:100%;height:100%;max-height:100%;padding:14px 14px 20px;overflow-y:auto;}
+  body.mobile-f .mobile-more-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+  body.mobile-f .mobile-more-grid button{min-width:0;min-height:84px;padding:8px 4px;}
+  body.mobile-f .mobile-more-grid button b{overflow-wrap:anywhere;}
+  body.mobile-f input,body.mobile-f select,body.mobile-f textarea{font-size:16px;}
+  body.mobile-f .modal{padding:10px;}
+  body.mobile-f .modal-box{width:100%;max-width:100%;max-height:calc(100svh - 20px);overflow-y:auto;}
+  body.mobile-f .section.active:not(#dashboard){padding-bottom:12px;}
+  body.mobile-f .section.active:not(#dashboard) .page-head h1{font-size:23px;}
+  body.mobile-f .section.active#transactions .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+  body.mobile-f .section.active#transactions .toolbar input:first-child{grid-column:1/-1;}
+}
+@media(max-width:380px){
+  body.mobile-f .content{padding-left:11px;padding-right:11px;}
+  body.mobile-f .dashboard-stats>.card:first-child .stat-value{font-size:27px;}
+  body.mobile-f .mobile-more-grid{gap:6px;}
+  body.mobile-f .mobile-more-grid button{min-height:78px;}
+}
+
 </style>
 </head>
 <body class="mobile-f">
@@ -641,5 +773,16 @@ async function initAuthentication(){
 }
 initAuthentication();
 </script>
+
+<script>
+(function(){
+  if(!('scrollRestoration' in history)) return;
+  history.scrollRestoration='manual';
+  const resetMobileEntryScroll=()=>{if(window.matchMedia('(max-width: 700px)').matches){requestAnimationFrame(()=>window.scrollTo(0,0));}};
+  window.addEventListener('pageshow',resetMobileEntryScroll,{passive:true});
+  document.addEventListener('DOMContentLoaded',resetMobileEntryScroll,{once:true});
+})();
+</script>
+
 </body>
 </html>
