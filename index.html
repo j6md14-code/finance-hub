@@ -29,13 +29,32 @@ tr[data-edit-key]:hover td{background:rgba(87,132,205,.08)}
 }
 @media(min-width:701px){.mobile-profile{display:flex}}
 
+
+/* PERFIL COMO HUB DE NAVEGACAO */
+.profile-switch{display:none!important}
+.avatar-menu-trigger{border:0;cursor:pointer;width:44px;height:44px;font-size:17px;box-shadow:0 0 0 3px rgba(112,153,224,.12);transition:transform .18s,box-shadow .18s}
+.avatar-menu-trigger:hover{transform:translateY(-1px);box-shadow:0 0 0 4px rgba(112,153,224,.24)}
+.account-menu-backdrop{display:none;position:fixed;inset:0;z-index:60;background:rgba(2,7,16,.68);backdrop-filter:blur(7px);align-items:flex-start;justify-content:flex-end;padding:84px 22px 22px}
+.account-menu-backdrop.open{display:flex}
+.account-menu-panel{width:min(430px,100%);max-height:calc(100dvh - 110px);overflow:auto;background:linear-gradient(160deg,#17243a,#0f192a);border:1px solid #30445f;border-radius:22px;padding:19px;box-shadow:0 24px 80px #0009}
+.account-menu-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:19px}
+.account-user{display:flex;align-items:center;gap:12px}.account-avatar{width:45px;height:45px;border-radius:50%;display:grid;place-items:center;background:#29446d;color:#e5efff;font-weight:800;font-size:18px}.account-user b{display:block;font-size:16px}.account-user small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.account-close{width:34px;height:34px;border:0;border-radius:10px;background:#253650;color:#eaf1ff;font-size:22px}
+.account-section-title{font-size:10px;letter-spacing:1.25px;color:#91a4c1;font-weight:800;margin:17px 0 9px}
+.account-environments{display:grid;grid-template-columns:1fr;gap:7px}
+.environment-option{display:flex;align-items:center;gap:10px;text-align:left;padding:11px 12px;border-radius:12px;border:1px solid #2b3e59;background:#142239;color:#e5edf9;font-size:13px}.environment-option.selected,.account-page-option.selected{border-color:#79a5ff;background:#1d3557}.environment-option> b{margin-left:auto;color:#91b7ff}.environment-icon{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:#263d5e;color:#cfe0ff;font-weight:800}
+.account-pages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.account-page-option{display:flex;align-items:center;gap:9px;min-height:43px;text-align:left;padding:9px 10px;border-radius:11px;border:1px solid #2b3e59;background:#142239;color:#dce7f8;font-size:11px}.account-page-option span{font-size:15px;color:#a9c6ff}
+.account-logout{width:100%;margin-top:16px;padding:12px;border:1px solid #65404b;border-radius:12px;background:#35212b;color:#ffb0b8;text-align:center;font-weight:700}
+@media(max-width:700px){.topbar{flex-wrap:nowrap;min-height:65px;padding:10px 13px;gap:8px}.topbar-brand{flex:1}.topbar-controls{width:auto;display:flex;gap:9px}.top-add{height:40px;padding:0 11px!important;font-size:11px}.top-add span{display:inline}.avatar-menu-trigger{width:42px;height:42px;align-self:center;flex:0 0 42px}.account-menu-backdrop{align-items:flex-end;justify-content:center;padding:0}.account-menu-panel{width:100%;max-height:88dvh;border-radius:23px 23px 0 0;padding:19px 16px calc(18px + env(safe-area-inset-bottom));border-bottom:0}.account-pages{grid-template-columns:repeat(2,minmax(0,1fr))}.account-page-option{min-height:46px;font-size:11px}}
+
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar">
   <div class="brand"><div class="logo">N</div><div><b>NEXO</b><small>Finanças pessoais e da casa</small></div></div>
-  <div class="profile-switch"><label>AMBIENTE ATUAL</label><select id="profileSelect" onchange="switchProfile(this.value)"><option value="joao">João · Administrador</option><option value="laura">Laura · Pessoal</option><option value="home">Nossa Casa · Compartilhado</option></select></div>
+  <select id="profileSelect" aria-hidden="true" tabindex="-1" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"><option value="joao">João · Administrador</option><option value="laura">Laura · Pessoal</option><option value="home">Nossa Casa · Compartilhado</option></select>
   <nav class="nav" id="sideNav">
     <div class="nav-label">VISÃO GERAL</div>
     <button class="active" data-page="dashboard"><span class="ico">◫</span>Dashboard</button>
@@ -62,7 +81,7 @@ tr[data-edit-key]:hover td{background:rgba(87,132,205,.08)}
 <main class="main">
 <header class="topbar">
   <div class="topbar-brand"><div class="brand-mark">N</div><div><b>Nexo</b><small id="crumb">Dashboard</small></div></div>
-  <div class="topbar-controls"><div class="mobile-profile"><label for="mobileProfileSelect">AMBIENTE</label><select id="mobileProfileSelect" onchange="switchProfile(this.value)"><option value="joao">João · Pessoal</option><option value="laura">Laura · Pessoal</option><option value="home">Nossa Casa</option></select></div><button class="btn primary top-add" onclick="openModal('transaction')">＋ <span>Lançamento</span></button><button class="btn danger top-logout" onclick="logoutDemo()">Sair</button><div class="avatar" id="avatar">J</div></div>
+  <div class="topbar-controls"><button class="btn primary top-add" onclick="openModal('transaction')">＋ <span>Lançamento</span></button><button class="avatar avatar-menu-trigger" id="avatar" type="button" aria-label="Abrir menu do perfil" onclick="toggleAccountMenu()">J</button></div>
 </header>
 <div class="content">
 <section id="dashboard" class="section active">
@@ -115,6 +134,16 @@ tr[data-edit-key]:hover td{background:rgba(87,132,205,.08)}
 </main>
 </div>
 <div class="mobile-more" id="mobileMore"><div class="mobile-more-head"><b>Todas as áreas</b><button onclick="toggleMobileMore(false)">Fechar ×</button></div><div class="mobile-more-grid" id="mobileMoreGrid"></div></div>
+<div class="account-menu-backdrop" id="accountMenu" onclick="if(event.target===this)toggleAccountMenu(false)">
+  <section class="account-menu-panel" role="dialog" aria-modal="true" aria-label="Menu do perfil">
+    <div class="account-menu-head"><div class="account-user"><div class="account-avatar" id="accountAvatar">J</div><div><b id="accountName">João</b><small id="accountRole">Administrador</small></div></div><button class="account-close" onclick="toggleAccountMenu(false)" aria-label="Fechar">×</button></div>
+    <div class="account-section-title">TROCAR AMBIENTE</div>
+    <div class="account-environments" id="accountEnvironments"></div>
+    <div class="account-section-title">NAVEGAR</div>
+    <div class="account-pages" id="accountPages"></div>
+    <button class="account-logout" onclick="logoutDemo();toggleAccountMenu(false)">↪ &nbsp; Sair do perfil</button>
+  </section>
+</div>
 <div class="mobile-nav" id="mobileNav">
   <button class="active" data-page="dashboard"><span>◫</span>Início</button><button data-page="transactions"><span>⇄</span>Lançamentos</button><button data-page="home"><span>⌂</span>Casa</button><button data-page="settlements"><span>⇆</span>Acertos</button><button onclick="toggleMobileMore()"><span>☷</span>Mais</button>
 </div>
@@ -147,12 +176,14 @@ const seed={
 let data=loadData(),profile='joao',currentPage='dashboard',modalType='';
 function loadData(){try{let d=JSON.parse(localStorage.getItem('financeHubDemo'))||structuredClone(seed);if(!Array.isArray(d.homeCategories))d.homeCategories=['Moradia','Alimentação','Contas básicas','Transporte','Lazer','Pets','Manutenção','Outros'];return d}catch(e){let d=JSON.parse(JSON.stringify(seed));d.homeCategories=['Moradia','Alimentação','Contas básicas','Transporte','Lazer','Pets','Manutenção','Outros'];return d}}
 function persist(){localStorage.setItem('financeHubDemo',JSON.stringify(data))}
-function switchProfile(p){if(p==='home'&&profile==='laura'){} profile=p;document.getElementById('profileSelect').value=p;const mp=document.getElementById('mobileProfileSelect');if(mp)mp.value=p;document.getElementById('avatar').textContent=p==='joao'?'J':p==='laura'?'L':'⌂';document.getElementById('welcome').textContent=p==='joao'?'Bom dia, João':p==='laura'?'Olá, Laura':'Olá, João e Laura';syncProfileChoices();renderAll()}
-function syncProfileChoices(){const s=document.getElementById('mobileProfileSelect');if(!s)return;const opts=profile==='laura'?[['laura','Laura · Pessoal'],['home','Nossa Casa']]:[['joao','João · Pessoal'],['laura','Laura · Pessoal'],['home','Nossa Casa']];s.innerHTML=opts.map(([v,t])=>`<option value="${v}">${t}</option>`).join('');s.value=profile;}
+function switchProfile(p){profile=p;const ps=document.getElementById('profileSelect');if(ps)ps.value=p;document.getElementById('avatar').textContent=p==='joao'?'J':p==='laura'?'L':'⌂';document.getElementById('accountAvatar').textContent=p==='joao'?'J':p==='laura'?'L':'⌂';document.getElementById('welcome').textContent=p==='joao'?'Bom dia, João':p==='laura'?'Olá, Laura':'Olá, João e Laura';renderAccountMenu();renderAll()}
+function syncProfileChoices(){renderAccountMenu()}
+function toggleAccountMenu(force){const el=document.getElementById('accountMenu');if(!el)return;el.classList.toggle('open',force===undefined?!el.classList.contains('open'):!!force);if(el.classList.contains('open'))renderAccountMenu()}
+function renderAccountMenu(){const isLaura=profile==='laura';const name=profile==='joao'?'João':profile==='laura'?'Laura':'João e Laura';document.getElementById('accountName').textContent=name;document.getElementById('accountRole').textContent=profile==='joao'?'Administrador':profile==='laura'?'Perfil pessoal':'Ambiente compartilhado';document.getElementById('accountAvatar').textContent=profile==='joao'?'J':profile==='laura'?'L':'⌂';const envs=profile==='laura'?[['laura','L','Laura · Pessoal'],['home','⌂','Nossa Casa']]:profile==='home'?[['joao','J','João · Pessoal'],['laura','L','Laura · Pessoal'],['home','⌂','Nossa Casa']]:[['joao','J','João · Pessoal'],['laura','L','Laura · Pessoal'],['home','⌂','Nossa Casa']];document.getElementById('accountEnvironments').innerHTML=envs.map(([v,ico,label])=>`<button class="environment-option ${profile===v?'selected':''}" onclick="switchProfile('${v}');toggleAccountMenu(false)"><span class="environment-icon">${ico}</span><span>${label}</span>${profile===v?'<b>✓</b>':''}</button>`).join('');const pages=[['dashboard','◫','Dashboard'],['transactions','⇄','Lançamentos'],['accounts','▣','Contas bancárias'],['cards','▤','Cartões de crédito'],['recurring','↻','Contas recorrentes'],['planning','◎','Planejamento'],['assets','◇','Patrimônio'],['business','⌂','Imobiliário'],['law','⚖','Minha advocacia'],['home','⌂','Nossa Casa'],['settlements','⇆','Acertos João & Laura'],['reports','▥','Relatórios'],['assistant','✧','Assistente IA'],['settings','⚙','Configurações']];document.getElementById('accountPages').innerHTML=pages.filter(([id])=>!(isLaura&&id==='business')).map(([id,ico,label])=>`<button class="account-page-option ${currentPage===id?'selected':''}" onclick="navigate('${id}');toggleAccountMenu(false)"><span>${ico}</span>${label}</button>`).join('')}
 function toggleMobileMore(force){const el=document.getElementById('mobileMore');if(!el)return;el.classList.toggle('open',force===undefined?!el.classList.contains('open'):!!force)}
 function logoutDemo(){if(confirm('Deseja sair deste perfil demonstrativo?')){alert('A sessão demonstrativa foi encerrada. A autenticação real será ativada na integração com Supabase.');}}
 function pageName(id){return ({dashboard:'Dashboard',transactions:'Lançamentos',accounts:'Contas bancárias',cards:'Cartões de crédito',recurring:'Contas recorrentes',planning:'Planejamento',assets:'Patrimônio',business:'Gestão imobiliária',law:'Minha advocacia',home:'Nossa casa',settlements:'Acertos João & Laura',reports:'Relatórios',assistant:'Assistente financeiro',settings:'Configurações'})[id]}
-function navigate(id){currentPage=id;document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);renderAll();window.scrollTo({top:0,behavior:'smooth'})}
+function navigate(id){currentPage=id;document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);renderAll();renderAccountMenu();window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>{navigate(b.dataset.page);toggleMobileMore(false)}));
 const mobilePages=[['dashboard','◫','Início'],['transactions','⇄','Lançamentos'],['accounts','▣','Contas bancárias'],['cards','▤','Cartões'],['recurring','↻','Recorrentes'],['planning','◎','Planejamento'],['assets','◇','Patrimônio'],['business','⌂','Imobiliário'],['law','⚖','Advocacia'],['home','⌂','Nossa Casa'],['settlements','⇆','Acertos'],['reports','▥','Relatórios'],['assistant','✧','Assistente IA'],['settings','⚙','Configurações']];document.getElementById('mobileMoreGrid').innerHTML=mobilePages.map(([id,ico,label])=>`<button data-page="${id}">${ico} &nbsp; ${label}</button>`).join('');document.querySelectorAll('#mobileMoreGrid [data-page]').forEach(b=>b.addEventListener('click',()=>{navigate(b.dataset.page);toggleMobileMore(false)}));
 function visibleTransactions(){return data.transactions.filter(t=>profile==='home'?t.profile==='home':t.profile===profile)}
