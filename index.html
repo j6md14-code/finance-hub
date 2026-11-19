@@ -295,6 +295,12 @@ body:not(.authenticated) .auth-screen{display:flex}
  body.mobile-f .section.active#transactions tbody td:last-child{grid-column:1/-1}
 }
 
+
+.budget-category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:3px}
+.budget-category-chip{border:1px solid #2b4263;background:linear-gradient(145deg,#172840,#111d30);color:#dce8fa;border-radius:11px;padding:10px 8px;font-size:12px;font-weight:600;cursor:pointer;min-height:42px;transition:.15s}
+.budget-category-chip:hover,.budget-category-chip.selected{border-color:#6fa4ff;background:linear-gradient(145deg,#244779,#1a3151);color:#fff;box-shadow:0 0 0 1px #6fa4ff33}
+.budget-category-chip.custom{border-style:dashed;color:#9fc0ff}
+@media(max-width:700px){.budget-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.budget-category-chip{font-size:11px;padding:10px 6px;min-height:40px}}
 </style>
 </head>
 <body class="mobile-f">
@@ -554,7 +560,7 @@ if(type==='account'){title='Adicionar conta';fields=field('name','Nome da conta'
 if(type==='card'){title='Adicionar cartão';fields=field('name','Nome do cartão')+field('bank','Banco emissor')+field('limit','Limite total','number')+field('used','Limite utilizado','number')+field('close','Dia de fechamento','number')+field('due','Dia de vencimento','number')}
 if(type==='recurring'){title='Nova conta recorrente';fields=field('desc','Descrição')+field('category','Categoria')+field('value','Valor','number')+field('due','Dia do vencimento','number')+field('owner','Responsável','select','',['João','Laura','Compartilhado'])}
 if(type==='goal'){title='Nova meta financeira';fields=field('name','Nome da meta')+field('target','Valor desejado','number')+field('current','Valor já guardado','number')+field('owner','Responsável','select','',['João','Laura','João e Laura'])}
-if(type==='budget'){title='Definir orçamento mensal';fields=field('category','Categoria (ex.: Moradia, Alimentação)')+field('amount','Limite mensal (R$)','number')+'<input type="hidden" id="budgetEditingId" name="budgetEditingId" value="">'}
+if(type==='budget'){title='Definir orçamento mensal';const budgetCategories=['Moradia','Alimentação','Supermercado','Transporte','Combustível','Saúde e farmácia','Educação','Lazer','Vestuário','Cuidados pessoais','Pets','Contas de água e luz','Internet e telefone','Assinaturas','Academia e esportes','Viagens','Impostos e taxas','Manutenção da casa','Presentes','Outros'];fields='<div class="field full"><label>Escolha uma categoria</label><div class="budget-category-grid">'+budgetCategories.map(c=>'<button type="button" class="budget-category-chip" data-category="'+c+'" onclick="selectBudgetCategory(this)">'+c+'</button>').join('')+'<button type="button" class="budget-category-chip custom" onclick="selectCustomBudgetCategory()">＋ Personalizada</button></div></div>'+field('category','Categoria selecionada ou digite outra')+field('amount','Limite mensal (R$)','number')+'<input type="hidden" id="budgetEditingId" name="budgetEditingId" value="">'}
 if(type==='asset'){title='Cadastrar patrimônio';fields=field('name','Nome do bem ou investimento')+field('type','Tipo','select','',['Imóvel','Veículo','Investimento','Outro'])+field('value','Valor estimado','number')+field('owner','Titular','select','',[owner,'João','Laura','Compartilhado'])}
 if(type==='commission'){title='Nova comissão imobiliária';fields=field('client','Cliente / imóvel')+field('sale','Valor da venda','number')+field('commission','Comissão líquida','number')+field('date','Previsão de recebimento','date',today)+field('status','Status','select','',['Pendente','Recebida'])}
 if(type==='lawincome'){title='Registrar recebimento da advocacia';fields=field('client','Cliente / descrição')+field('category','Origem','select','',['Clientes particulares','Diligências particulares','Diligências escritório','Flagrantes','Honorários e consultorias'])+field('value','Valor recebido ou contratado','number')+field('date','Data','date',today)+field('status','Status','select','',['Recebido','Pendente'])}
@@ -565,6 +571,8 @@ if(type==='category'){title='Adicionar categoria da casa';fields=field('name','N
 if(type==='contribution'){title='Registrar contribuição familiar';fields=field('name','Quem contribuiu','select','',['João','Laura'])+field('value','Valor','number')}
 if(type==='settlement'){title='Lançar gasto do João no cartão da Laura';fields=field('desc','Compra / estabelecimento')+field('value','Valor total','number')+field('date','Data da compra','date',today)+field('card','Cartão utilizado','select','',['INTER','NUBANK','MERCADO PAGO','BANCO DO BRASIL','C6','DINHEIRO EMPRESTADO'])+field('description','Descrição para João entender','textarea','',null,true)+field('installments','Número de parcelas','number')}
 document.getElementById('modalTitle').textContent=title;document.getElementById('modalFields').innerHTML=fields;document.getElementById('modal').classList.add('open')}
+function selectBudgetCategory(button){const input=document.getElementById('f_category');if(!input)return;input.value=button.dataset.category;document.querySelectorAll('.budget-category-chip').forEach(x=>x.classList.toggle('selected',x===button));input.focus()}
+function selectCustomBudgetCategory(){document.querySelectorAll('.budget-category-chip').forEach(x=>x.classList.remove('selected'));const input=document.getElementById('f_category');if(input){input.value='';input.focus()}}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
 function saveModal(e){e.preventDefault();let f=new FormData(e.target),v=Object.fromEntries(f.entries());let num=k=>Number(v[k]||0);
 if(modalType==='transaction'){data.transactions.push({id:Date.now(),profile:v.scope==='Casa'?'home':profile,desc:v.desc,category:v.category,type:v.type,date:v.date,status:v.status,value:num('value'),scope:v.scope})}
