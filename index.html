@@ -61,9 +61,27 @@ body:not(.authenticated) .auth-screen{display:flex}
 .auth-error{display:none;padding:11px 13px;margin-top:13px;border-radius:10px;background:#492631;color:#ffb2bb;font-size:12px;line-height:1.4}.auth-error.show{display:block}
 .auth-foot{font-size:11px;color:#8190a8;text-align:center;margin-top:18px}
 
+
+
+/* OPCAO F — PAINEL COM ATALHOS E NAVEGACAO EM GRADE */
+@media(max-width:700px){
+ body.mobile-f .topbar{height:60px;min-height:60px;padding:8px 12px;background:transparent;border:0} body.mobile-f .topbar-brand .brand-mark{width:34px;height:34px} body.mobile-f .topbar-brand b{font-size:15px}
+ body.mobile-f .topbar-controls{gap:5px} body.mobile-f .top-add{width:36px;height:36px;padding:0!important;font-size:0;display:grid;place-items:center} body.mobile-f .top-add span{display:none} body.mobile-f .top-logout{height:35px;padding:0 8px;font-size:10px} body.mobile-f .avatar-menu-trigger{width:36px;height:36px;flex-basis:36px}
+ body.mobile-f .content{padding:13px 12px 100px} body.mobile-f .page-head{display:block;margin-bottom:14px} body.mobile-f .page-head h1{font-size:24px} body.mobile-f .page-head .actions{margin-top:12px}
+ body.mobile-f .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px} body.mobile-f .stats .card{min-height:112px;display:flex;flex-direction:column;justify-content:space-between;padding:12px} body.mobile-f .stat-top{font-size:10px} body.mobile-f .stat-icon{width:27px;height:27px} body.mobile-f .stat-value{font-size:17px;margin:8px 0 2px} body.mobile-f .stat-note{font-size:9px}
+ body.mobile-f .grid.two,body.mobile-f .grid.three{grid-template-columns:1fr} body.mobile-f .card{padding:13px;border-radius:16px} body.mobile-f .chart{height:165px}
+ body.mobile-f .mobile-nav{height:72px;display:flex;position:fixed;bottom:0;left:0;right:0;z-index:16;align-items:center;justify-content:space-around;padding:7px 5px calc(7px + env(safe-area-inset-bottom));background:#0c1728f5;border-top:1px solid #2a3b55}
+ body.mobile-f .mobile-nav button{flex:1;max-width:90px;border:0;background:none;color:#94a4bb;font-size:9px;display:grid;gap:4px;justify-items:center} body.mobile-f .mobile-nav button span{font-size:19px} body.mobile-f .mobile-nav button.active{color:#a9c6ff}
+ body.mobile-f .mobile-nav button:last-child{background:#294b7d;color:#fff;border-radius:15px;padding:7px 0;box-shadow:0 5px 16px #315d9b55}
+ body.mobile-f .mobile-more{display:none;position:fixed;inset:0;z-index:30;background:#050914c9;align-items:flex-end;padding:0} body.mobile-f .mobile-more.open{display:flex} body.mobile-f .mobile-more>div{width:100%;max-height:82dvh;overflow:auto;background:#111e31;border:1px solid #30445f;border-radius:23px 23px 0 0;padding:19px 14px calc(20px + env(safe-area-inset-bottom))}
+ body.mobile-f .mobile-more-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;font-size:16px} body.mobile-f .mobile-more-head button{background:none;border:0;color:#b9c6da;font-size:13px}
+ body.mobile-f .mobile-more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px} body.mobile-f .mobile-more-grid button{min-height:68px;display:flex;align-items:center;gap:9px;text-align:left;padding:11px;border:1px solid #2a3d59;border-radius:13px;background:#192940;color:#e5edfa;font-size:11px}
+ body.mobile-f .table-wrap{overflow:visible;border:0} body.mobile-f table{min-width:0} body.mobile-f th{display:none} body.mobile-f tbody tr{display:grid;grid-template-columns:1fr auto;gap:5px;padding:10px;margin-bottom:8px;border:1px solid var(--line);border-radius:12px;background:#111d30} body.mobile-f tbody td{border:0;padding:2px;font-size:11px}
+}
+
 </style>
 </head>
-<body>
+<body class="mobile-f">
 <section class="auth-screen" id="authScreen">
   <form class="auth-card" id="loginForm">
     <div class="auth-brand"><div class="auth-logo">N</div><div><b style="font-size:19px">NEXO</b><div style="font-size:11px;color:#9eacc1">Finanças pessoais e da casa</div></div></div>
@@ -182,26 +200,24 @@ const money=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'B
 const dateBR=d=>d?new Date(d+'T12:00:00').toLocaleDateString('pt-BR'):'—';
 const today=new Date().toISOString().slice(0,10);
 const seed={
- transactions:[
- {id:1,profile:'joao',desc:'Comissão — venda apartamento',category:'Comissão imobiliária',type:'Receita',date:today,status:'Recebido',value:8500,scope:'pessoal'},
- {id:2,profile:'joao',desc:'Combustível',category:'Transporte',type:'Despesa',date:today,status:'Pago',value:280,scope:'pessoal'},
- {id:3,profile:'laura',desc:'Honorários — cliente particular',category:'Clientes particulares',type:'Receita',date:today,status:'Recebido',value:2500,scope:'pessoal'},
- {id:4,profile:'laura',desc:'Diligência — fórum',category:'Diligências particulares',type:'Receita',date:today,status:'Pendente',value:350,scope:'pessoal'},
- {id:5,profile:'home',desc:'Supermercado',category:'Alimentação',type:'Despesa',date:today,status:'Pago',value:780,scope:'casa'},
- {id:6,profile:'home',desc:'Internet residencial',category:'Comunicação',type:'Despesa',date:today,status:'Pendente',value:120,scope:'casa'},
- {id:7,profile:'home',desc:'Contribuição João',category:'Contribuição familiar',type:'Receita',date:today,status:'Recebido',value:2000,scope:'casa'},
- {id:8,profile:'home',desc:'Contribuição Laura',category:'Contribuição familiar',type:'Receita',date:today,status:'Recebido',value:1500,scope:'casa'}
- ],
- accounts:[{id:1,profile:'joao',name:'Conta corrente',bank:'Banco principal',balance:12450},{id:2,profile:'laura',name:'Conta pessoal',bank:'Banco principal',balance:6200},{id:3,profile:'home',name:'Conta da casa',bank:'Conta compartilhada',balance:3500}],
- cards:[{id:1,profile:'laura',name:'Cartão Laura',bank:'Banco principal',limit:8000,used:2350,close:10,due:17},{id:2,profile:'joao',name:'Cartão João',bank:'Banco digital',limit:6000,used:1250,close:5,due:12}],
- recurring:[{desc:'Internet residencial',category:'Comunicação',due:'10',value:120,owner:'Compartilhado',status:'Pendente'},{desc:'Condomínio',category:'Moradia',due:'15',value:650,owner:'Compartilhado',status:'Pendente'},{desc:'Software jurídico',category:'Profissional',due:'20',value:89,owner:'Laura',status:'Pendente'}],
- goals:[{name:'Reserva de emergência',target:20000,current:6500,owner:'João e Laura'},{name:'Viagem',target:8000,current:2300,owner:'João e Laura'},{name:'Reserva pessoal',target:10000,current:4200,owner:'João'}],
- assets:[{name:'Veículo',type:'Veículo',owner:'João',value:45000},{name:'Investimentos renda fixa',type:'Investimento',owner:'Laura',value:12000},{name:'Reserva familiar',type:'Investimento',owner:'Compartilhado',value:6500}],
- commissions:[{client:'Cliente imobiliário A · Apartamento',sale:450000,commission:9000,date:today,status:'Recebida'}],
- law:[{client:'Cliente particular A',category:'Clientes particulares',date:today,value:2500,status:'Recebido'},{client:'Diligência criminal',category:'Diligências particulares',date:today,value:350,status:'Pendente'},{client:'Flagrante — Cliente B',category:'Flagrantes',date:today,value:1800,status:'Recebido'},{client:'Diligência escritório',category:'Diligências escritório',date:today,value:200,status:'Recebido'}],
- settlements:[{id:1,desc:'Combustível — abastecimento do carro',date:today,card:'Cartão Laura',value:250,paid:0},{id:2,desc:'Compra pessoal — loja',date:today,card:'Cartão Laura',value:600,paid:350}],
- contributions:[{name:'João',value:2000},{name:'Laura',value:1500}]
+ transactions:[],
+ accounts:[],
+ cards:[],
+ recurring:[],
+ goals:[],
+ assets:[],
+ commissions:[],
+ law:[],
+ settlements:[],
+ contributions:[],
+ homeCategories:['Moradia','Alimentação','Contas básicas','Transporte','Lazer','Pets','Manutenção','Outros']
 };
+// Inicialização limpa do Nexo: remove uma única vez os dados demonstrativos antigos deste navegador.
+const NEXO_ZERO_START_KEY='nexo_zero_start_2026_11_v1';
+if(!localStorage.getItem(NEXO_ZERO_START_KEY)){
+ localStorage.removeItem('financeHubDemo');
+ localStorage.setItem(NEXO_ZERO_START_KEY,'1');
+}
 let data=loadData(),profile='joao',sessionRole='admin',currentPage='dashboard',modalType='';
 function loadData(){try{let d=JSON.parse(localStorage.getItem('financeHubDemo'))||structuredClone(seed);if(!Array.isArray(d.homeCategories))d.homeCategories=['Moradia','Alimentação','Contas básicas','Transporte','Lazer','Pets','Manutenção','Outros'];return d}catch(e){let d=JSON.parse(JSON.stringify(seed));d.homeCategories=['Moradia','Alimentação','Contas básicas','Transporte','Lazer','Pets','Manutenção','Outros'];return d}}
 function persist(){localStorage.setItem('financeHubDemo',JSON.stringify(data))}
@@ -222,7 +238,7 @@ function renderDashboard(){
  const tx=visibleTransactions(),inc=sum(tx.filter(x=>x.type==='Receita'),x=>x.value),exp=sum(tx.filter(x=>x.type==='Despesa'),x=>x.value),pending=sum(tx.filter(x=>x.status==='Pendente'),x=>x.value);
  const bal=(data.accounts.filter(a=>profile==='home'?a.profile==='home':a.profile===profile).reduce((s,a)=>s+a.balance,0));
  document.getElementById('stats').innerHTML=stat('Receitas registradas',inc,'↗','No ambiente selecionado','green')+stat('Despesas registradas',exp,'↘','No ambiente selecionado','red')+stat('Resultado',inc-exp,'◈','Receitas menos despesas',inc-exp>=0?'green':'red')+stat('Saldo em contas',bal,'▣','Soma dos saldos cadastrados','blue');
- const vals=[65,78,55,92,70,88],ex=[35,43,48,50,57,42];document.getElementById('chart').innerHTML=vals.map((v,i)=>`<div class="bar-group"><div class="bar" style="height:${v}%"></div><div class="bar exp" style="height:${ex[i]}%"></div></div>`).join('');
+ const vals=[0,0,0,0,0,0],ex=[0,0,0,0,0,0];document.getElementById('chart').innerHTML=vals.map((v,i)=>`<div class="bar-group"><div class="bar" style="height:${v}%"></div><div class="bar exp" style="height:${ex[i]}%"></div></div>`).join('');
  document.getElementById('recent').innerHTML=tx.slice().reverse().slice(0,5).map(t=>`<div class="list-row"><div class="list-main"><div class="list-icon">${t.type==='Receita'?'↗':'↘'}</div><div><b>${esc(t.desc)}</b><small>${esc(t.category)} · ${dateBR(t.date)}</small></div></div><span class="amount ${t.type==='Receita'?'green':'red'}">${t.type==='Receita'?'+':'−'}${money(t.value)}</span></div>`).join('')||'<div class="empty">Nenhuma movimentação.</div>';
  const cats={};tx.filter(t=>t.type==='Despesa').forEach(t=>cats[t.category]=(cats[t.category]||0)+t.value);let entries=Object.entries(cats).sort((a,b)=>b[1]-a[1]).slice(0,5);document.getElementById('categories').innerHTML=entries.length?entries.map(([k,v])=>`<div class="goal"><div class="goal-head"><span>${esc(k)}</span><b>${money(v)}</b></div><div class="progress"><span style="width:${Math.min(100,v/Math.max(1,exp)*100)}%"></span></div></div>`).join(''):'<div class="empty">Sem despesas registradas.</div>';
  document.getElementById('upcoming').innerHTML=data.recurring.slice(0,4).map(r=>`<div class="list-row"><div class="list-main"><div class="list-icon">◷</div><div><b>${esc(r.desc)}</b><small>Vencimento dia ${r.due} · ${r.owner}</small></div></div><span class="amount">${money(r.value)}</span></div>`).join('');
