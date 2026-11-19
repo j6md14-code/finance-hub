@@ -433,6 +433,185 @@ body:not(.authenticated) .auth-screen{display:flex}
   body.mobile-f .mobile-more-grid button{min-height:78px;}
 }
 
+
+
+@media (min-width:701px){
+ .tx-search-box>span{display:none}
+ .tx-filter-button,.tx-mobile-pills,.tx-mobile-list{display:none!important}
+ .tx-select-filters{display:contents}
+}
+
+/* NEXO PRO — referência 5: navegação e composição móvel fiel */
+.notification-trigger{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;position:relative;border:0;border-radius:50%;background:transparent;color:#dbe8fb;font-size:20px}
+.notification-trigger i{position:absolute;right:5px;top:5px;width:7px;height:7px;border-radius:50%;background:#8e7bdf;border:1px solid #071321;display:none}
+.notification-trigger.has-alert i{display:block}
+.mobile-quick-actions{display:none}
+.tx-mobile-list{display:none}
+.tx-mobile-pills{display:none}
+.tx-select-filters{display:contents}
+.tx-search-row{display:contents}
+.tx-search-box{display:contents}
+.tx-filter-button{display:none}
+
+@media (min-width:701px){
+ .mobile-more-page{display:none!important}
+}
+@media (max-width:700px){
+ html,body{width:100%;min-width:320px;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+ body.mobile-f{margin:0;background:#071321;color:#f4f7ff;zoom:1}
+ body.mobile-f .app,body.mobile-f .main,body.mobile-f .content{width:100%;min-width:0;max-width:100%;margin:0}
+ body.mobile-f .app{display:block;min-height:100dvh}
+ body.mobile-f .sidebar{display:none!important}
+ body.mobile-f .main{min-height:100dvh;overflow:visible}
+ body.mobile-f .topbar{position:sticky;top:0;z-index:40;width:100%;height:64px;min-height:64px;padding:8px 15px;display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:10px;background:#071321;border-bottom:1px solid #1d3653;backdrop-filter:blur(18px)}
+ body.mobile-f .topbar-brand{display:flex;align-items:center;gap:10px;flex:1 1 auto;min-width:0;overflow:hidden}
+ body.mobile-f .topbar-brand .brand-mark{width:41px;height:41px;flex:0 0 41px;border-radius:13px}
+ body.mobile-f .topbar-brand b{font-size:16px;line-height:1.1}
+ body.mobile-f .topbar-brand .mobile-brand-subtitle{display:block;font-size:10px;color:#9eafc6;white-space:nowrap;margin-top:3px}
+ body.mobile-f .topbar-brand .desktop-crumb{display:none}
+ body.mobile-f .topbar-controls{width:auto;flex:0 0 auto;display:flex;align-items:center;gap:8px}
+ body.mobile-f .top-add,body.mobile-f .top-logout{display:none!important}
+ body.mobile-f .notification-trigger{display:grid;width:34px;height:38px;font-size:19px}
+ body.mobile-f .avatar-menu-trigger{display:grid;width:42px;height:42px;flex:0 0 42px;font-size:15px}
+ body.mobile-f .content{padding:14px 14px calc(88px + env(safe-area-inset-bottom));margin:0;max-width:100%}
+ body.mobile-f .section{display:none}
+ body.mobile-f .section.active{display:block}
+ body.mobile-f .section.active#dashboard{display:flex;flex-direction:column;gap:0}
+ body.mobile-f .dashboard-heading{order:1;display:block;margin:5px 0 13px;padding:0}
+ body.mobile-f .dashboard-heading h1{font-size:25px;line-height:1.16;letter-spacing:-.65px;margin:0 0 5px}
+ body.mobile-f .dashboard-heading p{font-size:12px;line-height:1.4;color:#a6b6cc;margin:0}
+ body.mobile-f .dashboard-heading .actions,body.mobile-f .dashboard-eyebrow{display:none!important}
+ body.mobile-f .dashboard-stats{order:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0 0 12px}
+ body.mobile-f .dashboard-stats>.card{display:flex;flex-direction:column;justify-content:space-between;min-width:0;min-height:99px;padding:12px;border-radius:17px;background:linear-gradient(145deg,#101f34,#0b192a);border:1px solid #1d3b5c;box-shadow:0 8px 22px #0002}
+ body.mobile-f .dashboard-stats>.card:first-child{grid-column:1/-1;min-height:119px;padding:15px 17px;background:linear-gradient(125deg,#142b4a,#0c1b2e);border-color:#315887;position:relative;overflow:hidden}
+ body.mobile-f .dashboard-stats>.card:first-child:after{content:'▣';position:absolute;right:16px;top:22px;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#1c477c;color:#8fc2ff;font-size:23px}
+ body.mobile-f .dashboard-stats>.card:first-child .stat-top{font-size:12px;color:#c2d3e9;max-width:72%}
+ body.mobile-f .dashboard-stats>.card:first-child .stat-icon{display:none}
+ body.mobile-f .dashboard-stats>.card:first-child .stat-value{font-size:29px;line-height:1.1;margin:8px 0 4px;color:#72bdff;letter-spacing:-1px}
+ body.mobile-f .dashboard-stats>.card:first-child .stat-note{font-size:10px;color:#a7bdd8}
+ body.mobile-f .dashboard-stats>.card:not(:first-child) .stat-top{font-size:10px;color:#b8c9df}
+ body.mobile-f .dashboard-stats>.card:not(:first-child) .stat-icon{width:27px;height:27px;border-radius:9px;font-size:14px}
+ body.mobile-f .dashboard-stats>.card:not(:first-child) .stat-value{font-size:19px;letter-spacing:-.6px;margin:7px 0 3px}
+ body.mobile-f .dashboard-stats>.card:not(:first-child) .stat-note{font-size:9px;line-height:1.3}
+ body.mobile-f .dashboard-stats>.card:nth-child(4){display:none!important}
+ body.mobile-f .dashboard-main-grid,body.mobile-f .dashboard-bottom-grid{display:contents}
+ body.mobile-f .dashboard-chart-card{order:3;width:100%;min-width:0;margin:0 0 10px;padding:13px 13px 11px;background:linear-gradient(145deg,#101f34,#0b192a);border:1px solid #1c3a5b;border-radius:17px}
+ body.mobile-f .dashboard-chart-card .dashboard-card-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0}
+ body.mobile-f .dashboard-chart-card .dashboard-card-heading h3{font-size:14px;margin:0}
+ body.mobile-f .dashboard-chart-card .dashboard-card-heading small{display:none}
+ body.mobile-f .dashboard-chart-card .dashboard-period{display:inline-flex!important;font-size:10px;padding:6px 8px;border-radius:10px;background:#172a43;color:#a8bdd8}
+ body.mobile-f .dashboard-chart-card .chart{display:flex;height:91px!important;min-height:91px;max-height:91px;gap:7px;padding:9px 5px 0;margin:0;border-bottom:1px solid #29415d;overflow:hidden}
+ body.mobile-f .dashboard-chart-card .bar-group{height:100%;min-height:0;display:flex;align-items:flex-end;justify-content:center;gap:3px}
+ body.mobile-f .dashboard-chart-card .bar{width:min(15px,42%);min-height:0;border-radius:5px 5px 2px 2px}
+ body.mobile-f .dashboard-chart-card .bar.is-empty{opacity:.34;min-height:3px;background:#55769e}
+ body.mobile-f .dashboard-chart-card .bar-labels{display:flex;justify-content:space-around;font-size:9px;color:#9aacc4;margin-top:6px}
+ body.mobile-f .dashboard-chart-card .legend{display:flex;gap:13px;font-size:9px;margin-top:7px}
+ body.mobile-f .dashboard-shortcuts{display:none!important}
+ body.mobile-f .dashboard-bottom-grid>.card{width:100%;min-width:0;margin:0 0 10px;padding:13px;border-radius:16px;background:linear-gradient(145deg,#101f34,#0b192a);border:1px solid #1c3a5b}
+ body.mobile-f .dashboard-bottom-grid>.card:nth-child(1){order:4}
+ body.mobile-f .dashboard-bottom-grid>.card:nth-child(2){order:6}
+ body.mobile-f .dashboard-bottom-grid>.card:nth-child(3){order:7}
+ body.mobile-f .dashboard-bottom-grid>.card:nth-child(4){order:8}
+ body.mobile-f .dashboard-bottom-grid .dashboard-card-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 7px}
+ body.mobile-f .dashboard-bottom-grid .dashboard-card-heading h3{font-size:13px;margin:0}
+ body.mobile-f .dashboard-bottom-grid .dashboard-link{border:0;background:transparent;color:#58aaff;font-size:10px;font-weight:650;padding:5px}
+ body.mobile-f .dashboard-bottom-grid .list-row{padding:9px 0}
+ body.mobile-f .dashboard-bottom-grid .list-main{gap:9px}
+ body.mobile-f .dashboard-bottom-grid .list-main b{font-size:11px}
+ body.mobile-f .dashboard-bottom-grid .list-main small{font-size:9px}
+ body.mobile-f .dashboard-bottom-grid .amount{font-size:10px}
+ body.mobile-f .list-icon{width:32px;height:32px;flex:0 0 32px;border-radius:10px}
+ body.mobile-f .dashboard-transaction-icon.income{background:#103f39;color:#57dfb4}
+ body.mobile-f .dashboard-transaction-icon.expense{background:#3b2851;color:#ba9aff}
+ body.mobile-f .dashboard-empty{display:grid;gap:6px;justify-items:center;text-align:center;padding:17px 8px;line-height:1.45}
+ body.mobile-f .dashboard-empty span{font-size:22px;color:#79b4ff}
+ body.mobile-f .dashboard-empty b{font-size:12px}
+ body.mobile-f .dashboard-empty small{font-size:10px;line-height:1.45;color:#9eafc6}
+ body.mobile-f .dashboard-add-account{width:100%;margin-top:10px}
+ body.mobile-f .dashboard-recent-row{cursor:pointer}
+ body.mobile-f .dashboard-empty-recent{padding:17px 8px;font-size:11px}
+ body.mobile-f .mobile-quick-actions{display:block!important;order:5;margin:0 0 10px;padding:13px;border-radius:16px;background:linear-gradient(145deg,#101f34,#0b192a);border:1px solid #1c3a5b}
+ body.mobile-f .mobile-quick-actions .dashboard-card-heading{margin:0 0 9px}
+ body.mobile-f .mobile-quick-actions .dashboard-card-heading h3{font-size:13px;margin:0}
+ body.mobile-f .mobile-quick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+ body.mobile-f .mobile-quick-grid button{display:flex;min-width:0;min-height:69px;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:6px 3px;border:1px solid #244566;border-radius:12px;background:linear-gradient(145deg,#142a44,#0e2035);color:#e0ebfa;text-align:center}
+ body.mobile-f .mobile-quick-grid button span{width:29px;height:29px;display:grid;place-items:center;border-radius:9px;background:#163a65;color:#64aaff;font-size:18px}
+ body.mobile-f .mobile-quick-grid button b{font-size:8px;line-height:1.2;font-weight:650}
+ body.mobile-f .mobile-nav{display:grid!important;position:fixed;left:0;right:0;bottom:0;width:100%;height:calc(69px + env(safe-area-inset-bottom));min-height:69px;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;gap:3px;padding:5px 8px calc(5px + env(safe-area-inset-bottom));z-index:50;box-sizing:border-box;background:rgba(7,18,32,.98);border-top:1px solid #203a58;box-shadow:0 -8px 26px #0005;backdrop-filter:blur(18px)}
+ body.mobile-f .mobile-nav button{width:100%;min-width:0;height:54px;max-width:none;display:grid;align-content:center;justify-items:center;gap:4px;padding:0;border:0;border-radius:13px;background:transparent!important;box-shadow:none!important;color:#8498b4;font-size:9px;font-weight:650}
+ body.mobile-f .mobile-nav button span{font-size:19px;line-height:1}
+ body.mobile-f .mobile-nav button.active{background:#102a49!important;color:#67adff;box-shadow:none!important}
+ body.mobile-f .mobile-nav button:last-child{background:transparent!important;color:#8498b4;padding:0!important;border-radius:13px;box-shadow:none!important}
+ body.mobile-f .mobile-nav button:last-child.active{background:#102a49!important;color:#67adff}
+ body.mobile-f .top-add{display:none!important}
+ body.mobile-f.mobile-page-transactions .top-add{display:grid!important;position:fixed;right:18px;bottom:calc(83px + env(safe-area-inset-bottom));z-index:45;width:54px;height:54px;padding:0!important;place-items:center;border:0;border-radius:50%;font-size:25px;background:linear-gradient(145deg,#64a5ff,#3675dc);box-shadow:0 8px 24px #1b62bd66}
+ body.mobile-f.mobile-page-transactions .top-add span{display:none}
+ body.mobile-f .section.active#transactions .page-head{display:block;margin:7px 0 15px}
+ body.mobile-f .section.active#transactions .page-head h1{font-size:23px;margin:0 0 5px}
+ body.mobile-f .section.active#transactions .page-head p{font-size:12px;color:#9eafc6;margin:0}
+ body.mobile-f .section.active#transactions .page-head .actions{display:none!important}
+ body.mobile-f .tx-toolbar{display:block;margin:0 0 15px}
+ body.mobile-f .tx-search-row{display:grid;grid-template-columns:minmax(0,1fr) 43px;gap:8px}
+ body.mobile-f .tx-search-box{display:flex;align-items:center;gap:9px;min-width:0;height:46px;padding:0 12px;border:1px solid #203c5d;border-radius:13px;background:#11243a;color:#9fb6d1}
+ body.mobile-f .tx-search-box>span{font-size:22px;line-height:1}
+ body.mobile-f .tx-search-box input{width:100%;min-width:0;padding:0;border:0;outline:0;background:transparent;color:#eef5ff;font-size:16px}
+ body.mobile-f .tx-filter-button{display:grid;place-items:center;width:43px;height:46px;border:1px solid #203c5d;border-radius:13px;background:#11243a;color:#9bc5ff;font-size:19px}
+ body.mobile-f .tx-mobile-pills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:12px}
+ body.mobile-f .tx-mobile-pills button{min-width:0;padding:9px 4px;border:1px solid #1d3551;border-radius:12px;background:#0d1b2c;color:#a8bad1;font-size:10px}
+ body.mobile-f .tx-mobile-pills button.active{border-color:#4d91ef;background:linear-gradient(135deg,#4a91f4,#3874d5);color:white;font-weight:700}
+ body.mobile-f .tx-select-filters{display:none;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+ body.mobile-f .tx-toolbar.show-filters .tx-select-filters{display:grid}
+ body.mobile-f .tx-select-filters select{width:100%;min-width:0;padding:10px 9px;border:1px solid #203c5d;border-radius:11px;background:#11243a;color:#dce9fb;font-size:11px}
+ body.mobile-f .tx-mobile-list{display:grid;gap:8px}
+ body.mobile-f .tx-mobile-item{display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;gap:10px;padding:12px;border:1px solid #1d3b5b;border-radius:15px;background:linear-gradient(145deg,#12263e,#0d1b2c);cursor:pointer}
+ body.mobile-f .tx-mobile-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;font-size:18px;background:#292449;color:#b99bff}
+ body.mobile-f .tx-mobile-icon.income{background:#103f39;color:#57dfb4}
+ body.mobile-f .tx-mobile-icon.expense{background:#1b365b;color:#79b6ff}
+ body.mobile-f .tx-mobile-copy{display:grid;gap:4px;min-width:0}
+ body.mobile-f .tx-mobile-copy b{font-size:11px;overflow-wrap:anywhere}
+ body.mobile-f .tx-mobile-copy small{font-size:9px;color:#9eafc6;overflow-wrap:anywhere}
+ body.mobile-f .tx-mobile-copy .pill{width:max-content;font-size:8px;padding:3px 7px}
+ body.mobile-f .tx-mobile-amount{display:grid;justify-items:end;gap:5px;font-size:10px;font-weight:750;white-space:nowrap}
+ body.mobile-f .tx-mobile-amount button{width:20px;height:20px;border:0;border-radius:6px;background:#2c1b2b;color:#ff9daa;line-height:1}
+ body.mobile-f .tx-empty-state{padding:22px 13px;border:1px solid #1d3b5b;border-radius:15px;background:#0d1b2c;color:#8fa1ba;text-align:center;font-size:11px}
+ body.mobile-f .section.active#transactions .table-wrap{display:none}
+ body.mobile-f .section.active#transactions .tx-mobile-list{display:grid}
+ body.mobile-f .section.active#accounts .page-head,
+ body.mobile-f .section.active:not(#dashboard):not(#transactions):not(#more) .page-head{display:block;margin-bottom:15px}
+ body.mobile-f .section.active:not(#dashboard):not(#transactions):not(#more) .page-head h1{font-size:23px;line-height:1.2;margin-bottom:5px}
+ body.mobile-f input,body.mobile-f select,body.mobile-f textarea{font-size:16px}
+ body.mobile-f .modal{padding:10px;align-items:flex-end}
+ body.mobile-f .modal-box{width:100%;max-width:100%;max-height:calc(100dvh - 20px);overflow-y:auto;border-radius:21px 21px 12px 12px}
+ body.mobile-f .section.active:not(#dashboard){padding-bottom:10px}
+ /* A página Mais ocupa o conteúdo inteiro entre o cabeçalho e a barra inferior — sem modal/sobreposição. */
+ body.mobile-f .section.active#more{display:block;padding:2px 0 15px}
+ body.mobile-f .mobile-more-profile{display:flex;align-items:center;gap:12px;padding:12px 13px;margin:0 0 18px;border-radius:16px;background:#14263d;border:1px solid #284665;cursor:pointer}
+ body.mobile-f .mobile-more-avatar{width:47px;height:47px;border-radius:50%;display:grid;place-items:center;background:#284c7b;color:#e8f2ff;font-weight:800;font-size:18px}
+ body.mobile-f .mobile-more-user{display:grid;gap:3px;flex:1;min-width:0}
+ body.mobile-f .mobile-more-user b{font-size:15px}
+ body.mobile-f .mobile-more-user small{font-size:11px;color:#9fb2cc}
+ body.mobile-f .mobile-more-chevron{font-size:24px;color:#8ca8ca}
+ body.mobile-f .mobile-more-head{display:flex;align-items:center;justify-content:space-between;margin:0 2px 13px;font-size:17px}
+ body.mobile-f .mobile-more-head span{font-size:10px;color:#8fa5c1}
+ body.mobile-f .mobile-more-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+ body.mobile-f .mobile-more-grid button{min-width:0;min-height:89px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:10px 4px;border:1px solid #244566;border-radius:15px;background:linear-gradient(145deg,#142a44,#0e2035);color:#e0ebfa;text-align:center;font-size:10px;line-height:1.2}
+ body.mobile-f .mobile-more-grid button .more-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#163a65;color:#64aaff;font-size:20px;font-weight:800}
+ body.mobile-f .mobile-more-grid button:nth-child(3n+2) .more-icon{background:#183d42;color:#55d6a7}
+ body.mobile-f .mobile-more-grid button:nth-child(3n) .more-icon{background:#302a58;color:#b59cff}
+ body.mobile-f .mobile-more-grid button b{font-size:10px;line-height:1.2;font-weight:650;overflow-wrap:anywhere}
+ body.mobile-f .mobile-more-footer{display:grid;gap:7px;margin-top:16px;padding-top:13px;border-top:1px solid #203a58}
+ body.mobile-f .mobile-more-settings{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 13px;border:0;border-radius:11px;background:#11243a;color:#e3edfb;text-align:left;font-size:12px}
+ body.mobile-f .mobile-more-settings span{color:#8ca8ca;font-size:20px}
+ body.mobile-f .mobile-more-logout{width:100%;margin-top:5px;padding:13px;border:1px solid #613a48;border-radius:13px;background:#301d29;color:#ffabb5;font-size:12px;font-weight:750}
+}
+@media(max-width:380px){
+ body.mobile-f .content{padding-left:12px;padding-right:12px}
+ body.mobile-f .mobile-more-grid{gap:7px}
+ body.mobile-f .mobile-more-grid button{min-height:81px}
+ body.mobile-f .mobile-quick-grid{gap:4px}
+ body.mobile-f .mobile-quick-grid button b{font-size:7px}
+}
+
 </style>
 </head>
 <body class="mobile-f">
@@ -477,14 +656,14 @@ body:not(.authenticated) .auth-screen{display:flex}
 <main class="main">
 <header class="topbar">
   <div class="topbar-brand"><div class="brand-mark">N</div><div><b>NEXO</b><small class="mobile-brand-subtitle">Finanças pessoais e da casa</small><small id="crumb" class="desktop-crumb">Dashboard</small></div></div>
-  <div class="topbar-controls"><button class="btn primary top-add" onclick="openModal('transaction')">＋ <span>Lançamento</span></button><button class="top-logout" type="button" onclick="logoutDemo()">Sair</button><button class="avatar avatar-menu-trigger" id="avatar" type="button" aria-label="Abrir menu do perfil" onclick="toggleAccountMenu()">J</button></div>
+  <div class="topbar-controls"><button class="btn primary top-add" onclick="openModal('transaction')">＋ <span>Lançamento</span></button><button class="top-logout" type="button" onclick="logoutDemo()">Sair</button><button class="notification-trigger" id="notificationTrigger" type="button" aria-label="Ver notificações" onclick="showNotifications()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg><i></i></button><button class="avatar avatar-menu-trigger" id="avatar" type="button" aria-label="Abrir menu do perfil" onclick="toggleAccountMenu()">J</button></div>
 </header>
 <div class="content">
 <section id="dashboard" class="section active">
-  <div class="page-head dashboard-heading"><div><div class="dashboard-eyebrow">VISÃO GERAL</div><h1 id="welcome">Bom dia, João</h1><p>Uma visão clara da sua vida financeira.</p></div><div class="actions"><span class="dashboard-period">◷ &nbsp; Visão do mês atual</span><button class="btn" onclick="exportCSV()">⇩ Exportar dados</button><button class="btn primary" onclick="openModal('transaction')">＋ Novo lançamento</button></div></div>
+  <div class="page-head dashboard-heading"><div><div class="dashboard-eyebrow">VISÃO GERAL</div><h1 id="welcome">Bom dia, João</h1><p>Veja o resumo da sua vida financeira.</p></div><div class="actions"><span class="dashboard-period">◷ &nbsp; Visão do mês atual</span><button class="btn" onclick="exportCSV()">⇩ Exportar dados</button><button class="btn primary" onclick="openModal('transaction')">＋ Novo lançamento</button></div></div>
   <div class="grid stats dashboard-stats" id="stats"></div>
   <div class="dashboard-main-grid">
-    <div class="card dashboard-chart-card"><div class="dashboard-card-heading"><div><h3>Fluxo financeiro</h3><small>Receitas e despesas desta semana</small></div><span class="dashboard-period">Esta semana⌄</span></div><div class="chart" id="chart"></div><div class="bar-labels"><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Set</span><span>Out</span><span>Nov</span><span>Dez</span></div><div class="legend"><span><i class="dot"></i>Receitas</span><span><i class="dot p"></i>Despesas</span></div></div>
+    <div class="card dashboard-chart-card"><div class="dashboard-card-heading"><div><h3>Fluxo financeiro</h3><small>Receitas e despesas ao longo da semana</small></div><span class="dashboard-period">Este mês⌄</span></div><div class="chart" id="chart"></div><div class="bar-labels"><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Set</span><span>Out</span><span>Nov</span><span>Dez</span></div><div class="legend"><span><i class="dot"></i>Receitas</span><span><i class="dot p"></i>Despesas</span></div></div>
     <div class="card dashboard-shortcuts"><div class="dashboard-card-heading"><div><h3>Acesso rápido</h3><small>Atalhos para as tarefas mais usadas</small></div></div><div class="shortcut-grid">
       <button onclick="openModal('transaction')"><span>＋</span>Novo lançamento</button><button onclick="navigate('transactions')"><span>⇄</span>Lançamentos</button><button onclick="openModal('account')"><span>▣</span>Adicionar conta</button><button onclick="openModal('card')"><span>▤</span>Novo cartão</button><button onclick="openModal('recurring')"><span>↻</span>Recorrências</button><button onclick="navigate('planning')"><span>◎</span>Planejamento</button><button onclick="navigate('reports')"><span>▥</span>Relatórios</button><button onclick="toggleAccountMenu(true)"><span>•••</span>Mais funções</button>
     </div></div>
@@ -495,8 +674,32 @@ body:not(.authenticated) .auth-screen{display:flex}
     <div class="card"><div class="dashboard-card-heading"><h3>Contas bancárias</h3><button class="dashboard-link" onclick="navigate('accounts')">Ver todas →</button></div><div id="dashboardAccounts"></div><button class="btn primary dashboard-add-account" onclick="openModal('account')">＋ Adicionar conta</button></div>
     <div class="card"><div class="dashboard-card-heading"><h3>Próximos compromissos</h3><button class="dashboard-link" onclick="navigate('recurring')">Ver todas →</button></div><div class="list" id="upcoming"></div></div>
   </div>
+  <div class="card mobile-quick-actions">
+    <div class="dashboard-card-heading"><h3>Acesso rápido</h3></div>
+    <div class="mobile-quick-grid">
+      <button type="button" onclick="openModal('transaction')"><span>⊕</span><b>Novo lançamento</b></button>
+      <button type="button" onclick="navigate('transactions')"><span>⇄</span><b>Lançamentos</b></button>
+      <button type="button" onclick="navigate('accounts')"><span>▣</span><b>Contas</b></button>
+      <button type="button" onclick="navigate('cards')"><span>▤</span><b>Cartões</b></button>
+    </div>
+  </div>
 </section>
-<section id="transactions" class="section"><div class="page-head"><div><h1>Lançamentos</h1><p>Gerencie receitas, despesas e transferências.</p></div><div class="actions"><button class="btn primary" onclick="openModal('transaction')">＋ Novo lançamento</button></div></div><div class="toolbar"><input id="txSearch" placeholder="Buscar descrição ou categoria..." oninput="renderTransactions()"><select id="txType" onchange="renderTransactions()"><option value="">Todos os tipos</option><option>Receita</option><option>Despesa</option></select><select id="txStatus" onchange="renderTransactions()"><option value="">Todos os status</option><option>Recebido</option><option>Pago</option><option>Pendente</option></select></div><div class="table-wrap"><table><thead><tr><th>Descrição</th><th>Categoria</th><th>Tipo</th><th>Data</th><th>Status</th><th>Valor</th><th></th></tr></thead><tbody id="txTable"></tbody></table></div></section>
+<section id="transactions" class="section"><div class="page-head"><div><h1>Lançamentos</h1><p>Gerencie receitas, despesas e transferências.</p></div><div class="actions"><button class="btn primary" onclick="openModal('transaction')">＋ Novo lançamento</button></div></div><div class="toolbar tx-toolbar">
+  <div class="tx-search-row">
+    <label class="tx-search-box"><span>⌕</span><input id="txSearch" placeholder="Buscar lançamento..." oninput="renderTransactions()"></label>
+    <button type="button" class="tx-filter-button" aria-label="Mostrar filtros" onclick="toggleTxFilters()">☷</button>
+  </div>
+  <div class="tx-mobile-pills">
+    <button type="button" class="active" data-tx-filter="" onclick="setTxTypeFilter('')">Todos</button>
+    <button type="button" data-tx-filter="Receita" onclick="setTxTypeFilter('Receita')">Receitas</button>
+    <button type="button" data-tx-filter="Despesa" onclick="setTxTypeFilter('Despesa')">Despesas</button>
+    <button type="button" data-tx-filter="Cartão" onclick="setTxTypeFilter('Cartão')">Cartões</button>
+  </div>
+  <div class="tx-select-filters" id="txSelectFilters">
+    <select id="txType" onchange="syncTxPills();renderTransactions()"><option value="">Todos os tipos</option><option value="Receita">Receita</option><option value="Despesa">Despesa</option><option value="Cartão">Cartão</option></select>
+    <select id="txStatus" onchange="renderTransactions()"><option value="">Todos os status</option><option>Recebido</option><option>Pago</option><option>Pendente</option></select>
+  </div>
+</div><div class="tx-mobile-list" id="txMobileList"></div><div class="table-wrap"><table><thead><tr><th>Descrição</th><th>Categoria</th><th>Tipo</th><th>Data</th><th>Status</th><th>Valor</th><th></th></tr></thead><tbody id="txTable"></tbody></table></div></section>
 <section id="accounts" class="section"><div class="page-head"><div><h1>Contas bancárias</h1><p>Contas, carteiras e saldos por ambiente.</p></div><button class="btn primary" onclick="openModal('account')">＋ Adicionar conta</button></div><div class="grid three" id="accountCards"></div></section>
 <section id="cards" class="section"><div class="page-head"><div><h1>Cartões de crédito</h1><p>Limites, faturas e compras parceladas.</p></div><button class="btn primary" onclick="openModal('card')">＋ Adicionar cartão</button></div><div class="grid three" id="creditCards"></div></section>
 <section id="recurring" class="section"><div class="page-head"><div><h1>Contas recorrentes</h1><p>Organize despesas fixas e vencimentos.</p></div><button class="btn primary" onclick="openModal('recurring')">＋ Nova recorrência</button></div><div class="table-wrap"><table><thead><tr><th>Descrição</th><th>Categoria</th><th>Vencimento</th><th>Valor</th><th>Responsável</th><th>Pagamento</th><th>Status</th></tr></thead><tbody id="recTable"></tbody></table></div></section>
@@ -533,10 +736,11 @@ body:not(.authenticated) .auth-screen{display:flex}
 <div class="card" style="margin-top:15px"><h3>Relatórios gerados nesta sessão</h3><div id="reportHistory" class="list"><div class="empty">Seus relatórios aparecerão aqui.</div></div></div>
 </section>
 <section id="settings" class="section"><div class="page-head"><div><h1>Configurações</h1><p>Preferências, dados e segurança da prévia.</p></div></div><div class="grid two"><div class="card"><h3>Preferências</h3><div class="field"><label>Moeda</label><select disabled><option>Real brasileiro (R$)</option></select></div><div class="field" style="margin-top:12px"><label>Formato de data</label><select disabled><option>DD/MM/AAAA</option></select></div><div class="field" style="margin-top:12px"><label>Fuso horário</label><select disabled><option>America/Sao_Paulo</option></select></div></div><div class="card"><h3>Dados desta prévia</h3><p class="muted" style="font-size:12px;line-height:1.6">Os lançamentos desta versão ficam salvos no armazenamento local deste navegador. A sincronização financeira na nuvem ainda precisa ser ativada.</p><button class="btn" onclick="exportCSV()">Exportar lançamentos</button> <button class="btn danger" onclick="resetDemo()">Restaurar dados demonstrativos</button></div></div></section>
+<section id="more" class="section mobile-more-page"><div class="mobile-more-profile" onclick="toggleAccountMenu(true)"><div class="mobile-more-avatar" id="mobileMoreAvatar">J</div><div class="mobile-more-user"><b id="mobileMoreName">João</b><small id="mobileMoreRole">Administrador</small></div><span class="mobile-more-chevron">›</span></div><div class="mobile-more-head"><b>Acesso rápido</b><span>Suas áreas do Nexo</span></div><div class="mobile-more-grid" id="mobileMoreGrid"></div><div class="mobile-more-footer"><button class="mobile-more-settings" onclick="navigate('settings')">⚙ &nbsp; Configurações <span>›</span></button><button class="mobile-more-settings" onclick="navigate('assistant')">ⓘ &nbsp; Ajuda e assistente <span>›</span></button><button class="mobile-more-logout" onclick="logoutDemo()">↪ &nbsp; Sair da conta</button></div></section>
 </div>
 </main>
 </div>
-<div class="mobile-more" id="mobileMore" aria-hidden="true"><div class="mobile-more-sheet"><div class="mobile-more-profile" onclick="toggleMobileMore(false);toggleAccountMenu(true)"><div class="mobile-more-avatar" id="mobileMoreAvatar">J</div><div class="mobile-more-user"><b id="mobileMoreName">João</b><small id="mobileMoreRole">Administrador</small></div><span class="mobile-more-chevron">›</span></div><div class="mobile-more-head"><b>Acesso rápido</b><span>Suas áreas do Nexo</span></div><div class="mobile-more-grid" id="mobileMoreGrid"></div><div class="mobile-more-footer"><button class="mobile-more-settings" onclick="navigate('settings')">⚙ &nbsp; Configurações <span>›</span></button><button class="mobile-more-settings" onclick="navigate('assistant')">ⓘ &nbsp; Ajuda e assistente <span>›</span></button><button class="mobile-more-logout" onclick="logoutDemo()">↪ &nbsp; Sair da conta</button></div></div></div>
+
 <div class="account-menu-backdrop" id="accountMenu" onclick="if(event.target===this)toggleAccountMenu(false)">
   <section class="account-menu-panel" role="dialog" aria-modal="true" aria-label="Menu do perfil">
     <div class="account-menu-head"><div class="account-user"><div class="account-avatar" id="accountAvatar">J</div><div><b id="accountName">João</b><small id="accountRole">Administrador</small></div></div><button class="account-close" onclick="toggleAccountMenu(false)" aria-label="Fechar">×</button></div>
@@ -548,7 +752,7 @@ body:not(.authenticated) .auth-screen{display:flex}
   </section>
 </div>
 <div class="mobile-nav" id="mobileNav">
-  <button class="active" data-page="dashboard"><span>⌂</span>Início</button><button data-page="transactions"><span>☷</span>Lançamentos</button><button data-page="accounts"><span>▣</span>Contas</button><button id="mobileMoreTrigger" onclick="toggleMobileMore()"><span>⠿</span>Mais</button>
+  <button class="active" data-page="dashboard"><span>⌂</span>Início</button><button data-page="transactions"><span>☷</span>Lançamentos</button><button data-page="accounts"><span>▣</span>Contas</button><button id="mobileMoreTrigger" data-page="more"><span>⠿</span>Mais</button>
 </div>
 <div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><h2 id="modalTitle">Novo lançamento</h2><button class="close" onclick="closeModal()">×</button></div><form id="modalForm" onsubmit="saveModal(event)"><div id="modalFields" class="form-grid"></div><div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">Cancelar</button><button type="submit" class="btn primary">Salvar</button></div></form></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -590,12 +794,27 @@ function switchProfile(p){if(sessionRole!=='admin')return;if(!['joao','laura'].i
 function syncProfileChoices(){renderAccountMenu()}
 function toggleAccountMenu(force){const el=document.getElementById('accountMenu');if(!el)return;el.classList.toggle('open',force===undefined?!el.classList.contains('open'):!!force);if(el.classList.contains('open'))renderAccountMenu()}
 function renderAccountMenu(){const isAdmin=sessionRole==='admin';const name=profile==='joao'?'João':'Laura';document.getElementById('accountName').textContent=name;document.getElementById('accountRole').textContent=isAdmin?'Administrador':(profile==='laura'?'Perfil pessoal':'Perfil pessoal');document.getElementById('accountAvatar').textContent=profile==='joao'?'J':'L';const mmA=document.getElementById('mobileMoreAvatar'),mmN=document.getElementById('mobileMoreName'),mmR=document.getElementById('mobileMoreRole');if(mmA)mmA.textContent=profile==='joao'?'J':'L';if(mmN)mmN.textContent=name;if(mmR)mmR.textContent=isAdmin?'Administrador':'Perfil pessoal';const envTitle=document.querySelector('.account-menu-panel .account-section-title');const envWrap=document.getElementById('accountEnvironments');if(isAdmin){if(envTitle)envTitle.style.display='';envWrap.style.display='grid';const envs=[['joao','J','João · Pessoal'],['laura','L','Laura · Pessoal']];envWrap.innerHTML=envs.map(([v,ico,label])=>`<button class="environment-option ${profile===v?'selected':''}" onclick="switchProfile('${v}');toggleAccountMenu(false)"><span class="environment-icon">${ico}</span><span>${label}</span>${profile===v?'<b>✓</b>':''}</button>`).join('')}else{if(envTitle)envTitle.style.display='none';envWrap.style.display='none';envWrap.innerHTML=''}const pages=[['dashboard','◫','Dashboard'],['transactions','⇄','Lançamentos'],['accounts','▣','Contas bancárias'],['cards','▤','Cartões de crédito'],['recurring','↻','Contas recorrentes'],['planning','◎','Planejamento'],['assets','◇','Patrimônio'],['business','⌂','Imobiliário'],['law','⚖','Minha advocacia'],['home','⌂','Nossa Casa'],['settlements','⇆','Acertos João & Laura'],['reports','▥','Relatórios'],['assistant','✧','Assistente IA'],['settings','⚙','Configurações']];document.getElementById('accountPages').innerHTML=pages.filter(([id])=>!(profile==='laura'&&id==='business'&&!isAdmin)).map(([id,ico,label])=>`<button class="account-page-option ${currentPage===id?'selected':''}" onclick="navigate('${id}');toggleAccountMenu(false)"><span>${ico}</span>${label}</button>`).join('')}
-function toggleMobileMore(force){const el=document.getElementById('mobileMore');if(!el)return;const open=force===undefined?!el.classList.contains('open'):!!force;el.classList.toggle('open',open);el.setAttribute('aria-hidden',String(!open));document.getElementById('mobileMoreTrigger')?.classList.toggle('active',open);document.body.classList.toggle('mobile-menu-open',open)}
+function toggleMobileMore(force){if(force===false)return;navigate('more')}
+function updateNotificationBadge(){
+ const btn=document.getElementById('notificationTrigger');if(!btn)return;
+ const pendingTx=visibleTransactions().filter(t=>t.status==='Pendente').length;
+ const pendingBills=(data.recurring||[]).filter(r=>r.profile===profile||(!r.profile&&profile==='joao')).length;
+ btn.classList.toggle('has-alert',pendingTx+pendingBills>0);
+}
+function showNotifications(){
+ const pending=visibleTransactions().filter(t=>t.status==='Pendente');
+ const pendingRecurring=(data.recurring||[]).filter(r=>r.profile===profile||(!r.profile&&profile==='joao'));
+ const messages=[];
+ if(pending.length)messages.push(`${pending.length} lançamento(s) pendente(s): ${money(sum(pending,t=>t.value))}`);
+ if(pendingRecurring.length)messages.push(`${pendingRecurring.length} conta(s) recorrente(s) cadastrada(s) para acompanhar`);
+ if(!messages.length)messages.push('Você não tem notificações pendentes neste ambiente.');
+ alert(messages.join('\\n'));
+}
 async function logoutDemo(){if(!confirm('Deseja sair da sua conta?'))return;const {error}=await supabaseClient.auth.signOut();if(error){alert('Não foi possível encerrar a sessão: '+error.message);return;}authenticatedUser=null;sessionRole=null;document.body.classList.remove('authenticated');document.getElementById('authPassword').value='';document.getElementById('authEmail').value='';document.getElementById('authError').classList.remove('show');}
-function pageName(id){return ({dashboard:'Dashboard',transactions:'Lançamentos',accounts:'Contas bancárias',cards:'Cartões de crédito',recurring:'Contas recorrentes',planning:'Planejamento',assets:'Patrimônio',business:'Gestão imobiliária',law:'Minha advocacia',home:'Nossa casa',settlements:'Acertos João & Laura',reports:'Relatórios',assistant:'Assistente financeiro',settings:'Configurações'})[id]}
-function navigate(id){currentPage=id;document.body.classList.toggle('mobile-page-transactions',id==='transactions');document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);toggleMobileMore(false);const moreTrigger=document.getElementById('mobileMoreTrigger');if(moreTrigger)moreTrigger.classList.toggle('active',!['dashboard','transactions','accounts'].includes(id));renderAll();renderAccountMenu();window.scrollTo({top:0,behavior:'smooth'})}
-document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>{navigate(b.dataset.page);toggleMobileMore(false)}));
-const mobilePages=[['dashboard','▥','Dashboard'],['transactions','☷','Lançamentos'],['accounts','▣','Contas bancárias'],['cards','▤','Cartões de crédito'],['recurring','↻','Contas recorrentes'],['planning','◎','Planejamento'],['assets','◇','Patrimônio'],['business','⌂','Imobiliário'],['law','⚖','Minha advocacia'],['home','⌂','Nossa Casa'],['settlements','⇄','Acertos João & Laura'],['reports','▥','Relatórios'],['assistant','✧','Assistente IA'],['settings','⚙','Configurações']];document.getElementById('mobileMoreGrid').innerHTML=mobilePages.map(([id,ico,label])=>`<button data-page="${id}"><span class="more-icon">${ico}</span><b>${label}</b></button>`).join('');document.querySelectorAll('#mobileMoreGrid [data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
+function pageName(id){return ({dashboard:'Dashboard',transactions:'Lançamentos',accounts:'Contas bancárias',cards:'Cartões de crédito',recurring:'Contas recorrentes',planning:'Planejamento',assets:'Patrimônio',business:'Gestão imobiliária',law:'Minha advocacia',home:'Nossa casa',settlements:'Acertos João & Laura',reports:'Relatórios',assistant:'Assistente financeiro',settings:'Configurações',more:'Mais'})[id]}
+function navigate(id){currentPage=id;document.body.classList.toggle('mobile-page-transactions',id==='transactions');document.body.classList.toggle('mobile-page-more',id==='more');document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);renderAll();renderAccountMenu();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
+const mobilePages=[['dashboard','▥','Dashboard'],['transactions','☷','Lançamentos'],['accounts','▣','Contas bancárias'],['cards','▤','Cartões de crédito'],['recurring','↻','Contas recorrentes'],['planning','◎','Planejamento'],['assets','◇','Patrimônio'],['business','⌂','Imobiliário'],['law','⚖','Minha advocacia'],['home','⌂','Nossa Casa'],['settlements','⇄','Acertos João & Laura'],['reports','▥','Relatórios']];document.getElementById('mobileMoreGrid').innerHTML=mobilePages.map(([id,ico,label])=>`<button data-page="${id}"><span class="more-icon">${ico}</span><b>${label}</b></button>`).join('');document.querySelectorAll('#mobileMoreGrid [data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
 function visibleTransactions(){return data.transactions.filter(t=>profile==='home'?t.profile==='home':t.profile===profile)}
 function sum(arr,fn){return arr.reduce((a,x)=>a+fn(x),0)}
 function stat(label,value,icon,note,color='blue'){return `<div class="card"><div class="stat-top">${label}<span class="stat-icon">${icon}</span></div><div class="stat-value ${color}">${money(value)}</div><div class="stat-note">${note}</div></div>`}
@@ -604,12 +823,60 @@ function renderDashboard(){
  const bal=(data.accounts.filter(a=>profile==='home'?a.profile==='home':a.profile===profile).reduce((s,a)=>s+a.balance,0));
  document.getElementById('stats').innerHTML=stat('Saldo total',bal,'▣','Soma dos saldos cadastrados','blue')+stat('Receitas',inc,'↗','No ambiente selecionado','green')+stat('Despesas',exp,'↘','No ambiente selecionado','red')+stat('Saldo do mês',inc-exp,'◈','Receitas menos despesas',inc-exp>=0?'green':'red');
  const dashAccounts=data.accounts.filter(a=>profile==='home'?a.profile==='home':a.profile===profile);document.getElementById('dashboardAccounts').innerHTML=dashAccounts.length?dashAccounts.slice(0,3).map(a=>`<div class="list-row"><div class="list-main"><div class="list-icon">▣</div><div><b>${esc(a.name)}</b><small>${esc(a.bank)}</small></div></div><span class="amount">${money(a.balance)}</span></div>`).join(''):'<div class="dashboard-empty"><span>▤</span><b>Nenhuma conta cadastrada</b><small>Adicione uma conta para acompanhar seus saldos.</small></div>';
- const weekStart=new Date();weekStart.setHours(0,0,0,0);weekStart.setDate(weekStart.getDate()-((weekStart.getDay()+6)%7));const weekLabels=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];const weekIncome=Array(7).fill(0),weekExpense=Array(7).fill(0);tx.forEach(t=>{if(!t.date)return;const dt=new Date(t.date+'T12:00:00');const idx=(dt.getDay()+6)%7;if(dt>=weekStart&&idx>=0&&idx<7){if(t.type==='Receita')weekIncome[idx]+=Number(t.value||0);if(t.type==='Despesa')weekExpense[idx]+=Number(t.value||0)}});const weekMax=Math.max(0,...weekIncome,...weekExpense);document.getElementById('chart').innerHTML=weekLabels.map((label,i)=>{const ih=weekMax?Math.max(weekIncome[i]?5:0,weekIncome[i]/weekMax*100):0,eh=weekMax?Math.max(weekExpense[i]?5:0,weekExpense[i]/weekMax*100):0;return `<div class="bar-group"><div class="bar" style="height:${ih}%" title="${label}: ${money(weekIncome[i])} em receitas"></div><div class="bar exp" style="height:${eh}%" title="${label}: ${money(weekExpense[i])} em despesas"></div></div>`}).join('');const labelsEl=document.querySelector('#dashboard .bar-labels');if(labelsEl)labelsEl.innerHTML=weekLabels.map(x=>`<span>${x}</span>`).join('');
- document.getElementById('recent').innerHTML=tx.slice().reverse().slice(0,5).map(t=>`<div class="list-row"><div class="list-main"><div class="list-icon">${t.type==='Receita'?'↗':'↘'}</div><div><b>${esc(t.desc)}</b><small>${esc(t.category)} · ${dateBR(t.date)}</small></div></div><span class="amount ${t.type==='Receita'?'green':'red'}">${t.type==='Receita'?'+':'−'}${money(t.value)}</span></div>`).join('')||'<div class="empty">Nenhuma movimentação.</div>';
+ const weekStart=new Date();weekStart.setHours(0,0,0,0);weekStart.setDate(weekStart.getDate()-((weekStart.getDay()+6)%7));const weekLabels=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];const weekIncome=Array(7).fill(0),weekExpense=Array(7).fill(0);tx.forEach(t=>{if(!t.date)return;const dt=new Date(t.date+'T12:00:00');const idx=(dt.getDay()+6)%7;if(dt>=weekStart&&idx>=0&&idx<7){if(t.type==='Receita')weekIncome[idx]+=Number(t.value||0);if(t.type==='Despesa')weekExpense[idx]+=Number(t.value||0)}});const weekMax=Math.max(0,...weekIncome,...weekExpense);document.getElementById('chart').innerHTML=weekLabels.map((label,i)=>{const ih=weekMax?Math.max(weekIncome[i]?5:0,weekIncome[i]/weekMax*100):0,eh=weekMax?Math.max(weekExpense[i]?5:0,weekExpense[i]/weekMax*100):0;const emptyBar=weekMax===0;return `<div class="bar-group"><div class="bar ${emptyBar?'is-empty':''}" style="height:${emptyBar?3:ih+'%'}" title="${label}: ${money(weekIncome[i])} em receitas"></div><div class="bar exp ${emptyBar?'is-empty':''}" style="height:${emptyBar?3:eh+'%'}" title="${label}: ${money(weekExpense[i])} em despesas"></div></div>`}).join('');const labelsEl=document.querySelector('#dashboard .bar-labels');if(labelsEl)labelsEl.innerHTML=weekLabels.map(x=>`<span>${x}</span>`).join('');
+ document.getElementById('recent').innerHTML=tx.slice().reverse().slice(0,5).map(t=>`<div class="list-row dashboard-recent-row" role="button" tabindex="0" onclick="editItem('transactions',${t.id})" onkeydown="if(event.key==='Enter'){editItem('transactions',${t.id})}"><div class="list-main"><div class="list-icon dashboard-transaction-icon ${t.type==='Receita'?'income':'expense'}">${txIcon(t)}</div><div><b>${esc(t.desc)}</b><small>${esc(t.category)} · ${dateBR(t.date)}</small></div></div><span class="amount ${t.type==='Receita'?'green':'red'}">${t.type==='Receita'?'+':'−'}${money(t.value)}</span></div>`).join('')||'<div class="empty dashboard-empty-recent">Nenhuma movimentação ainda.</div>';
  const cats={};tx.filter(t=>t.type==='Despesa').forEach(t=>cats[t.category]=(cats[t.category]||0)+t.value);let entries=Object.entries(cats).sort((a,b)=>b[1]-a[1]).slice(0,5);document.getElementById('categories').innerHTML=entries.length?entries.map(([k,v])=>`<div class="goal"><div class="goal-head"><span>${esc(k)}</span><b>${money(v)}</b></div><div class="progress"><span style="width:${Math.min(100,v/Math.max(1,exp)*100)}%"></span></div></div>`).join(''):'<div class="empty">Sem despesas registradas.</div>';
  document.getElementById('upcoming').innerHTML=data.recurring.slice(0,4).map(r=>`<div class="list-row"><div class="list-main"><div class="list-icon">◷</div><div><b>${esc(r.desc)}</b><small>Vencimento dia ${r.due} · ${r.owner}</small></div></div><span class="amount">${money(r.value)}</span></div>`).join('');
 }
-function renderTransactions(){let q=(document.getElementById('txSearch')?.value||'').toLowerCase(),type=document.getElementById('txType')?.value||'',status=document.getElementById('txStatus')?.value||'';let arr=visibleTransactions().filter(t=>(!q||(t.desc+' '+t.category).toLowerCase().includes(q))&&(!type||t.type===type)&&(!status||t.status===status));document.getElementById('txTable').innerHTML=arr.map(t=>`<tr data-edit-key="transactions:${t.id}" onclick="editItem('transactions',${t.id})"><td><strong>${esc(t.desc)}</strong></td><td>${esc(t.category)}</td><td>${t.type}</td><td>${dateBR(t.date)}</td><td><span class="pill ${t.status==='Pendente'?'warn':'ok'}">${t.status}</span></td><td class="amount">${money(t.value)}</td><td><button class="btn small danger" onclick="deleteTx(${t.id})">Excluir</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">Nenhum lançamento encontrado.</td></tr>'}
+function txIcon(t){
+ const s=((t.category||'')+' '+(t.desc||'')).toLowerCase();
+ if(t.type==='Receita')return '↗';
+ if(/mercado|supermerc|alimenta|restaurante|comida/.test(s))return '🛒';
+ if(/moradia|aluguel|casa|im[oó]vel/.test(s))return '⌂';
+ if(/sa[uú]de|farm[aá]cia|m[eé]dico/.test(s))return '✚';
+ if(/transporte|combust[ií]vel|gasolina/.test(s))return '⛽';
+ if(/academia|esporte/.test(s))return '✣';
+ if(/internet|telefone|assinatura/.test(s))return '⌁';
+ return '↘';
+}
+function syncTxPills(){
+ const type=document.getElementById('txType')?.value||'';
+ document.querySelectorAll('.tx-mobile-pills [data-tx-filter]').forEach(b=>b.classList.toggle('active',b.dataset.txFilter===type));
+}
+function setTxTypeFilter(type){
+ const el=document.getElementById('txType');if(el)el.value=type;
+ syncTxPills();renderTransactions();
+}
+function toggleTxFilters(){
+ const wrap=document.getElementById('txSelectFilters');
+ const toolbar=document.querySelector('.tx-toolbar');
+ if(!wrap||!toolbar)return;
+ toolbar.classList.toggle('show-filters');
+}
+function renderTransactions(){
+ const q=(document.getElementById('txSearch')?.value||'').toLowerCase();
+ const type=document.getElementById('txType')?.value||'';
+ const status=document.getElementById('txStatus')?.value||'';
+ const arr=visibleTransactions().filter(t=>{
+  const matchesText=!q||(String(t.desc||'')+' '+String(t.category||'')).toLowerCase().includes(q);
+  const matchesType=!type||(type==='Cartão'?/cart[aã]o/i.test(t.payment||t.paymentMethod||''):t.type===type);
+  return matchesText&&matchesType&&(!status||t.status===status);
+ });
+ document.getElementById('txTable').innerHTML=arr.map(t=>`<tr data-edit-key="transactions:${t.id}" onclick="editItem('transactions',${t.id})"><td><strong>${esc(t.desc)}</strong></td><td>${esc(t.category)}</td><td>${t.type}</td><td>${dateBR(t.date)}</td><td><span class="pill ${t.status==='Pendente'?'warn':'ok'}">${t.status}</span></td><td class="amount">${money(t.value)}</td><td><button class="btn small danger" onclick="event.stopPropagation();deleteTx(${t.id})">Excluir</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">Nenhum lançamento encontrado.</td></tr>';
+ const mobile=document.getElementById('txMobileList');
+ if(mobile){
+  mobile.innerHTML=arr.map(t=>{
+   const positive=t.type==='Receita';
+   const meta=[t.category,dateBR(t.date),t.payment].filter(Boolean).join(' · ');
+   return `<div class="tx-mobile-item" role="button" tabindex="0" onclick="editItem('transactions',${t.id})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();editItem('transactions',${t.id})}">
+    <div class="tx-mobile-icon ${positive?'income':'expense'}">${txIcon(t)}</div>
+    <div class="tx-mobile-copy"><b>${esc(t.desc)}</b><small>${esc(meta)}</small><span class="pill ${t.status==='Pendente'?'warn':'ok'}">${esc(t.status||'Registrado')}</span></div>
+    <div class="tx-mobile-amount ${positive?'green':'red'}">${positive?'+':'−'}${money(t.value)}<button type="button" onclick="event.stopPropagation();deleteTx(${t.id})" aria-label="Excluir lançamento">×</button></div>
+   </div>`;
+  }).join('')||'<div class="tx-empty-state">Nenhum lançamento encontrado.</div>';
+ }
+ syncTxPills();
+}
 function renderAccounts(){let arr=data.accounts.filter(a=>profile==='home'?a.profile==='home':a.profile===profile);document.getElementById('accountCards').innerHTML=arr.map(a=>`<div class="card" data-edit-key="accounts:${a.id}" onclick="editItem('accounts',${a.id})"><div class="stat-top">${esc(a.bank)}<span class="stat-icon">▣</span></div><h3 style="margin:15px 0 5px">${esc(a.name)}</h3><div class="stat-value">${money(a.balance)}</div><div class="stat-note">Saldo cadastrado</div></div>`).join('')||'<div class="empty">Nenhuma conta cadastrada.</div>'}
 function renderCards(){let arr=data.cards.filter(c=>profile==='home'?true:c.profile===profile);document.getElementById('creditCards').innerHTML=arr.map(c=>`<div class="card" data-edit-key="cards:${c.id}" onclick="editItem('cards',${c.id})" style="background:linear-gradient(135deg,#243d66,#151e35)"><div class="stat-top">CARTÃO DE CRÉDITO <span>▤</span></div><h3 style="margin:20px 0 4px">${esc(c.name)}</h3><div class="stat-value">${money(c.used)}</div><div class="stat-note">Utilizado de ${money(c.limit)}</div><div class="progress" style="margin:15px 0"><span style="width:${Math.min(100,c.used/c.limit*100)}%"></span></div><div class="stat-note">Fecha dia ${c.close} · Vence dia ${c.due} · Disponível ${money(c.limit-c.used)}</div></div>`).join('')||'<div class="empty">Nenhum cartão cadastrado.</div>'}
 function renderRecurring(){document.getElementById('recTable').innerHTML=data.recurring.map(r=>`<tr data-edit-key="recurring:${r.id||r.desc}" onclick="editItem('recurring',${r.id||0},'${esc(r.desc)}')"><td><strong>${esc(r.desc)}</strong>${r.profile==='home'?' <span class="pill">Casa</span>':''}</td><td>${esc(r.category)}</td><td>Dia ${r.due}</td><td>${money(r.value)}</td><td>${esc(r.owner)}</td><td>${esc(r.payment||'—')}</td><td><span class="pill warn">${r.status}</span></td></tr>`).join('')}
@@ -683,11 +950,11 @@ function editItem(collection,id,fallback){const arr=data[collection]||[];let ite
 function saveEdit(e){e.preventDefault();if(!editingRef)return;const {collection,item}=editingRef;const f=new FormData(e.target);for(const [k,v] of f.entries()){if(!k.startsWith('edit_'))continue;const key=k.slice(5);item[key]=typeof item[key]==='number'?Number(v||0):v;}persist();editingRef=null;document.getElementById('modalForm').onsubmit=saveModal;document.getElementById('modalForm').querySelector('button[type="submit"]').textContent='Salvar';renderAll();closeModal()}
 function deleteEditingItem(){if(!editingRef)return;const {collection,item}=editingRef;if(!confirm('Excluir este registro?'))return;data[collection]=data[collection].filter(x=>x!==item);persist();editingRef=null;document.getElementById('modalForm').onsubmit=saveModal;renderAll();closeModal()}
 
-function renderAll(){renderDashboard();renderTransactions();renderAccounts();renderCards();renderRecurring();renderPlanning();renderAssets();renderBusiness();renderLaw();renderHome();renderSettlements();renderReports()}
+function renderAll(){renderDashboard();renderTransactions();renderAccounts();renderCards();renderRecurring();renderPlanning();renderAssets();renderBusiness();renderLaw();renderHome();renderSettlements();renderReports();updateNotificationBadge()}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function field(name,label,type='text',value='',opts=null,full=false){let id='f_'+name,html=type==='select'?`<select id="${id}" name="${name}">${opts.map(o=>`<option>${esc(o)}</option>`).join('')}</select>`:type==='textarea'?`<textarea id="${id}" name="${name}" placeholder="${label}">${esc(value)}</textarea>`:`<input id="${id}" name="${name}" type="${type}" value="${esc(value)}" ${type==='number'?'step="0.01"':''} placeholder="${label}" required>`;return `<div class="field ${full?'full':''}"><label for="${id}">${label}</label>${html}</div>`}
 function openModal(type){editingRef=null;document.getElementById('modalForm').onsubmit=saveModal;const oldDelete=document.querySelector('#modalForm .modal-actions .danger');if(oldDelete)oldDelete.remove();document.getElementById('modalForm').querySelector('button[type="submit"]').textContent='Salvar';modalType=type;let title='',fields='';const owner=profile==='joao'?'João':profile==='laura'?'Laura':'Compartilhado';
-if(type==='transaction'){title='Novo lançamento';fields=field('desc','Descrição')+field('type','Tipo','select','',['Receita','Despesa'])+field('category','Categoria')+field('value','Valor (R$)','number')+field('date','Data','date',today)+field('status','Status','select','','Recebido,Pago,Pendente'.split(','))+field('scope','Ambiente','select','',['Pessoal','Profissional','Casa'])}
+if(type==='transaction'){title='Novo lançamento';fields=field('desc','Descrição')+field('type','Tipo','select','',['Receita','Despesa'])+field('category','Categoria')+field('value','Valor (R$)','number')+field('date','Data','date',today)+field('payment','Forma de pagamento','select','',['Pix','Dinheiro','Cartão','Transferência'])+field('status','Status','select','','Recebido,Pago,Pendente'.split(','))+field('scope','Ambiente','select','',['Pessoal','Profissional','Casa'])}
 if(type==='account'){title='Adicionar conta';fields=field('name','Nome da conta')+field('bank','Banco')+field('balance','Saldo inicial','number')+field('owner','Titular','select','',[owner,'João','Laura','Compartilhado'])}
 if(type==='card'){title='Adicionar cartão';fields=field('name','Nome do cartão')+field('bank','Banco emissor')+field('limit','Limite total','number')+field('used','Limite utilizado','number')+field('close','Dia de fechamento','number')+field('due','Dia de vencimento','number')}
 if(type==='recurring'){title='Nova conta recorrente';fields=field('desc','Descrição')+field('category','Categoria')+field('value','Valor','number')+field('due','Dia do vencimento','number')+field('owner','Responsável','select','',['João','Laura','Compartilhado'])}
@@ -707,7 +974,7 @@ function selectBudgetCategory(button){const input=document.getElementById('f_cat
 function selectCustomBudgetCategory(){document.querySelectorAll('.budget-category-chip').forEach(x=>x.classList.remove('selected'));const input=document.getElementById('f_category');if(input){input.value='';input.focus()}}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
 function saveModal(e){e.preventDefault();let f=new FormData(e.target),v=Object.fromEntries(f.entries());let num=k=>Number(v[k]||0);
-if(modalType==='transaction'){data.transactions.push({id:Date.now(),profile:v.scope==='Casa'?'home':profile,desc:v.desc,category:v.category,type:v.type,date:v.date,status:v.status,value:num('value'),scope:v.scope})}
+if(modalType==='transaction'){data.transactions.push({id:Date.now(),profile:v.scope==='Casa'?'home':profile,desc:v.desc,category:v.category,type:v.type,date:v.date,status:v.status,value:num('value'),payment:v.payment||'',scope:v.scope})}
 if(modalType==='account')data.accounts.push({id:Date.now(),profile:v.owner==='João'?'joao':v.owner==='Laura'?'laura':'home',name:v.name,bank:v.bank,balance:num('balance')});
 if(modalType==='card')data.cards.push({id:Date.now(),profile:profile,name:v.name,bank:v.bank,limit:num('limit'),used:num('used'),close:num('close'),due:num('due')});
 if(modalType==='recurring')data.recurring.push({id:Date.now(),desc:v.desc,category:v.category,value:num('value'),due:v.due,owner:v.owner,status:'Pendente'});
