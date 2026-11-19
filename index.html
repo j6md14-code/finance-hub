@@ -796,6 +796,54 @@ body.mobile-f .tx-filter-button>.nexo-icon-plain{width:23px;height:23px;color:#7
  body.mobile-f .mobile-quick-grid button{min-height:72px;padding:6px 2px}
  body.mobile-f .mobile-quick-grid button b{font-size:7.5px;line-height:1.15}
 }
+
+/* NEXO PRO — FILTRO DE PERÍODO DO DASHBOARD (DESKTOP + MOBILE) */
+.dashboard-heading{align-items:flex-start;gap:18px}
+.dashboard-intro{flex:1;min-width:0}
+.dashboard-subline{display:flex;align-items:center;gap:12px;min-width:0;flex-wrap:wrap}
+.dashboard-subline>p{margin:0;min-width:0}
+.dashboard-filter-trigger{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;max-width:100%;padding:7px 11px;border:1px solid #29486b;border-radius:11px;background:linear-gradient(145deg,#142a45,#102139);color:#d9e9ff;font-size:11px;font-weight:650;white-space:nowrap;box-shadow:0 5px 16px #0002;transition:.18s ease}
+.dashboard-filter-trigger:hover{border-color:#6ea7f5;background:#193453;transform:translateY(-1px)}
+.dashboard-filter-trigger .nexo-icon{width:23px;height:23px;border-radius:7px;flex:0 0 23px}
+.dashboard-filter-trigger #dashboardDateFilterLabel{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.dashboard-filter-chevron{font-size:15px;color:#8fb8ed;margin-left:1px}
+.dashboard-range-display{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.dashboard-date-backdrop{display:none;position:fixed;inset:0;z-index:100;background:rgba(2,8,18,.76);backdrop-filter:blur(7px);align-items:center;justify-content:center;padding:20px}
+.dashboard-date-backdrop.open{display:flex}
+.dashboard-date-panel{width:min(500px,100%);max-height:min(86dvh,720px);overflow:auto;padding:23px;background:linear-gradient(155deg,#15253c,#0d192b);border:1px solid #345071;border-radius:22px;box-shadow:0 25px 90px #000a;color:#f3f7ff}
+.dashboard-date-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:19px}
+.dashboard-date-head h2{font-size:19px;line-height:1.25;margin:0 0 6px}
+.dashboard-date-head p{font-size:12px;line-height:1.5;color:#9fb0c8;margin:0}
+.dashboard-date-close{width:34px;height:34px;flex:0 0 34px;border:1px solid #2e4562;border-radius:10px;background:#1b2d46;color:#b7c8dd;font-size:23px;line-height:1}
+.dashboard-date-presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:18px}
+.dashboard-date-presets button{min-height:42px;padding:9px 11px;border:1px solid #2b4564;border-radius:11px;background:#12243a;color:#dce9fa;text-align:left;font-size:12px;font-weight:600}
+.dashboard-date-presets button:first-child{grid-column:1/-1;background:linear-gradient(135deg,#1d4677,#17365e);border-color:#4c7fbd;color:#fff}
+.dashboard-date-presets button:active{border-color:#80b5ff;background:#1d3c60}
+.dashboard-date-custom{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px;border:1px solid #2b4563;border-radius:14px;background:#0c192a}
+.dashboard-date-custom .field{min-width:0}
+.dashboard-date-custom .field label{font-size:11px;color:#aebed2}
+.dashboard-date-custom input{width:100%;min-width:0;height:42px;padding:8px 9px;border:1px solid #334a68;border-radius:9px;background:#111f32;color:#f2f6fc;color-scheme:dark}
+.dashboard-date-error{min-height:17px;margin:7px 2px 0;color:#ff9da8;font-size:11px}
+.dashboard-date-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:12px}
+@media(max-width:700px){
+ body.mobile-f .dashboard-heading{display:block;margin:4px 0 14px}
+ body.mobile-f .dashboard-subline{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:nowrap}
+ body.mobile-f .dashboard-subline>p{flex:1;font-size:11px;line-height:1.35;overflow-wrap:anywhere}
+ body.mobile-f .dashboard-filter-trigger{flex:0 0 auto;min-height:34px;max-width:48%;padding:6px 8px;gap:5px;font-size:9px;border-radius:10px}
+ body.mobile-f .dashboard-filter-trigger .nexo-icon{width:19px;height:19px;flex-basis:19px}
+ body.mobile-f .dashboard-filter-chevron{font-size:13px}
+ body.mobile-f .dashboard-heading .actions{display:none!important}
+ body.mobile-f .dashboard-date-backdrop{align-items:center;padding:calc(12px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom));z-index:120}
+ body.mobile-f .dashboard-date-panel{width:100%;max-width:440px;max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow:auto;padding:18px 15px calc(16px + env(safe-area-inset-bottom));border-radius:19px}
+ body.mobile-f .dashboard-date-head h2{font-size:17px}
+ body.mobile-f .dashboard-date-presets{gap:7px}
+ body.mobile-f .dashboard-date-presets button{min-height:41px;font-size:11px;padding:8px}
+ body.mobile-f .dashboard-date-custom{gap:8px;padding:11px}
+ body.mobile-f .dashboard-date-custom input{height:40px;font-size:12px}
+ body.mobile-f .dashboard-date-actions{position:sticky;bottom:-16px;padding:10px 0 1px;background:#101d30}
+ body.mobile-f .dashboard-date-actions .btn{min-height:42px}
+}
+
 </style>
 </head>
 <body class="mobile-f">
@@ -844,17 +892,17 @@ body.mobile-f .tx-filter-button>.nexo-icon-plain{width:23px;height:23px;color:#7
 </header>
 <div class="content">
 <section id="dashboard" class="section active">
-  <div class="page-head dashboard-heading"><div><div class="dashboard-eyebrow">VISÃO GERAL</div><h1 id="welcome">Bom dia, João</h1><p>Veja o resumo da sua vida financeira.</p></div><div class="actions"><span class="dashboard-period"><span data-nexo-icon="calendar" data-tone="blue" data-size="xs"></span> Visão do mês atual</span><button class="btn" onclick="exportCSV()"><span data-nexo-icon="reports" data-tone="blue" data-size="xs"></span> Exportar dados</button><button class="btn primary" onclick="openModal('transaction')">＋ Novo lançamento</button></div></div>
+  <div class="page-head dashboard-heading"><div class="dashboard-intro"><div class="dashboard-eyebrow">VISÃO GERAL</div><h1 id="welcome">Bom dia, João</h1><div class="dashboard-subline"><p>Veja o resumo da sua vida financeira.</p><button type="button" class="dashboard-filter-trigger" id="dashboardDateFilterBtn" onclick="openDashboardDateFilter()" aria-haspopup="dialog" aria-controls="dashboardDateFilter"><span data-nexo-icon="calendar" data-tone="blue" data-size="xs"></span><span id="dashboardDateFilterLabel">Visão do mês atual</span><span class="dashboard-filter-chevron">⌄</span></button></div></div><div class="actions"><button class="btn" onclick="exportCSV()"><span data-nexo-icon="reports" data-tone="blue" data-size="xs"></span> Exportar dados</button><button class="btn primary" onclick="openModal('transaction')">＋ Novo lançamento</button></div></div>
   <div class="grid stats dashboard-stats" id="stats"></div>
   <div class="dashboard-main-grid">
-    <div class="card dashboard-chart-card"><div class="dashboard-card-heading"><div><h3>Fluxo financeiro</h3><small>Receitas e despesas ao longo da semana</small></div><span class="dashboard-period"><span data-nexo-icon="calendar" data-tone="blue" data-size="xs"></span> Este mês⌄</span></div><div class="chart" id="chart"></div><div class="bar-labels"><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Set</span><span>Out</span><span>Nov</span><span>Dez</span></div><div class="legend"><span><i class="dot"></i>Receitas</span><span><i class="dot p"></i>Despesas</span></div></div>
+    <div class="card dashboard-chart-card"><div class="dashboard-card-heading"><div><h3>Fluxo financeiro</h3><small>Receitas e despesas ao longo da semana</small></div><span class="dashboard-period dashboard-range-display"><span data-nexo-icon="calendar" data-tone="blue" data-size="xs"></span> <span class="dashboard-range-label">Mês atual</span></span></div><div class="chart" id="chart"></div><div class="bar-labels"><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Set</span><span>Out</span><span>Nov</span><span>Dez</span></div><div class="legend"><span><i class="dot"></i>Receitas</span><span><i class="dot p"></i>Despesas</span></div></div>
     <div class="card dashboard-shortcuts"><div class="dashboard-card-heading"><div><h3>Acesso rápido</h3><small>Atalhos para as tarefas mais usadas</small></div></div><div class="shortcut-grid">
       <button onclick="openModal('transaction')"><span>＋</span>Novo lançamento</button><button onclick="navigate('transactions')"><span>⇄</span>Lançamentos</button><button onclick="openModal('account')"><span>▣</span>Adicionar conta</button><button onclick="openModal('card')"><span>▤</span>Novo cartão</button><button onclick="openModal('recurring')"><span>↻</span>Recorrências</button><button onclick="navigate('planning')"><span>◎</span>Planejamento</button><button onclick="navigate('reports')"><span>▥</span>Relatórios</button><button onclick="toggleAccountMenu(true)"><span>•••</span>Mais funções</button>
     </div></div>
   </div>
   <div class="dashboard-bottom-grid">
     <div class="card"><div class="dashboard-card-heading"><h3>Últimas movimentações</h3><button class="dashboard-link" onclick="navigate('transactions')">Ver todas →</button></div><div class="list" id="recent"></div></div>
-    <div class="card"><div class="dashboard-card-heading"><h3>Despesas por categoria</h3><span class="dashboard-period"><span data-nexo-icon="calendar" data-tone="blue" data-size="xs"></span> Mês atual⌄</span></div><div id="categories"></div></div>
+    <div class="card"><div class="dashboard-card-heading"><h3>Despesas por categoria</h3><span class="dashboard-period dashboard-range-display"><span data-nexo-icon="calendar" data-tone="blue" data-size="xs"></span> <span class="dashboard-range-label">Mês atual</span></span></div><div id="categories"></div></div>
     <div class="card"><div class="dashboard-card-heading"><h3>Contas bancárias</h3><button class="dashboard-link" onclick="navigate('accounts')">Ver todas →</button></div><div id="dashboardAccounts"></div><button class="btn primary dashboard-add-account" onclick="openModal('account')">＋ Adicionar conta</button></div>
     <div class="card"><div class="dashboard-card-heading"><h3>Próximos compromissos</h3><button class="dashboard-link" onclick="navigate('recurring')">Ver todas →</button></div><div class="list" id="upcoming"></div></div>
   </div>
@@ -951,6 +999,7 @@ body.mobile-f .tx-filter-button>.nexo-icon-plain{width:23px;height:23px;color:#7
 <div class="mobile-nav" id="mobileNav">
   <button class="active" data-page="dashboard"><span>⌂</span>Início</button><button data-page="transactions"><span>☷</span>Lançamentos</button><button data-page="accounts"><span>🏦</span>Contas</button><button id="mobileMoreTrigger" data-page="more"><span>⠿</span>Mais</button>
 </div>
+<div class="dashboard-date-backdrop" id="dashboardDateFilter" aria-hidden="true" onclick="if(event.target===this)closeDashboardDateFilter()"><section class="dashboard-date-panel" role="dialog" aria-modal="true" aria-labelledby="dashboardDateTitle"><div class="dashboard-date-head"><div><h2 id="dashboardDateTitle">Filtrar período do dashboard</h2><p>Escolha uma visão rápida ou informe as datas desejadas.</p></div><button type="button" class="dashboard-date-close" onclick="closeDashboardDateFilter()" aria-label="Fechar">×</button></div><div class="dashboard-date-presets"><button type="button" onclick="setDashboardPreset('current-month')">Visão do mês atual</button><button type="button" onclick="setDashboardPreset('previous-month')">Mês anterior</button><button type="button" onclick="setDashboardPreset('last-7')">Últimos 7 dias</button><button type="button" onclick="setDashboardPreset('last-30')">Últimos 30 dias</button><button type="button" onclick="setDashboardPreset('current-year')">Este ano</button></div><div class="dashboard-date-custom"><div class="field"><label for="dashboardDateStart">Data inicial</label><input type="date" id="dashboardDateStart"></div><div class="field"><label for="dashboardDateEnd">Data final</label><input type="date" id="dashboardDateEnd"></div></div><p class="dashboard-date-error" id="dashboardDateError" role="alert"></p><div class="dashboard-date-actions"><button type="button" class="btn" onclick="closeDashboardDateFilter()">Cancelar</button><button type="button" class="btn primary" onclick="applyCustomDashboardRange()">Aplicar período</button></div></section></div>
 <div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><h2 id="modalTitle">Novo lançamento</h2><button class="close" onclick="closeModal()">×</button></div><form id="modalForm" onsubmit="saveModal(event)"><div id="modalFields" class="form-grid"></div><div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">Cancelar</button><button type="submit" class="btn primary">Salvar</button></div></form></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -1023,6 +1072,20 @@ let authenticatedUser=null;
 const money=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 const dateBR=d=>d?new Date(d+'T12:00:00').toLocaleDateString('pt-BR'):'—';
 const today=new Date().toISOString().slice(0,10);
+
+function dashboardLocalISO(date){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
+function dashboardParseISO(value){const [y,m,d]=String(value||'').split('-').map(Number);return y&&m&&d?new Date(y,m-1,d,12,0,0,0):null}
+function dashboardDateBR(value){const d=dashboardParseISO(value);return d?d.toLocaleDateString('pt-BR'):'—'}
+function dashboardPresetRange(preset){const end=new Date();end.setHours(12,0,0,0);let start=new Date(end),label='';if(preset==='current-month'){start=new Date(end.getFullYear(),end.getMonth(),1,12);label='Visão do mês atual'}else if(preset==='previous-month'){start=new Date(end.getFullYear(),end.getMonth()-1,1,12);const previousEnd=new Date(end.getFullYear(),end.getMonth(),0,12);end.setTime(previousEnd.getTime());label='Mês anterior'}else if(preset==='last-7'){start.setDate(start.getDate()-6);label='Últimos 7 dias'}else if(preset==='last-30'){start.setDate(start.getDate()-29);label='Últimos 30 dias'}else if(preset==='current-year'){start=new Date(end.getFullYear(),0,1,12);label='Este ano'}return {preset,start:dashboardLocalISO(start),end:dashboardLocalISO(end),label}}
+let dashboardDateRange=dashboardPresetRange('current-month');
+function dashboardRangeShortLabel(){return dashboardDateRange.preset==='current-month'?'Mês atual':dashboardDateRange.preset==='previous-month'?'Mês anterior':dashboardDateRange.preset==='last-7'?'Últimos 7 dias':dashboardDateRange.preset==='last-30'?'Últimos 30 dias':dashboardDateRange.preset==='current-year'?'Este ano':`${dashboardDateBR(dashboardDateRange.start)} – ${dashboardDateBR(dashboardDateRange.end)}`}
+function updateDashboardDateLabels(){const main=document.getElementById('dashboardDateFilterLabel');if(main)main.textContent=dashboardDateRange.label;document.querySelectorAll('.dashboard-range-label').forEach(el=>el.textContent=dashboardRangeShortLabel())}
+function openDashboardDateFilter(){const overlay=document.getElementById('dashboardDateFilter');if(!overlay)return;document.getElementById('dashboardDateStart').value=dashboardDateRange.start;document.getElementById('dashboardDateEnd').value=dashboardDateRange.end;document.getElementById('dashboardDateError').textContent='';overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.classList.add('dashboard-date-open')}
+function closeDashboardDateFilter(){const overlay=document.getElementById('dashboardDateFilter');if(overlay){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true')}document.body.classList.remove('dashboard-date-open')}
+function setDashboardPreset(preset){dashboardDateRange=dashboardPresetRange(preset);updateDashboardDateLabels();closeDashboardDateFilter();renderDashboard()}
+function applyCustomDashboardRange(){const start=document.getElementById('dashboardDateStart').value,end=document.getElementById('dashboardDateEnd').value,error=document.getElementById('dashboardDateError');if(!start||!end){error.textContent='Informe a data inicial e a data final.';return}if(start>end){error.textContent='A data inicial não pode ser posterior à data final.';return}dashboardDateRange={preset:'custom',start,end,label:`${dashboardDateBR(start)} – ${dashboardDateBR(end)}`};updateDashboardDateLabels();closeDashboardDateFilter();renderDashboard()}
+function dashboardTransactionsInRange(){return visibleTransactions().filter(t=>{const d=String(t.date||'').slice(0,10);return d&&d>=dashboardDateRange.start&&d<=dashboardDateRange.end})}
+
 const seed={
  transactions:[],
  accounts:[],
@@ -1108,6 +1171,7 @@ function showNexoModal(){closeMobileAddSheet();const modal=document.getElementBy
 function closeNexoModalState(){document.getElementById('modal').classList.remove('open');document.body.classList.remove('mobile-modal-open')}
 function navigate(id){currentPage=id;document.body.classList.toggle('mobile-page-transactions',id==='transactions');document.body.classList.toggle('mobile-page-more',id==='more');document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);renderAll();renderAccountMenu();updateMobileFab();window.scrollTo({top:0,behavior:'smooth'})}
 decorateStaticIcons();
+updateDashboardDateLabels();
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
 const mobilePages=[['dashboard','Dashboard'],['transactions','Lançamentos'],['accounts','Contas bancárias'],['cards','Cartões de crédito'],['recurring','Contas recorrentes'],['planning','Planejamento'],['assets','Patrimônio'],['business','Imobiliário'],['law','Minha advocacia'],['home','Nossa Casa'],['settlements','Acertos João & Laura'],['reports','Relatórios']];document.getElementById('mobileMoreGrid').innerHTML=mobilePages.map(([id,label])=>`<button data-page="${id}">${pageIcon(id,'lg')}<b>${label}</b></button>`).join('');document.querySelectorAll('#mobileMoreGrid [data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
 updateMobileFab();window.addEventListener('resize',updateMobileFab,{passive:true});
@@ -1115,13 +1179,19 @@ function visibleTransactions(){return data.transactions.filter(t=>profile==='hom
 function sum(arr,fn){return arr.reduce((a,x)=>a+fn(x),0)}
 function stat(label,value,icon,note,color='blue'){const lower=String(label).toLowerCase();let key='balance',tone=color==='green'?'green':color==='red'?'red':color==='orange'?'orange':color==='purple'?'purple':'blue';if(lower.includes('receita')||lower.includes('recebido'))key='income';else if(lower.includes('despesa')||lower.includes('pendente'))key='expense';else if(lower.includes('patrim'))key='assets';else if(lower.includes('conta')||lower.includes('banco'))key='accounts';else if(lower.includes('cart'))key='cards';else if(lower.includes('meta')||lower.includes('orçamento'))key='planning';else if(lower.includes('lançamento')||lower.includes('compra'))key='transactions';else if(lower.includes('atendimento')||lower.includes('advocacia'))key='law';else if(lower.includes('imobili')||lower.includes('comiss'))key='business';else if(lower.includes('saldo'))key='wallet';return `<div class="card"><div class="stat-top">${label}${nexoIcon(key,tone,'sm','stat-icon')}</div><div class="stat-value ${color}">${money(value)}</div><div class="stat-note">${note}</div></div>`}
 function renderDashboard(){
- const tx=visibleTransactions(),inc=sum(tx.filter(x=>x.type==='Receita'),x=>x.value),exp=sum(tx.filter(x=>x.type==='Despesa'),x=>x.value),pending=sum(tx.filter(x=>x.status==='Pendente'),x=>x.value);
+ updateDashboardDateLabels();
+ const tx=dashboardTransactionsInRange(),inc=sum(tx.filter(x=>x.type==='Receita'),x=>x.value),exp=sum(tx.filter(x=>x.type==='Despesa'),x=>x.value);
  const bal=(data.accounts.filter(a=>profile==='home'?a.profile==='home':a.profile===profile).reduce((s,a)=>s+a.balance,0));
- document.getElementById('stats').innerHTML=stat('Saldo total',bal,'▣','Soma dos saldos cadastrados','blue')+stat('Receitas',inc,'↗','No ambiente selecionado','green')+stat('Despesas',exp,'↘','No ambiente selecionado','red')+stat('Saldo do mês',inc-exp,'◈','Receitas menos despesas',inc-exp>=0?'green':'red');
+ const periodNote=dashboardRangeShortLabel();
+ const periodBalanceTitle=dashboardDateRange.preset==='current-month'?'Saldo do mês':'Saldo do período';document.getElementById('stats').innerHTML=stat('Saldo total',bal,'▣','Soma dos saldos cadastrados','blue')+stat('Receitas',inc,'↗',periodNote,'green')+stat('Despesas',exp,'↘',periodNote,'red')+stat(periodBalanceTitle,inc-exp,'◈',`Resultado · ${periodNote}`,inc-exp>=0?'green':'red');
  const dashAccounts=data.accounts.filter(a=>profile==='home'?a.profile==='home':a.profile===profile);document.getElementById('dashboardAccounts').innerHTML=dashAccounts.length?dashAccounts.slice(0,3).map(a=>`<div class="list-row"><div class="list-main">${nexoIcon('accounts','purple','sm','list-icon')}<div><b>${esc(a.name)}</b><small>${esc(a.bank)}</small></div></div><span class="amount">${money(a.balance)}</span></div>`).join(''):`<div class="dashboard-empty">${nexoIcon('accounts','purple','lg')}<b>Nenhuma conta cadastrada</b><small>Adicione uma conta para acompanhar seus saldos.</small></div>`;
- const weekStart=new Date();weekStart.setHours(0,0,0,0);weekStart.setDate(weekStart.getDate()-((weekStart.getDay()+6)%7));const weekLabels=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];const weekIncome=Array(7).fill(0),weekExpense=Array(7).fill(0);tx.forEach(t=>{if(!t.date)return;const dt=new Date(t.date+'T12:00:00');const idx=(dt.getDay()+6)%7;if(dt>=weekStart&&idx>=0&&idx<7){if(t.type==='Receita')weekIncome[idx]+=Number(t.value||0);if(t.type==='Despesa')weekExpense[idx]+=Number(t.value||0)}});const weekMax=Math.max(0,...weekIncome,...weekExpense);document.getElementById('chart').innerHTML=weekLabels.map((label,i)=>{const ih=weekMax?Math.max(weekIncome[i]?5:0,weekIncome[i]/weekMax*100):0,eh=weekMax?Math.max(weekExpense[i]?5:0,weekExpense[i]/weekMax*100):0;const emptyBar=weekMax===0;return `<div class="bar-group"><div class="bar ${emptyBar?'is-empty':''}" style="height:${emptyBar?3:ih+'%'}" title="${label}: ${money(weekIncome[i])} em receitas"></div><div class="bar exp ${emptyBar?'is-empty':''}" style="height:${emptyBar?3:eh+'%'}" title="${label}: ${money(weekExpense[i])} em despesas"></div></div>`}).join('');const labelsEl=document.querySelector('#dashboard .bar-labels');if(labelsEl)labelsEl.innerHTML=weekLabels.map(x=>`<span>${x}</span>`).join('');
- document.getElementById('recent').innerHTML=tx.slice().reverse().slice(0,5).map(t=>`<div class="list-row dashboard-recent-row" role="button" tabindex="0" onclick="editItem('transactions',${t.id})" onkeydown="if(event.key==='Enter'){editItem('transactions',${t.id})}"><div class="list-main"><div class="list-icon dashboard-transaction-icon nexo-tone-${toneForTransaction(t)}">${txIcon(t)}</div><div><b>${esc(t.desc)}</b><small>${esc(t.category)} · ${dateBR(t.date)}</small></div></div><span class="amount ${t.type==='Receita'?'green':'red'}">${t.type==='Receita'?'+':'−'}${money(t.value)}</span></div>`).join('')||'<div class="empty dashboard-empty-recent">Nenhuma movimentação ainda.</div>';
- const cats={};tx.filter(t=>t.type==='Despesa').forEach(t=>cats[t.category]=(cats[t.category]||0)+t.value);let entries=Object.entries(cats).sort((a,b)=>b[1]-a[1]).slice(0,5);document.getElementById('categories').innerHTML=entries.length?entries.map(([k,v])=>`<div class="goal"><div class="goal-head"><span>${esc(k)}</span><b>${money(v)}</b></div><div class="progress"><span style="width:${Math.min(100,v/Math.max(1,exp)*100)}%"></span></div></div>`).join(''):'<div class="empty">Sem despesas registradas.</div>';
+ const rangeStart=dashboardParseISO(dashboardDateRange.start),rangeEnd=dashboardParseISO(dashboardDateRange.end);const totalDays=Math.max(1,Math.floor((rangeEnd-rangeStart)/86400000)+1);const buckets=Array.from({length:7},()=>({income:0,expense:0,start:null,end:null}));
+ buckets.forEach((b,i)=>{const offsetStart=Math.floor(i*totalDays/7),offsetEnd=Math.max(offsetStart,Math.floor((i+1)*totalDays/7)-1);const a=new Date(rangeStart);a.setDate(a.getDate()+offsetStart);const z=new Date(rangeStart);z.setDate(z.getDate()+offsetEnd);b.start=a;b.end=z});
+ tx.forEach(t=>{if(!t.date)return;const dt=dashboardParseISO(String(t.date).slice(0,10));if(!dt)return;const offset=Math.floor((dt-rangeStart)/86400000);const idx=Math.min(6,Math.max(0,Math.floor(offset*7/totalDays)));if(t.type==='Receita')buckets[idx].income+=Number(t.value||0);if(t.type==='Despesa')buckets[idx].expense+=Number(t.value||0)});
+ const bucketMax=Math.max(0,...buckets.flatMap(b=>[b.income,b.expense]));const labels=buckets.map(b=>{const a=b.start,z=b.end;const sameMonth=a.getMonth()===z.getMonth();const fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0');return totalDays<=7?['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'][a.getDay()]:sameMonth?`${String(a.getDate()).padStart(2,'0')}–${String(z.getDate()).padStart(2,'0')}`:`${fmt(a)}–${fmt(z)}`});
+ document.getElementById('chart').innerHTML=buckets.map((b,i)=>{const ih=bucketMax?Math.max(b.income?5:0,b.income/bucketMax*100):0,eh=bucketMax?Math.max(b.expense?5:0,b.expense/bucketMax*100):0;const emptyBar=bucketMax===0;return `<div class="bar-group"><div class="bar ${emptyBar?'is-empty':''}" style="height:${emptyBar?3:ih+'%'}" title="${labels[i]}: ${money(b.income)} em receitas"></div><div class="bar exp ${emptyBar?'is-empty':''}" style="height:${emptyBar?3:eh+'%'}" title="${labels[i]}: ${money(b.expense)} em despesas"></div></div>`}).join('');const labelsEl=document.querySelector('#dashboard .bar-labels');if(labelsEl)labelsEl.innerHTML=labels.map(x=>`<span>${x}</span>`).join('');const chartSub=document.querySelector('.dashboard-chart-card .dashboard-card-heading small');if(chartSub)chartSub.textContent=`Receitas e despesas · ${periodNote}`;
+ const recent=tx.slice().sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||Number(b.id||0)-Number(a.id||0));document.getElementById('recent').innerHTML=recent.slice(0,5).map(t=>`<div class="list-row dashboard-recent-row" role="button" tabindex="0" onclick="editItem('transactions',${t.id})" onkeydown="if(event.key==='Enter'){editItem('transactions',${t.id})}"><div class="list-main"><div class="list-icon dashboard-transaction-icon nexo-tone-${toneForTransaction(t)}">${txIcon(t)}</div><div><b>${esc(t.desc)}</b><small>${esc(t.category)} · ${dateBR(t.date)}</small></div></div><span class="amount ${t.type==='Receita'?'green':'red'}">${t.type==='Receita'?'+':'−'}${money(t.value)}</span></div>`).join('')||'<div class="empty dashboard-empty-recent">Nenhuma movimentação neste período.</div>';
+ const cats={};tx.filter(t=>t.type==='Despesa').forEach(t=>cats[t.category]=(cats[t.category]||0)+Number(t.value||0));let entries=Object.entries(cats).sort((a,b)=>b[1]-a[1]).slice(0,5);document.getElementById('categories').innerHTML=entries.length?entries.map(([k,v])=>`<div class="goal"><div class="goal-head"><span>${esc(k)}</span><b>${money(v)}</b></div><div class="progress"><span style="width:${Math.min(100,v/Math.max(1,exp)*100)}%"></span></div></div>`).join(''):'<div class="empty">Sem despesas neste período.</div>';
  document.getElementById('upcoming').innerHTML=data.recurring.slice(0,4).map(r=>`<div class="list-row"><div class="list-main">${nexoIcon('recurring','orange','sm','list-icon')}<div><b>${esc(r.desc)}</b><small>Vencimento dia ${r.due} · ${r.owner}</small></div></div><span class="amount">${money(r.value)}</span></div>`).join('');
 }
 function txIcon(t){return nexoSvg(iconForTransaction(t),true)}
@@ -1341,7 +1411,7 @@ initAuthentication();
 
 <script>
 (function(){
-  document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeMobileAddSheet();const modal=document.getElementById('modal');if(modal&&modal.classList.contains('open'))closeModal();}});
+  document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeDashboardDateFilter();closeMobileAddSheet();const modal=document.getElementById('modal');if(modal&&modal.classList.contains('open'))closeModal();}});
   const modal=document.getElementById('modal');
   if(modal){const observer=new MutationObserver(()=>{if(!modal.classList.contains('open'))document.body.classList.remove('mobile-modal-open')});observer.observe(modal,{attributes:true,attributeFilter:['class']});}
 })();
