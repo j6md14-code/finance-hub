@@ -1487,5 +1487,44 @@ initAuthentication();
 })();
 </script>
 
+
+<style id="nexo-desktop-sidebar-scroll-hover">
+/* Desktop: trilho da navegação lateral invisível até o mouse passar sobre ele.
+   A rolagem principal da página continua independente e sem alterações. */
+@media (min-width: 701px) {
+  .app { align-items: start !important; }
+  .sidebar {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh !important;
+    min-height: 0 !important;
+    max-height: 100vh !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    align-self: start !important;
+    overscroll-behavior-y: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sidebar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+  .sidebar:hover {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(126, 165, 225, .55) transparent;
+  }
+  .sidebar:hover::-webkit-scrollbar { width: 7px; height: 7px; }
+  .sidebar:hover::-webkit-scrollbar-track { background: transparent; }
+  .sidebar:hover::-webkit-scrollbar-thumb {
+    background: rgba(126, 165, 225, .5);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-clip: content-box;
+  }
+}
+</style>
+
 </body>
 </html>
