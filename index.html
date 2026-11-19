@@ -763,6 +763,33 @@ body.mobile-f .tx-filter-button>.nexo-icon-plain{width:23px;height:23px;color:#7
   body.mobile-f.mobile-add-open{overflow:hidden}
 }
 
+
+/* MOBILE DASHBOARD — show the real wallet SVG on the total balance card */
+@media (max-width:700px){
+  body.mobile-f .dashboard-stats>.card:first-child::after{
+    content:none !important;
+    display:none !important;
+  }
+  body.mobile-f .dashboard-stats>.card:first-child .stat-icon.nexo-icon{
+    display:inline-grid !important;
+    position:absolute !important;
+    top:22px !important;
+    right:17px !important;
+    width:48px !important;
+    height:48px !important;
+    border-radius:15px !important;
+    background:#1c477c !important;
+    color:#8fc2ff !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06) !important;
+  }
+  body.mobile-f .dashboard-stats>.card:first-child .stat-icon.nexo-icon svg{
+    display:block !important;
+    width:58% !important;
+    height:58% !important;
+    stroke:currentColor !important;
+    stroke-width:1.8 !important;
+  }
+}
 </style>
 </head>
 <body class="mobile-f">
