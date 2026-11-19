@@ -67,8 +67,8 @@ body:not(.authenticated) .auth-screen{display:flex}
 <section class="auth-screen" id="authScreen">
   <form class="auth-card" id="loginForm">
     <div class="auth-brand"><div class="auth-logo">N</div><div><b style="font-size:19px">NEXO</b><div style="font-size:11px;color:#9eacc1">Finanças pessoais e da casa</div></div></div>
-    <h1>Bem-vindo de volta</h1><p>Entre com seu e-mail e senha para acessar seu ambiente financeiro.</p>
-    <div class="auth-field"><label for="authEmail">E-mail</label><input id="authEmail" type="email" autocomplete="username" placeholder="seu@email.com" required></div>
+    <h1>Bem-vindo de volta</h1><p>Digite seu usuário e senha para acessar seu ambiente financeiro.</p>
+    <div class="auth-field"><label for="authEmail">Usuário</label><input id="authEmail" type="text" autocomplete="username" placeholder="joao ou laura" autocapitalize="none" spellcheck="false" required></div>
     <div class="auth-field"><label for="authPassword">Senha</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Sua senha" required></div>
     <button class="auth-submit" id="authSubmit" type="submit">Entrar</button>
     <div class="auth-error" id="authError" role="alert"></div>
@@ -358,8 +358,11 @@ async function handleLogin(event){
   const btn=document.getElementById('authSubmit'),err=document.getElementById('authError');
   err.classList.remove('show');btn.disabled=true;btn.textContent='Entrando…';
   try{
-    const email=document.getElementById('authEmail').value.trim();
+    const username=document.getElementById('authEmail').value.trim().toLowerCase();
     const password=document.getElementById('authPassword').value;
+    const loginEmails={joao:'joao@carteirajm.local',laura:'laura@carteirajm.local'};
+    const email=loginEmails[username] || username;
+    if(!email.includes('@'))throw new Error('Digite joao ou laura no campo Usuário.');
     const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
     if(error)throw error;
     await activateAuthenticatedSession(data.user);
