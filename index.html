@@ -46,11 +46,35 @@ tr[data-edit-key]:hover td{background:rgba(87,132,205,.08)}
 .account-pages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
 .account-page-option{display:flex;align-items:center;gap:9px;min-height:43px;text-align:left;padding:9px 10px;border-radius:11px;border:1px solid #2b3e59;background:#142239;color:#dce7f8;font-size:11px}.account-page-option span{font-size:15px;color:#a9c6ff}
 .account-logout{width:100%;margin-top:16px;padding:12px;border:1px solid #65404b;border-radius:12px;background:#35212b;color:#ffb0b8;text-align:center;font-weight:700}
-@media(max-width:700px){.topbar{flex-wrap:nowrap;min-height:65px;padding:10px 13px;gap:8px}.topbar-brand{flex:1}.topbar-controls{width:auto;display:flex;gap:9px}.top-add{height:40px;padding:0 11px!important;font-size:11px}.top-add span{display:inline}.avatar-menu-trigger{width:42px;height:42px;align-self:center;flex:0 0 42px}.account-menu-backdrop{align-items:flex-end;justify-content:center;padding:0}.account-menu-panel{width:100%;max-height:88dvh;border-radius:23px 23px 0 0;padding:19px 16px calc(18px + env(safe-area-inset-bottom));border-bottom:0}.account-pages{grid-template-columns:repeat(2,minmax(0,1fr))}.account-page-option{min-height:46px;font-size:11px}}
+@media(max-width:700px){.topbar{flex-wrap:nowrap;min-height:65px;padding:10px 13px;gap:8px}.topbar-brand{flex:1}.topbar-controls{width:auto;display:flex;gap:9px}.top-add{height:40px;padding:0 11px!important;font-size:11px}.top-logout{height:40px;padding:0 14px;border:1px solid #65404b;border-radius:12px;background:#35212b;color:#ffb0b8;font-weight:700;cursor:pointer}.top-logout:hover{background:#472936}.top-add span{display:inline}.avatar-menu-trigger{width:42px;height:42px;align-self:center;flex:0 0 42px}.account-menu-backdrop{align-items:flex-end;justify-content:center;padding:0}.account-menu-panel{width:100%;max-height:88dvh;border-radius:23px 23px 0 0;padding:19px 16px calc(18px + env(safe-area-inset-bottom));border-bottom:0}.account-pages{grid-template-columns:repeat(2,minmax(0,1fr))}.account-page-option{min-height:46px;font-size:11px}}
+
+
+/* AUTENTICACAO NEXO */
+body:not(.authenticated) .app{display:none!important}
+.auth-screen{min-height:100vh;display:none;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 0%,#1b2b48 0,transparent 48%),#080d18}
+body:not(.authenticated) .auth-screen{display:flex}
+.auth-card{width:min(430px,100%);padding:30px;border:1px solid #2b3e59;border-radius:24px;background:linear-gradient(150deg,#17243a,#0f192a);box-shadow:0 24px 80px #0006}
+.auth-brand{display:flex;align-items:center;gap:13px;margin-bottom:25px}.auth-logo{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,#6f9fff,#8b75df);font-size:25px;font-weight:850}
+.auth-card h1{font-size:23px;margin:0 0 7px}.auth-card p{color:#9eacc1;margin:0 0 22px;line-height:1.5}
+.auth-field{display:grid;gap:7px;margin:13px 0}.auth-field label{font-size:12px;color:#b9c6da}.auth-field input{width:100%;padding:13px 14px;border-radius:11px;border:1px solid #30445f;background:#0b1423;color:#f3f6fc;outline:none}.auth-field input:focus{border-color:#7da9ff}
+.auth-submit{width:100%;padding:13px;border:0;border-radius:12px;background:linear-gradient(135deg,#6f9fff,#4779d4);color:white;font-weight:750;margin-top:12px}
+.auth-error{display:none;padding:11px 13px;margin-top:13px;border-radius:10px;background:#492631;color:#ffb2bb;font-size:12px;line-height:1.4}.auth-error.show{display:block}
+.auth-foot{font-size:11px;color:#8190a8;text-align:center;margin-top:18px}
 
 </style>
 </head>
 <body>
+<section class="auth-screen" id="authScreen">
+  <form class="auth-card" id="loginForm">
+    <div class="auth-brand"><div class="auth-logo">N</div><div><b style="font-size:19px">NEXO</b><div style="font-size:11px;color:#9eacc1">Finanças pessoais e da casa</div></div></div>
+    <h1>Bem-vindo de volta</h1><p>Entre com seu e-mail e senha para acessar seu ambiente financeiro.</p>
+    <div class="auth-field"><label for="authEmail">E-mail</label><input id="authEmail" type="email" autocomplete="username" placeholder="seu@email.com" required></div>
+    <div class="auth-field"><label for="authPassword">Senha</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Sua senha" required></div>
+    <button class="auth-submit" id="authSubmit" type="submit">Entrar</button>
+    <div class="auth-error" id="authError" role="alert"></div>
+    <div class="auth-foot">Acesso protegido por autenticação Supabase</div>
+  </form>
+</section>
 <div class="app">
 <aside class="sidebar">
   <div class="brand"><div class="logo">N</div><div><b>NEXO</b><small>Finanças pessoais e da casa</small></div></div>
@@ -81,7 +105,7 @@ tr[data-edit-key]:hover td{background:rgba(87,132,205,.08)}
 <main class="main">
 <header class="topbar">
   <div class="topbar-brand"><div class="brand-mark">N</div><div><b>Nexo</b><small id="crumb">Dashboard</small></div></div>
-  <div class="topbar-controls"><button class="btn primary top-add" onclick="openModal('transaction')">＋ <span>Lançamento</span></button><button class="avatar avatar-menu-trigger" id="avatar" type="button" aria-label="Abrir menu do perfil" onclick="toggleAccountMenu()">J</button></div>
+  <div class="topbar-controls"><button class="btn primary top-add" onclick="openModal('transaction')">＋ <span>Lançamento</span></button><button class="top-logout" type="button" onclick="logoutDemo()">Sair</button><button class="avatar avatar-menu-trigger" id="avatar" type="button" aria-label="Abrir menu do perfil" onclick="toggleAccountMenu()">J</button></div>
 </header>
 <div class="content">
 <section id="dashboard" class="section active">
@@ -148,7 +172,12 @@ tr[data-edit-key]:hover td{background:rgba(87,132,205,.08)}
   <button class="active" data-page="dashboard"><span>◫</span>Início</button><button data-page="transactions"><span>⇄</span>Lançamentos</button><button data-page="home"><span>⌂</span>Casa</button><button data-page="settlements"><span>⇆</span>Acertos</button><button onclick="toggleMobileMore()"><span>☷</span>Mais</button>
 </div>
 <div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><h2 id="modalTitle">Novo lançamento</h2><button class="close" onclick="closeModal()">×</button></div><form id="modalForm" onsubmit="saveModal(event)"><div id="modalFields" class="form-grid"></div><div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">Cancelar</button><button type="submit" class="btn primary">Salvar</button></div></form></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+const SUPABASE_URL="https://jtrzgwdtutoawqfgwezc.supabase.co";
+const SUPABASE_ANON_KEY="sb_publishable_bTT3fE5WZdfg5RE0CB2Fkw_6nqVb3Pn";
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+let authenticatedUser=null;
 const money=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 const dateBR=d=>d?new Date(d+'T12:00:00').toLocaleDateString('pt-BR'):'—';
 const today=new Date().toISOString().slice(0,10);
@@ -181,7 +210,7 @@ function syncProfileChoices(){renderAccountMenu()}
 function toggleAccountMenu(force){const el=document.getElementById('accountMenu');if(!el)return;el.classList.toggle('open',force===undefined?!el.classList.contains('open'):!!force);if(el.classList.contains('open'))renderAccountMenu()}
 function renderAccountMenu(){const isAdmin=sessionRole==='admin';const name=profile==='joao'?'João':'Laura';document.getElementById('accountName').textContent=name;document.getElementById('accountRole').textContent=isAdmin?'Administrador':(profile==='laura'?'Perfil pessoal':'Perfil pessoal');document.getElementById('accountAvatar').textContent=profile==='joao'?'J':'L';const envTitle=document.querySelector('.account-menu-panel .account-section-title');const envWrap=document.getElementById('accountEnvironments');if(isAdmin){if(envTitle)envTitle.style.display='';envWrap.style.display='grid';const envs=[['joao','J','João · Pessoal'],['laura','L','Laura · Pessoal']];envWrap.innerHTML=envs.map(([v,ico,label])=>`<button class="environment-option ${profile===v?'selected':''}" onclick="switchProfile('${v}');toggleAccountMenu(false)"><span class="environment-icon">${ico}</span><span>${label}</span>${profile===v?'<b>✓</b>':''}</button>`).join('')}else{if(envTitle)envTitle.style.display='none';envWrap.style.display='none';envWrap.innerHTML=''}const pages=[['dashboard','◫','Dashboard'],['transactions','⇄','Lançamentos'],['accounts','▣','Contas bancárias'],['cards','▤','Cartões de crédito'],['recurring','↻','Contas recorrentes'],['planning','◎','Planejamento'],['assets','◇','Patrimônio'],['business','⌂','Imobiliário'],['law','⚖','Minha advocacia'],['home','⌂','Nossa Casa'],['settlements','⇆','Acertos João & Laura'],['reports','▥','Relatórios'],['assistant','✧','Assistente IA'],['settings','⚙','Configurações']];document.getElementById('accountPages').innerHTML=pages.filter(([id])=>!(profile==='laura'&&id==='business'&&!isAdmin)).map(([id,ico,label])=>`<button class="account-page-option ${currentPage===id?'selected':''}" onclick="navigate('${id}');toggleAccountMenu(false)"><span>${ico}</span>${label}</button>`).join('')}
 function toggleMobileMore(force){const el=document.getElementById('mobileMore');if(!el)return;el.classList.toggle('open',force===undefined?!el.classList.contains('open'):!!force)}
-function logoutDemo(){if(confirm('Deseja sair deste perfil demonstrativo?')){alert('A sessão demonstrativa foi encerrada. A autenticação real será ativada na integração com Supabase.');}}
+async function logoutDemo(){if(!confirm('Deseja sair da sua conta?'))return;const {error}=await supabaseClient.auth.signOut();if(error){alert('Não foi possível encerrar a sessão: '+error.message);return;}authenticatedUser=null;sessionRole=null;document.body.classList.remove('authenticated');document.getElementById('authPassword').value='';document.getElementById('authEmail').value='';document.getElementById('authError').classList.remove('show');}
 function pageName(id){return ({dashboard:'Dashboard',transactions:'Lançamentos',accounts:'Contas bancárias',cards:'Cartões de crédito',recurring:'Contas recorrentes',planning:'Planejamento',assets:'Patrimônio',business:'Gestão imobiliária',law:'Minha advocacia',home:'Nossa casa',settlements:'Acertos João & Laura',reports:'Relatórios',assistant:'Assistente financeiro',settings:'Configurações'})[id]}
 function navigate(id){currentPage=id;document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);renderAll();renderAccountMenu();window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>{navigate(b.dataset.page);toggleMobileMore(false)}));
@@ -311,7 +340,47 @@ function paySettlement(id){let x=data.settlements.find(s=>s.id===id);if(!x)retur
 function exportCSV(){let rows=[['Ambiente','Descrição','Categoria','Tipo','Data','Status','Valor'],...data.transactions.map(t=>[t.profile,t.desc,t.category,t.type,t.date,t.status,t.value])];let csv=rows.map(r=>r.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(';')).join('\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='finance-hub-lancamentos.csv';a.click();URL.revokeObjectURL(a.href)}
 function resetDemo(){if(confirm('Restaurar os dados demonstrativos? Seus lançamentos locais serão apagados.')){data=JSON.parse(JSON.stringify(seed));persist();renderAll()}}
 function askAssistant(){let input=document.getElementById('chatInput'),q=input.value.trim();if(!q)return;let log=document.getElementById('chatLog');log.innerHTML+=`<div class="list-row"><div class="list-main"><div class="list-icon">Você</div><div><b>${esc(q)}</b></div></div></div>`;let tx=visibleTransactions(),answer='Posso consultar receitas, despesas, lançamentos e saldos demonstrativos. Tente perguntar quanto recebeu, quanto gastou ou quais são os valores pendentes.';if(/receb|entrada|ganh/i.test(q)){answer='Total de receitas cadastradas neste ambiente: '+money(sum(tx.filter(t=>t.type==='Receita'),t=>t.value))+'.'}else if(/gast|despes|saiu/i.test(q)){answer='Total de despesas cadastradas neste ambiente: '+money(sum(tx.filter(t=>t.type==='Despesa'),t=>t.value))+'.'}else if(/pend|deve|receber/i.test(q)){answer='Valores pendentes nos lançamentos deste ambiente: '+money(sum(tx.filter(t=>t.status==='Pendente'),t=>t.value))+'.'}else if(/cart[aã]o|laura/i.test(q)){answer='O saldo de reembolso de João para Laura é '+money(sum(data.settlements,x=>x.value-x.paid))+'.'}log.innerHTML+=`<div class="list-row"><div class="list-main"><div class="list-icon">✧</div><div><b>Assistente</b><small>${esc(answer)}</small></div></div></div>`;input.value='';log.scrollTop=log.scrollHeight}
-renderAll();switchProfile('joao');
+async function activateAuthenticatedSession(user){
+  const {data:member,error}=await supabaseClient.from('finance_hub_members').select('user_id,display_name,role,active').eq('user_id',user.id).maybeSingle();
+  if(error)throw new Error('Não foi possível validar seu perfil: '+error.message);
+  if(!member||!member.active)throw new Error('Este usuário não está autorizado no Nexo. Confira o cadastro em finance_hub_members.');
+  if(!['admin','member'].includes(member.role))throw new Error('O perfil deste usuário está com uma função inválida.');
+  authenticatedUser=user;sessionRole=member.role;
+  profile=member.role==='admin'?'joao':'laura';
+  document.getElementById('avatar').textContent=profile==='joao'?'J':'L';
+  document.getElementById('accountAvatar').textContent=profile==='joao'?'J':'L';
+  document.getElementById('welcome').textContent=profile==='joao'?'Bom dia, João':'Olá, Laura';
+  document.body.classList.add('authenticated');
+  renderAll();renderAccountMenu();
+}
+async function handleLogin(event){
+  event.preventDefault();
+  const btn=document.getElementById('authSubmit'),err=document.getElementById('authError');
+  err.classList.remove('show');btn.disabled=true;btn.textContent='Entrando…';
+  try{
+    const email=document.getElementById('authEmail').value.trim();
+    const password=document.getElementById('authPassword').value;
+    const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+    if(error)throw error;
+    await activateAuthenticatedSession(data.user);
+  }catch(e){
+    await supabaseClient.auth.signOut();
+    err.textContent=e.message||'Não foi possível entrar. Confira seu e-mail e senha.';err.classList.add('show');
+  }finally{btn.disabled=false;btn.textContent='Entrar'}
+}
+document.getElementById('loginForm').addEventListener('submit',handleLogin);
+async function initAuthentication(){
+  try{
+    const {data,error}=await supabaseClient.auth.getSession();if(error)throw error;
+    if(data.session)await activateAuthenticatedSession(data.session.user);
+  }catch(e){
+    const err=document.getElementById('authError');err.textContent=e.message;err.classList.add('show');
+  }
+  supabaseClient.auth.onAuthStateChange((event,session)=>{
+    if(event==='SIGNED_OUT'){authenticatedUser=null;sessionRole=null;document.body.classList.remove('authenticated')}
+  });
+}
+initAuthentication();
 </script>
 </body>
 </html>
