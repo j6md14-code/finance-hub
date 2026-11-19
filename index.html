@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Finance Hub — Prévia funcional</title>
+<title>Nexo — Gestão financeira</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#080d18">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nexo">
+<link rel="apple-touch-icon" href="./icon-180.png">
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
 <style>
 :root{--bg:#080d18;--panel:#101827;--panel2:#172338;--line:#25344a;--text:#f3f6fc;--muted:#8e9bb0;--blue:#7da9ff;--green:#54d6a7;--purple:#b8a4ff;--orange:#f5bd76;--red:#ff8792;--radius:19px}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -15%,#1b2b48 0,transparent 36%),var(--bg);color:var(--text);font:14px Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.05px}button,input,select,textarea{font:inherit}button{cursor:pointer}
@@ -18,12 +25,41 @@
 .page-head h1{letter-spacing:-.8px}.page-head p{font-size:13px}.profile-switch{box-shadow:inset 0 1px rgba(255,255,255,.025)}
 @media(min-width:1200px){.content{padding-top:34px}.stats .card{min-height:132px}}
 @media(max-width:700px){.card{border-radius:15px}.topbar{padding:0 13px}.content{padding-top:18px}}
+
+.mobile-profile{display:none}.logout-btn{color:#ffb2ba!important}
+.mobile-more-panel{display:none}
+.login-screen{display:none;position:fixed;inset:0;z-index:50;background:#080d18f5;align-items:center;justify-content:center;padding:22px}
+.login-screen.open{display:flex}.login-card{width:min(420px,100%);padding:28px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#172338,#101827);text-align:center;box-shadow:0 24px 80px #0009}
+.login-logo{margin:0 auto 14px;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#6898ff,#8e7bdf);display:grid;place-items:center;font-size:30px;font-weight:800}
+.login-card h1{font-size:24px;margin:0 0 8px}.login-card p,.login-card small{color:var(--muted);line-height:1.6}.login-choice{width:100%;margin:9px 0;padding:13px}
+.mobile-more-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.mobile-more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.mobile-more-grid button{border:1px solid var(--line);border-radius:12px;padding:12px 10px;background:#172338;color:var(--text);text-align:left}
+.mobile-more-grid button.active{border-color:var(--blue);background:#203554}
+@media(max-width:700px){
+ .topbar{height:auto;min-height:66px;padding:9px 12px;gap:8px}
+ .topbar>div:first-child{min-width:0}.crumb{font-size:10px}
+ .mobile-profile{display:flex;align-items:center;gap:6px;margin-top:4px}.mobile-profile label{font-size:8px;letter-spacing:.8px;color:var(--muted);font-weight:800}
+ .mobile-profile select{max-width:190px;background:#172338;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:5px 7px;font-size:11px}
+ .top-actions{gap:5px}.top-actions .btn{padding:7px 8px;font-size:10px}.avatar{width:29px;height:29px;font-size:12px}
+ .content{padding:16px 12px calc(95px + env(safe-area-inset-bottom))}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .stat-value{font-size:18px;overflow-wrap:anywhere}.stat-top{font-size:10px}
+ .card{padding:13px}.grid{gap:10px}
+ .toolbar{display:grid;grid-template-columns:1fr}.toolbar input{max-width:none}
+ .table-wrap{border-radius:10px}
+ .mobile-nav{padding:7px 3px calc(7px + env(safe-area-inset-bottom));min-height:62px}
+ .mobile-nav button{font-size:9px;min-width:0;flex:1}
+ .mobile-nav button span{font-size:18px}
+ .mobile-more-panel{display:block;position:fixed;left:10px;right:10px;bottom:calc(68px + env(safe-area-inset-bottom));z-index:30;max-height:70vh;overflow:auto;padding:16px;background:#101a2c;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 60px #000b;transform:translateY(12px);opacity:0;pointer-events:none;transition:.18s}
+ .mobile-more-panel.open{transform:translateY(0);opacity:1;pointer-events:auto}
+}
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar">
-  <div class="brand"><div class="logo">FH</div><div><b>FINANCE HUB</b><small>Gestão financeira inteligente</small></div></div>
+  <div class="brand"><div class="logo">N</div><div><b>NEXO</b><small>Finanças pessoais e da casa</small></div></div>
   <div class="profile-switch"><label>AMBIENTE ATUAL</label><select id="profileSelect" onchange="switchProfile(this.value)"><option value="joao">João · Administrador</option><option value="laura">Laura · Pessoal</option><option value="home">Nossa Casa · Compartilhado</option></select></div>
   <nav class="nav" id="sideNav">
     <div class="nav-label">VISÃO GERAL</div>
@@ -49,7 +85,7 @@
   <div class="side-foot">Prévia interativa · Dados demonstrativos<br>Salvamento local neste navegador</div>
 </aside>
 <main class="main">
-<header class="topbar"><div><div class="crumb">Finance Hub / <strong id="crumb">Dashboard</strong></div></div><div class="top-actions"><button class="btn small" onclick="openModal('transaction')">＋ Lançamento</button><div class="avatar" id="avatar">J</div></div></header>
+<header class="topbar"><div><div><div class="crumb">Nexo / <strong id="crumb">Dashboard</strong></div><div class="mobile-profile"><label for="mobileProfileSelect">AMBIENTE</label><select id="mobileProfileSelect" onchange="switchProfile(this.value)"></select></div></div><div class="top-actions"><button class="btn small" onclick="openModal('transaction')">＋ Lançamento</button><button class="btn small logout-btn" onclick="logout()">Sair</button><div class="avatar" id="avatar">J</div></div></header>
 <div class="content">
 <section id="dashboard" class="section active">
   <div class="page-head"><div><h1 id="welcome">Bom dia, João</h1><p>Veja o resumo da sua vida financeira.</p></div><div class="actions"><button class="btn" onclick="exportCSV()">⇩ Exportar dados</button><button class="btn primary" onclick="openModal('transaction')">＋ Novo lançamento</button></div></div>
@@ -100,8 +136,19 @@
 </div>
 </main>
 </div>
+<div class="mobile-more-panel" id="mobileMorePanel"><div class="mobile-more-head"><b>Navegar pelo Nexo</b><button class="close" onclick="toggleMobileMore(false)">×</button></div><div class="mobile-more-grid" id="mobileMoreGrid"></div></div>
 <div class="mobile-nav" id="mobileNav">
-  <button class="active" data-page="dashboard"><span>◫</span>Início</button><button data-page="transactions"><span>⇄</span>Lançamentos</button><button data-page="home"><span>⌂</span>Casa</button><button data-page="settlements"><span>⇆</span>Acertos</button><button data-page="settings"><span>⚙</span>Mais</button>
+  <button class="active" data-page="dashboard"><span>◫</span>Início</button>
+  <button data-page="transactions"><span>⇄</span>Lançamentos</button>
+  <button data-page="home"><span>⌂</span>Casa</button>
+  <button data-page="settlements"><span>⇆</span>Acertos</button>
+  <button onclick="toggleMobileMore()"><span>☰</span>Mais</button>
+</div>
+<div class="login-screen" id="loginScreen">
+ <div class="login-card"><div class="login-logo">N</div><h1>Bem-vindo ao Nexo</h1><p>Selecione o perfil para continuar nesta prévia.</p>
+ <button class="btn primary login-choice" onclick="loginAs('joao')">Entrar como João · Administrador</button>
+ <button class="btn login-choice" onclick="loginAs('laura')">Entrar como Laura</button>
+ <small>Esta seleção é demonstrativa. O login seguro será feito pela autenticação do Supabase.</small></div>
 </div>
 <div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><h2 id="modalTitle">Novo lançamento</h2><button class="close" onclick="closeModal()">×</button></div><form id="modalForm" onsubmit="saveModal(event)"><div id="modalFields" class="form-grid"></div><div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">Cancelar</button><button type="submit" class="btn primary">Salvar</button></div></form></div></div>
 <script>
@@ -132,9 +179,16 @@ const seed={
 let data=loadData(),profile='joao',currentPage='dashboard',modalType='';
 function loadData(){try{let d=JSON.parse(localStorage.getItem('financeHubDemo'))||structuredClone(seed);if(!Array.isArray(d.homeCategories))d.homeCategories=['Moradia','Alimentação','Contas básicas','Transporte','Lazer','Pets','Manutenção','Outros'];return d}catch(e){let d=JSON.parse(JSON.stringify(seed));d.homeCategories=['Moradia','Alimentação','Contas básicas','Transporte','Lazer','Pets','Manutenção','Outros'];return d}}
 function persist(){localStorage.setItem('financeHubDemo',JSON.stringify(data))}
-function switchProfile(p){profile=p;document.getElementById('profileSelect').value=p;document.getElementById('avatar').textContent=p==='joao'?'J':p==='laura'?'L':'⌂';document.getElementById('welcome').textContent=p==='joao'?'Bom dia, João':p==='laura'?'Olá, Laura':'Olá, João e Laura';renderAll()}
+let signedInAs='joao';
+function profileOptions(){return signedInAs==='joao'?[['joao','João · Pessoal'],['laura','Laura · Pessoal'],['home','Nossa Casa · Compartilhado']]:[['laura','Laura · Pessoal'],['home','Nossa Casa · Compartilhado']]}
+function syncProfileSelectors(){const opts=profileOptions().map(([v,l])=>`<option value="${v}">${l}</option>`).join('');['profileSelect','mobileProfileSelect'].forEach(id=>{const el=document.getElementById(id);if(el){el.innerHTML=opts;el.value=profile}})}
+function switchProfile(p){if(!profileOptions().some(([v])=>v===p))p=signedInAs==='joao'?'joao':'laura';profile=p;syncProfileSelectors();document.getElementById('avatar').textContent=p==='joao'?'J':p==='laura'?'L':'⌂';document.getElementById('welcome').textContent=p==='joao'?'Bom dia, João':p==='laura'?'Olá, Laura':'Olá, João e Laura';renderAll()}
+function logout(){document.getElementById('loginScreen').classList.add('open');toggleMobileMore(false)}
+function loginAs(user){signedInAs=user;profile=user;document.getElementById('loginScreen').classList.remove('open');syncProfileSelectors();switchProfile(user);navigate('dashboard')}
+function toggleMobileMore(force){const panel=document.getElementById('mobileMorePanel');if(!panel)return;const open=typeof force==='boolean'?force:!panel.classList.contains('open');panel.classList.toggle('open',open)}
+function renderMobileMore(){const labels={dashboard:'Início',transactions:'Lançamentos',accounts:'Contas bancárias',cards:'Cartões de crédito',recurring:'Contas recorrentes',planning:'Planejamento',assets:'Patrimônio',business:'Imobiliário',law:'Minha advocacia',home:'Nossa casa',settlements:'Acertos João & Laura',reports:'Relatórios',assistant:'Assistente IA',settings:'Configurações'};const icons={dashboard:'◫',transactions:'⇄',accounts:'▣',cards:'▤',recurring:'↻',planning:'◎',assets:'◇',business:'⌂',law:'⚖',home:'⌂',settlements:'⇆',reports:'▥',assistant:'✧',settings:'⚙'};document.getElementById('mobileMoreGrid').innerHTML=Object.keys(labels).filter(id=>id!=='business'||signedInAs==='joao').map(id=>`<button data-page="${id}" class="${currentPage===id?'active':''}">${icons[id]} &nbsp;${labels[id]}</button>`).join('');document.querySelectorAll('#mobileMoreGrid [data-page]').forEach(b=>b.addEventListener('click',()=>{navigate(b.dataset.page);toggleMobileMore(false)}))}
 function pageName(id){return ({dashboard:'Dashboard',transactions:'Lançamentos',accounts:'Contas bancárias',cards:'Cartões de crédito',recurring:'Contas recorrentes',planning:'Planejamento',assets:'Patrimônio',business:'Gestão imobiliária',law:'Minha advocacia',home:'Nossa casa',settlements:'Acertos João & Laura',reports:'Relatórios',assistant:'Assistente financeiro',settings:'Configurações'})[id]}
-function navigate(id){currentPage=id;document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);renderAll();window.scrollTo({top:0,behavior:'smooth'})}
+function navigate(id){if(id==='business'&&signedInAs!=='joao')return;currentPage=id;renderMobileMore();document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);renderAll();window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
 function visibleTransactions(){return data.transactions.filter(t=>profile==='home'?t.profile==='home':t.profile===profile)}
 function sum(arr,fn){return arr.reduce((a,x)=>a+fn(x),0)}
@@ -179,7 +233,7 @@ function generateMonthlyReport(){
  const rows=[['Relatório mensal',profile,'Gerado em',new Date().toLocaleDateString('pt-BR')],[],['Descrição','Categoria','Tipo','Data','Status','Valor']];
  tx.forEach(t=>rows.push([t.desc,t.category,t.type,dateBR(t.date),t.status,t.value]));
  rows.push([],['Total de receitas','','','','',inc],['Total de despesas','','','','',exp],['Resultado','','','','',inc-exp]);
- csvDownload('finance-hub-resumo-mensal-'+profile+'.csv',rows);
+ csvDownload('nexo-resumo-mensal-'+profile+'.csv',rows);
  const insights=[];
  const pending=tx.filter(t=>t.status==='Pendente');
  const overdue=tx.filter(t=>t.status==='Pendente'&&t.date&&new Date(t.date+'T23:59:00')<new Date());
@@ -200,7 +254,7 @@ function generateHomeReport(){
  tx.forEach(t=>rows.push([t.desc,t.category,t.type,dateBR(t.date),t.status,t.value]));
  rows.push([],['CONTRIBUIÇÕES'],['Pessoa','Valor']);data.contributions.forEach(c=>rows.push([c.name,c.value]));
  rows.push([],['METAS'],['Meta','Responsável','Acumulado','Objetivo']);data.goals.filter(g=>g.owner==='João e Laura').forEach(g=>rows.push([g.name,g.owner,g.current,g.target]));
- csvDownload('finance-hub-resumo-da-casa.csv',rows);
+ csvDownload('nexo-resumo-da-casa.csv',rows);
  const insights=[];
  const pending=expenses.filter(t=>t.status==='Pendente');
  const totalExp=sum(expenses,t=>t.value),totalInc=sum(income,t=>t.value);
@@ -213,7 +267,7 @@ function generateHomeReport(){
  reportInsight('Resumo da casa — João e Laura',insights);
 }
 
-function renderAll(){renderDashboard();renderTransactions();renderAccounts();renderCards();renderRecurring();renderPlanning();renderAssets();renderBusiness();renderLaw();renderHome();renderSettlements();renderReports()}
+function renderAll(){document.querySelectorAll('[data-page=\"business\"]').forEach(x=>x.style.display=signedInAs==='joao'?'':'none');renderMobileMore();renderDashboard();renderTransactions();renderAccounts();renderCards();renderRecurring();renderPlanning();renderAssets();renderBusiness();renderLaw();renderHome();renderSettlements();renderReports()}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function field(name,label,type='text',value='',opts=null,full=false){let id='f_'+name,html=type==='select'?`<select id="${id}" name="${name}">${opts.map(o=>`<option>${esc(o)}</option>`).join('')}</select>`:type==='textarea'?`<textarea id="${id}" name="${name}" placeholder="${label}">${esc(value)}</textarea>`:`<input id="${id}" name="${name}" type="${type}" value="${esc(value)}" ${type==='number'?'step="0.01"':''} placeholder="${label}" required>`;return `<div class="field ${full?'full':''}"><label for="${id}">${label}</label>${html}</div>`}
 function openModal(type){modalType=type;let title='',fields='';const owner=profile==='joao'?'João':profile==='laura'?'Laura':'Compartilhado';
@@ -251,10 +305,10 @@ if(modalType==='settlement')data.settlements.push({id:Date.now(),desc:v.desc+(v.
 persist();closeModal();renderAll()}
 function deleteTx(id){if(confirm('Excluir este lançamento?')){data.transactions=data.transactions.filter(x=>x.id!==id);persist();renderAll()}}
 function paySettlement(id){let x=data.settlements.find(s=>s.id===id);if(!x)return;let remain=x.value-x.paid;let raw=prompt('Quanto João pagou à Laura? Saldo pendente: '+money(remain),remain);if(raw===null)return;let n=Number(raw.replace(',','.'));if(!Number.isFinite(n)||n<=0||n>remain){alert('Informe um valor válido até '+money(remain));return}x.paid+=n;persist();renderAll()}
-function exportCSV(){let rows=[['Ambiente','Descrição','Categoria','Tipo','Data','Status','Valor'],...data.transactions.map(t=>[t.profile,t.desc,t.category,t.type,t.date,t.status,t.value])];let csv=rows.map(r=>r.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(';')).join('\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='finance-hub-lancamentos.csv';a.click();URL.revokeObjectURL(a.href)}
+function exportCSV(){let rows=[['Ambiente','Descrição','Categoria','Tipo','Data','Status','Valor'],...data.transactions.map(t=>[t.profile,t.desc,t.category,t.type,t.date,t.status,t.value])];let csv=rows.map(r=>r.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(';')).join('\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='nexo-lancamentos.csv';a.click();URL.revokeObjectURL(a.href)}
 function resetDemo(){if(confirm('Restaurar os dados demonstrativos? Seus lançamentos locais serão apagados.')){data=JSON.parse(JSON.stringify(seed));persist();renderAll()}}
 function askAssistant(){let input=document.getElementById('chatInput'),q=input.value.trim();if(!q)return;let log=document.getElementById('chatLog');log.innerHTML+=`<div class="list-row"><div class="list-main"><div class="list-icon">Você</div><div><b>${esc(q)}</b></div></div></div>`;let tx=visibleTransactions(),answer='Posso consultar receitas, despesas, lançamentos e saldos demonstrativos. Tente perguntar quanto recebeu, quanto gastou ou quais são os valores pendentes.';if(/receb|entrada|ganh/i.test(q)){answer='Total de receitas cadastradas neste ambiente: '+money(sum(tx.filter(t=>t.type==='Receita'),t=>t.value))+'.'}else if(/gast|despes|saiu/i.test(q)){answer='Total de despesas cadastradas neste ambiente: '+money(sum(tx.filter(t=>t.type==='Despesa'),t=>t.value))+'.'}else if(/pend|deve|receber/i.test(q)){answer='Valores pendentes nos lançamentos deste ambiente: '+money(sum(tx.filter(t=>t.status==='Pendente'),t=>t.value))+'.'}else if(/cart[aã]o|laura/i.test(q)){answer='O saldo de reembolso de João para Laura é '+money(sum(data.settlements,x=>x.value-x.paid))+'.'}log.innerHTML+=`<div class="list-row"><div class="list-main"><div class="list-icon">✧</div><div><b>Assistente</b><small>${esc(answer)}</small></div></div></div>`;input.value='';log.scrollTop=log.scrollHeight}
-renderAll();switchProfile('joao');
+renderAll();signedInAs='joao';syncProfileSelectors();switchProfile('joao');
 </script>
 </body>
 </html>
