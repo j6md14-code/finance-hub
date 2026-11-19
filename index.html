@@ -536,7 +536,7 @@ body:not(.authenticated) .auth-screen{display:flex}
  body.mobile-f .mobile-quick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
  body.mobile-f .mobile-quick-grid button{display:flex;min-width:0;min-height:69px;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:6px 3px;border:1px solid #244566;border-radius:12px;background:linear-gradient(145deg,#142a44,#0e2035);color:#e0ebfa;text-align:center}
  body.mobile-f .mobile-quick-grid button span{width:29px;height:29px;display:grid;place-items:center;border-radius:9px;background:#163a65;color:#64aaff;font-size:18px}
- body.mobile-f .mobile-quick-grid button b{font-size:8px;line-height:1.2;font-weight:650}
+ body.mobile-f .mobile-quick-grid button b{font-size:8px;line-height:1.2;font-weight:650;overflow-wrap:anywhere;text-wrap:balance}
  body.mobile-f .mobile-nav{display:grid!important;position:fixed;left:0;right:0;bottom:0;width:100%;height:calc(69px + env(safe-area-inset-bottom));min-height:69px;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;gap:3px;padding:5px 8px calc(5px + env(safe-area-inset-bottom));z-index:50;box-sizing:border-box;background:rgba(7,18,32,.98);border-top:1px solid #203a58;box-shadow:0 -8px 26px #0005;backdrop-filter:blur(18px)}
  body.mobile-f .mobile-nav button{width:100%;min-width:0;height:54px;max-width:none;display:grid;align-content:center;justify-items:center;gap:4px;padding:0;border:0;border-radius:13px;background:transparent!important;box-shadow:none!important;color:#8498b4;font-size:9px;font-weight:650}
  body.mobile-f .mobile-nav button span{font-size:19px;line-height:1}
@@ -790,6 +790,12 @@ body.mobile-f .tx-filter-button>.nexo-icon-plain{width:23px;height:23px;color:#7
     stroke-width:1.8 !important;
   }
 }
+
+@media(max-width:380px){
+ body.mobile-f .mobile-quick-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+ body.mobile-f .mobile-quick-grid button{min-height:72px;padding:6px 2px}
+ body.mobile-f .mobile-quick-grid button b{font-size:7.5px;line-height:1.15}
+}
 </style>
 </head>
 <body class="mobile-f">
@@ -857,8 +863,12 @@ body.mobile-f .tx-filter-button>.nexo-icon-plain{width:23px;height:23px;color:#7
     <div class="mobile-quick-grid">
       <button type="button" onclick="openModal('transaction')"><span>⊕</span><b>Novo lançamento</b></button>
       <button type="button" onclick="navigate('transactions')"><span>⇄</span><b>Lançamentos</b></button>
-      <button type="button" onclick="navigate('accounts')"><span>▣</span><b>Contas</b></button>
-      <button type="button" onclick="navigate('cards')"><span>▤</span><b>Cartões</b></button>
+      <button type="button" onclick="openModal('account')"><span>▣</span><b>Adicionar conta</b></button>
+      <button type="button" onclick="openModal('card')"><span>▤</span><b>Novo cartão</b></button>
+      <button type="button" onclick="openModal('recurring')"><span>↻</span><b>Recorrências</b></button>
+      <button type="button" onclick="navigate('planning')"><span>◎</span><b>Planejamento</b></button>
+      <button type="button" onclick="navigate('reports')"><span>▥</span><b>Relatórios</b></button>
+      <button type="button" onclick="navigate('more')"><span>•••</span><b>Mais funções</b></button>
     </div>
   </div>
 </section>
@@ -1001,7 +1011,7 @@ function decorateStaticIcons(){
  document.querySelectorAll('#sideNav button[data-page]').forEach(b=>{const p=b.dataset.page,el=b.querySelector('.ico');if(el)el.outerHTML=pageIcon(p,'xs').replace('nexo-icon-xs','nexo-icon-sm ico')});
  const shortcutNames=[['plus','blue'],['transactions','green'],['accounts','purple'],['cards','blue'],['recurring','green'],['planning','purple'],['reports','purple'],['more','blue']];
  document.querySelectorAll('.shortcut-grid button>span').forEach((el,i)=>{const [name,tone]=shortcutNames[i]||['sparkle','blue'];el.outerHTML=nexoIcon(name,tone,'md')});
- const quickNames=[['plus','blue'],['transactions','green'],['accounts','purple'],['cards','blue']];
+ const quickNames=[['plus','blue'],['transactions','green'],['accounts','purple'],['cards','blue'],['recurring','green'],['planning','purple'],['reports','purple'],['more','blue']];
  document.querySelectorAll('.mobile-quick-grid button>span').forEach((el,i)=>{const [name,tone]=quickNames[i]||['sparkle','blue'];el.outerHTML=nexoIcon(name,tone,'sm')});
  const navNames=[['home','blue'],['transactions','green'],['accounts','purple'],['more','blue']];
  document.querySelectorAll('#mobileNav button').forEach((b,i)=>{const span=b.querySelector('span');if(span){const [name,tone]=navNames[i]||['sparkle','blue'];span.outerHTML=nexoIcon(name,tone,'xs')}});
