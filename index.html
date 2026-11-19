@@ -200,6 +200,101 @@ body:not(.authenticated) .auth-screen{display:flex}
 
 
 .budget-row{padding:12px 0;border-bottom:1px solid var(--line,rgba(120,160,210,.14))}.budget-foot{display:flex;justify-content:space-between;align-items:center;margin-top:7px}.link-btn{background:none;border:0;color:#69a8ff;font:inherit;font-size:12px;padding:4px 7px;cursor:pointer}.danger-text{color:#ff7185}.empty-state{text-align:center;padding:28px 12px}.empty-state p{font-weight:700;margin:0 0 6px}.budget-row .progress span{background:linear-gradient(90deg,#5c91f5,#52d0ad)}
+
+/* NEXO MOBILE PRO — reprodução estrutural da referência aprovada */
+@media(max-width:700px){
+ body.mobile-f{background:#07111f;color:#f5f8ff}
+ body.mobile-f .topbar{height:64px;min-height:64px;padding:9px 15px;display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;background:#071321;border-bottom:1px solid #1c3552}
+ body.mobile-f .topbar-brand{flex:1;min-width:0;gap:10px}
+ body.mobile-f .topbar-brand .brand-mark{width:40px;height:40px;border-radius:13px}
+ body.mobile-f .topbar-brand b{font-size:16px;letter-spacing:.2px}
+ body.mobile-f .topbar-brand .mobile-brand-subtitle{display:block;color:#9eafc6;font-size:10px;margin-top:3px;white-space:nowrap}
+ body.mobile-f .topbar-brand .desktop-crumb{display:none}
+ body.mobile-f .topbar-controls{width:auto;display:flex;gap:9px;align-items:center}
+ body.mobile-f .top-add{display:none!important}
+ body.mobile-f.mobile-page-transactions .top-add{display:grid!important;position:fixed;right:18px;bottom:calc(88px + env(safe-area-inset-bottom));z-index:17;width:56px;height:56px;padding:0!important;border:0;border-radius:50%;place-items:center;font-size:25px;background:linear-gradient(145deg,#64a5ff,#3675dc);box-shadow:0 8px 24px #1b62bd66}
+ body.mobile-f.mobile-page-transactions .top-add span{display:none}
+ body.mobile-f .top-logout{display:none}
+ body.mobile-f .avatar-menu-trigger{width:42px;height:42px;flex:0 0 42px;border-radius:50%;font-size:15px}
+ body.mobile-f .content{padding:17px 14px calc(105px + env(safe-area-inset-bottom));max-width:100%}
+ body.mobile-f .dashboard-heading{display:block;margin:4px 0 17px}
+ body.mobile-f .dashboard-heading h1{font-size:25px;line-height:1.16;letter-spacing:-.65px;margin:0 0 5px}
+ body.mobile-f .dashboard-heading p{font-size:12px;color:#a6b6cc;margin:0}
+ body.mobile-f .dashboard-heading .actions{display:none}
+ body.mobile-f .dashboard-eyebrow{display:none}
+ body.mobile-f .dashboard-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 13px}
+ body.mobile-f .dashboard-stats .card{min-width:0;min-height:126px;padding:13px;border-radius:17px;background:linear-gradient(145deg,#101f34,#0b192a);border:1px solid #1d3b5c;box-shadow:0 8px 22px #0002}
+ body.mobile-f .dashboard-stats .card:first-child{grid-column:1/-1;min-height:136px;padding:17px 18px;background:linear-gradient(125deg,#142b4a,#0c1b2e);border-color:#315887;position:relative;overflow:hidden}
+ body.mobile-f .dashboard-stats .card:first-child:after{content:'▣';position:absolute;right:17px;top:22px;width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:#1c477c;color:#8fc2ff;font-size:24px}
+ body.mobile-f .dashboard-stats .card:first-child .stat-top{font-size:12px;color:#c2d3e9;max-width:72%}
+ body.mobile-f .dashboard-stats .card:first-child .stat-icon{display:none}
+ body.mobile-f .dashboard-stats .card:first-child .stat-value{font-size:30px;line-height:1.1;margin:12px 0 7px;color:#72bdff;letter-spacing:-1px}
+ body.mobile-f .dashboard-stats .card:first-child .stat-note{font-size:10px;color:#a7bdd8}
+ body.mobile-f .dashboard-stats .card:not(:first-child) .stat-top{font-size:10px;color:#b8c9df}
+ body.mobile-f .dashboard-stats .card:not(:first-child) .stat-icon{width:29px;height:29px;border-radius:10px;font-size:15px}
+ body.mobile-f .dashboard-stats .card:not(:first-child) .stat-value{font-size:20px;letter-spacing:-.6px;margin:10px 0 4px}
+ body.mobile-f .dashboard-stats .card:not(:first-child) .stat-note{font-size:9px;line-height:1.35}
+ body.mobile-f .dashboard-main-grid,body.mobile-f .dashboard-bottom-grid{display:contents}
+ body.mobile-f .dashboard-chart-card{order:3;margin-bottom:11px;padding:15px 14px;background:linear-gradient(145deg,#101f34,#0b192a);border:1px solid #1c3a5b;border-radius:17px}
+ body.mobile-f .dashboard-chart-card .dashboard-card-heading h3{font-size:14px}
+ body.mobile-f .dashboard-chart-card .dashboard-card-heading small{display:none}
+ body.mobile-f .dashboard-chart-card .dashboard-period{display:inline-flex;font-size:10px;padding:7px 9px}
+ body.mobile-f .dashboard-chart-card .chart{height:151px;gap:7px;padding-top:12px;border-color:#29415d}
+ body.mobile-f .dashboard-chart-card .bar{width:min(17px,42%);border-radius:5px 5px 2px 2px}
+ body.mobile-f .dashboard-chart-card .bar-labels{font-size:9px;color:#9aacc4}
+ body.mobile-f .dashboard-chart-card .legend{font-size:10px}
+ body.mobile-f .dashboard-shortcuts{display:none!important}
+ body.mobile-f .dashboard-bottom-grid>.card{margin:0 0 11px;padding:15px 14px;border-radius:17px;background:linear-gradient(145deg,#101f34,#0b192a);border:1px solid #1c3a5b}
+ body.mobile-f .dashboard-bottom-grid>.card:nth-child(1){order:4}
+ body.mobile-f .dashboard-bottom-grid>.card:nth-child(2){order:5}
+ body.mobile-f .dashboard-bottom-grid>.card:nth-child(3){order:6}
+ body.mobile-f .dashboard-bottom-grid>.card:nth-child(4){order:7}
+ body.mobile-f .dashboard-bottom-grid .dashboard-card-heading h3{font-size:13px}
+ body.mobile-f .dashboard-bottom-grid .list-row{padding:11px 0}
+ body.mobile-f .dashboard-bottom-grid .list-main b{font-size:11px}
+ body.mobile-f .dashboard-bottom-grid .list-main small{font-size:9px}
+ body.mobile-f .dashboard-bottom-grid .amount{font-size:11px}
+ body.mobile-f .dashboard-empty{min-height:105px}
+ body.mobile-f .mobile-nav{height:73px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;gap:3px;padding:7px 8px calc(7px + env(safe-area-inset-bottom));background:rgba(7,18,32,.98);border-top:1px solid #203a58;box-shadow:0 -8px 26px #0005;backdrop-filter:blur(18px)}
+ body.mobile-f .mobile-nav button{height:53px;min-height:0;max-width:none;display:grid;align-content:center;justify-items:center;gap:4px;border:0;border-radius:13px;background:transparent;color:#8498b4;font-size:9px;font-weight:650}
+ body.mobile-f .mobile-nav button span{font-size:19px;line-height:1}
+ body.mobile-f .mobile-nav button.active{color:#67adff;background:#102a49}
+ body.mobile-f .mobile-more{display:none;position:fixed;top:64px;left:0;right:0;bottom:73px;z-index:15;background:#071321;overflow:hidden}
+ body.mobile-f .mobile-more.open{display:block}
+ body.mobile-f .mobile-more-sheet{width:100%;height:100%;max-height:none;overflow:auto;padding:16px 14px 22px;background:linear-gradient(180deg,#091a2d,#071321);border:0;border-radius:0;box-shadow:none}
+ body.mobile-f .mobile-more-profile{display:flex;align-items:center;gap:11px;padding:12px 13px;margin:0 0 20px;border-radius:16px;background:#14263d;border:1px solid #284665}
+ body.mobile-f .mobile-more-avatar{width:47px;height:47px;border-radius:50%;display:grid;place-items:center;background:#284c7b;color:#e8f2ff;font-weight:800;font-size:17px}
+ body.mobile-f .mobile-more-user{display:grid;gap:3px;flex:1}
+ body.mobile-f .mobile-more-user b{font-size:15px}
+ body.mobile-f .mobile-more-user small{font-size:11px;color:#9fb2cc}
+ body.mobile-f .mobile-more-head{display:flex;align-items:center;justify-content:space-between;margin:0 2px 13px;font-size:17px}
+ body.mobile-f .mobile-more-head span{font-size:10px;color:#8fa5c1}
+ body.mobile-f .mobile-more-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+ body.mobile-f .mobile-more-grid button{min-height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:10px 5px;border:1px solid #244566;border-radius:15px;background:linear-gradient(145deg,#142a44,#0e2035);color:#e0ebfa;font-size:10px;line-height:1.2}
+ body.mobile-f .mobile-more-grid button .more-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#163a65;color:#64aaff;font-size:20px;font-weight:800}
+ body.mobile-f .mobile-more-grid button:nth-child(3n+2) .more-icon{background:#183d42;color:#55d6a7}
+ body.mobile-f .mobile-more-grid button:nth-child(3n) .more-icon{background:#302a58;color:#b59cff}
+ body.mobile-f .mobile-more-grid button b{font-size:10px;font-weight:650}
+ body.mobile-f .mobile-more-footer{display:grid;gap:7px;margin-top:16px;padding-top:13px;border-top:1px solid #203a58}
+ body.mobile-f .mobile-more-settings{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 13px;border:0;border-radius:11px;background:#11243a;color:#e3edfb;text-align:left;font-size:12px}
+ body.mobile-f .mobile-more-settings span{color:#8ca8ca;font-size:20px}
+ body.mobile-f .mobile-more-logout{width:100%;margin-top:5px;padding:13px;border:1px solid #613a48;border-radius:13px;background:#301d29;color:#ffabb5;font-size:12px;font-weight:750}
+ body.mobile-f.mobile-menu-open .content{display:none}
+ body.mobile-f .section.active#transactions{padding-bottom:12px}
+ body.mobile-f .section.active#transactions .page-head{margin-bottom:14px}
+ body.mobile-f .section.active#transactions .page-head h1{font-size:24px}
+ body.mobile-f .section.active#transactions .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+ body.mobile-f .section.active#transactions .toolbar input:first-child{grid-column:1/-1;height:48px;border-radius:13px;background:#14243a;border-color:#203b5a;padding:0 14px}
+ body.mobile-f .section.active#transactions .toolbar select{height:42px;border-radius:12px;background:#14243a}
+ body.mobile-f .section.active#transactions .table-wrap{overflow:visible;border:0}
+ body.mobile-f .section.active#transactions tbody{display:grid;gap:9px}
+ body.mobile-f .section.active#transactions tbody tr{display:grid;grid-template-columns:1fr auto;align-items:center;gap:5px 10px;padding:13px;border:1px solid #1d3855;border-radius:15px;background:linear-gradient(145deg,#101f34,#0b192a)}
+ body.mobile-f .section.active#transactions tbody td:first-child{font-size:12px;font-weight:700}
+ body.mobile-f .section.active#transactions tbody td:nth-child(2),body.mobile-f .section.active#transactions tbody td:nth-child(3),body.mobile-f .section.active#transactions tbody td:nth-child(4),body.mobile-f .section.active#transactions tbody td:nth-child(5){font-size:10px;color:#9fb0c7}
+ body.mobile-f .section.active#transactions tbody td:nth-child(6){grid-column:2;grid-row:1;font-size:12px;font-weight:800;text-align:right}
+ body.mobile-f .section.active#transactions tbody td:last-child{grid-column:1/-1}
+}
+
 </style>
 </head>
 <body class="mobile-f">
@@ -243,7 +338,7 @@ body:not(.authenticated) .auth-screen{display:flex}
 </aside>
 <main class="main">
 <header class="topbar">
-  <div class="topbar-brand"><div class="brand-mark">N</div><div><b>Nexo</b><small id="crumb">Dashboard</small></div></div>
+  <div class="topbar-brand"><div class="brand-mark">N</div><div><b>NEXO</b><small class="mobile-brand-subtitle">Finanças pessoais e da casa</small><small id="crumb" class="desktop-crumb">Dashboard</small></div></div>
   <div class="topbar-controls"><button class="btn primary top-add" onclick="openModal('transaction')">＋ <span>Lançamento</span></button><button class="top-logout" type="button" onclick="logoutDemo()">Sair</button><button class="avatar avatar-menu-trigger" id="avatar" type="button" aria-label="Abrir menu do perfil" onclick="toggleAccountMenu()">J</button></div>
 </header>
 <div class="content">
@@ -251,7 +346,7 @@ body:not(.authenticated) .auth-screen{display:flex}
   <div class="page-head dashboard-heading"><div><div class="dashboard-eyebrow">VISÃO GERAL</div><h1 id="welcome">Bom dia, João</h1><p>Uma visão clara da sua vida financeira.</p></div><div class="actions"><span class="dashboard-period">◷ &nbsp; Visão do mês atual</span><button class="btn" onclick="exportCSV()">⇩ Exportar dados</button><button class="btn primary" onclick="openModal('transaction')">＋ Novo lançamento</button></div></div>
   <div class="grid stats dashboard-stats" id="stats"></div>
   <div class="dashboard-main-grid">
-    <div class="card dashboard-chart-card"><div class="dashboard-card-heading"><div><h3>Fluxo financeiro</h3><small>Receitas e despesas ao longo do período</small></div><span class="dashboard-period">Ano atual⌄</span></div><div class="chart" id="chart"></div><div class="bar-labels"><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Set</span><span>Out</span><span>Nov</span><span>Dez</span></div><div class="legend"><span><i class="dot"></i>Receitas</span><span><i class="dot p"></i>Despesas</span></div></div>
+    <div class="card dashboard-chart-card"><div class="dashboard-card-heading"><div><h3>Fluxo financeiro</h3><small>Receitas e despesas desta semana</small></div><span class="dashboard-period">Esta semana⌄</span></div><div class="chart" id="chart"></div><div class="bar-labels"><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Set</span><span>Out</span><span>Nov</span><span>Dez</span></div><div class="legend"><span><i class="dot"></i>Receitas</span><span><i class="dot p"></i>Despesas</span></div></div>
     <div class="card dashboard-shortcuts"><div class="dashboard-card-heading"><div><h3>Acesso rápido</h3><small>Atalhos para as tarefas mais usadas</small></div></div><div class="shortcut-grid">
       <button onclick="openModal('transaction')"><span>＋</span>Novo lançamento</button><button onclick="navigate('transactions')"><span>⇄</span>Lançamentos</button><button onclick="openModal('account')"><span>▣</span>Adicionar conta</button><button onclick="openModal('card')"><span>▤</span>Novo cartão</button><button onclick="openModal('recurring')"><span>↻</span>Recorrências</button><button onclick="navigate('planning')"><span>◎</span>Planejamento</button><button onclick="navigate('reports')"><span>▥</span>Relatórios</button><button onclick="toggleAccountMenu(true)"><span>•••</span>Mais funções</button>
     </div></div>
@@ -303,7 +398,7 @@ body:not(.authenticated) .auth-screen{display:flex}
 </div>
 </main>
 </div>
-<div class="mobile-more" id="mobileMore"><div class="mobile-more-sheet"><div class="mobile-more-profile" onclick="toggleMobileMore(false);toggleAccountMenu(true)"><div class="mobile-more-avatar" id="mobileMoreAvatar">J</div><div class="mobile-more-user"><b id="mobileMoreName">João</b><small id="mobileMoreRole">Administrador</small></div><span class="mobile-more-chevron">›</span></div><div class="mobile-more-head"><b>Acesso rápido</b><button onclick="toggleMobileMore(false)">Fechar ×</button></div><div class="mobile-more-grid" id="mobileMoreGrid"></div><button class="mobile-more-logout" onclick="logoutDemo()">↪ &nbsp; Sair da conta</button></div></div>
+<div class="mobile-more" id="mobileMore" aria-hidden="true"><div class="mobile-more-sheet"><div class="mobile-more-profile" onclick="toggleMobileMore(false);toggleAccountMenu(true)"><div class="mobile-more-avatar" id="mobileMoreAvatar">J</div><div class="mobile-more-user"><b id="mobileMoreName">João</b><small id="mobileMoreRole">Administrador</small></div><span class="mobile-more-chevron">›</span></div><div class="mobile-more-head"><b>Acesso rápido</b><span>Suas áreas do Nexo</span></div><div class="mobile-more-grid" id="mobileMoreGrid"></div><div class="mobile-more-footer"><button class="mobile-more-settings" onclick="navigate('settings')">⚙ &nbsp; Configurações <span>›</span></button><button class="mobile-more-settings" onclick="navigate('assistant')">ⓘ &nbsp; Ajuda e assistente <span>›</span></button><button class="mobile-more-logout" onclick="logoutDemo()">↪ &nbsp; Sair da conta</button></div></div></div>
 <div class="account-menu-backdrop" id="accountMenu" onclick="if(event.target===this)toggleAccountMenu(false)">
   <section class="account-menu-panel" role="dialog" aria-modal="true" aria-label="Menu do perfil">
     <div class="account-menu-head"><div class="account-user"><div class="account-avatar" id="accountAvatar">J</div><div><b id="accountName">João</b><small id="accountRole">Administrador</small></div></div><button class="account-close" onclick="toggleAccountMenu(false)" aria-label="Fechar">×</button></div>
@@ -357,12 +452,12 @@ function switchProfile(p){if(sessionRole!=='admin')return;if(!['joao','laura'].i
 function syncProfileChoices(){renderAccountMenu()}
 function toggleAccountMenu(force){const el=document.getElementById('accountMenu');if(!el)return;el.classList.toggle('open',force===undefined?!el.classList.contains('open'):!!force);if(el.classList.contains('open'))renderAccountMenu()}
 function renderAccountMenu(){const isAdmin=sessionRole==='admin';const name=profile==='joao'?'João':'Laura';document.getElementById('accountName').textContent=name;document.getElementById('accountRole').textContent=isAdmin?'Administrador':(profile==='laura'?'Perfil pessoal':'Perfil pessoal');document.getElementById('accountAvatar').textContent=profile==='joao'?'J':'L';const mmA=document.getElementById('mobileMoreAvatar'),mmN=document.getElementById('mobileMoreName'),mmR=document.getElementById('mobileMoreRole');if(mmA)mmA.textContent=profile==='joao'?'J':'L';if(mmN)mmN.textContent=name;if(mmR)mmR.textContent=isAdmin?'Administrador':'Perfil pessoal';const envTitle=document.querySelector('.account-menu-panel .account-section-title');const envWrap=document.getElementById('accountEnvironments');if(isAdmin){if(envTitle)envTitle.style.display='';envWrap.style.display='grid';const envs=[['joao','J','João · Pessoal'],['laura','L','Laura · Pessoal']];envWrap.innerHTML=envs.map(([v,ico,label])=>`<button class="environment-option ${profile===v?'selected':''}" onclick="switchProfile('${v}');toggleAccountMenu(false)"><span class="environment-icon">${ico}</span><span>${label}</span>${profile===v?'<b>✓</b>':''}</button>`).join('')}else{if(envTitle)envTitle.style.display='none';envWrap.style.display='none';envWrap.innerHTML=''}const pages=[['dashboard','◫','Dashboard'],['transactions','⇄','Lançamentos'],['accounts','▣','Contas bancárias'],['cards','▤','Cartões de crédito'],['recurring','↻','Contas recorrentes'],['planning','◎','Planejamento'],['assets','◇','Patrimônio'],['business','⌂','Imobiliário'],['law','⚖','Minha advocacia'],['home','⌂','Nossa Casa'],['settlements','⇆','Acertos João & Laura'],['reports','▥','Relatórios'],['assistant','✧','Assistente IA'],['settings','⚙','Configurações']];document.getElementById('accountPages').innerHTML=pages.filter(([id])=>!(profile==='laura'&&id==='business'&&!isAdmin)).map(([id,ico,label])=>`<button class="account-page-option ${currentPage===id?'selected':''}" onclick="navigate('${id}');toggleAccountMenu(false)"><span>${ico}</span>${label}</button>`).join('')}
-function toggleMobileMore(force){const el=document.getElementById('mobileMore');if(!el)return;const open=force===undefined?!el.classList.contains('open'):!!force;el.classList.toggle('open',open);document.getElementById('mobileMoreTrigger')?.classList.toggle('active',open)}
+function toggleMobileMore(force){const el=document.getElementById('mobileMore');if(!el)return;const open=force===undefined?!el.classList.contains('open'):!!force;el.classList.toggle('open',open);el.setAttribute('aria-hidden',String(!open));document.getElementById('mobileMoreTrigger')?.classList.toggle('active',open);document.body.classList.toggle('mobile-menu-open',open)}
 async function logoutDemo(){if(!confirm('Deseja sair da sua conta?'))return;const {error}=await supabaseClient.auth.signOut();if(error){alert('Não foi possível encerrar a sessão: '+error.message);return;}authenticatedUser=null;sessionRole=null;document.body.classList.remove('authenticated');document.getElementById('authPassword').value='';document.getElementById('authEmail').value='';document.getElementById('authError').classList.remove('show');}
 function pageName(id){return ({dashboard:'Dashboard',transactions:'Lançamentos',accounts:'Contas bancárias',cards:'Cartões de crédito',recurring:'Contas recorrentes',planning:'Planejamento',assets:'Patrimônio',business:'Gestão imobiliária',law:'Minha advocacia',home:'Nossa casa',settlements:'Acertos João & Laura',reports:'Relatórios',assistant:'Assistente financeiro',settings:'Configurações'})[id]}
-function navigate(id){currentPage=id;document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);document.getElementById('mobileMoreTrigger')?.classList.remove('active');renderAll();renderAccountMenu();window.scrollTo({top:0,behavior:'smooth'})}
+function navigate(id){currentPage=id;document.body.classList.toggle('mobile-page-transactions',id==='transactions');document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);toggleMobileMore(false);const moreTrigger=document.getElementById('mobileMoreTrigger');if(moreTrigger)moreTrigger.classList.toggle('active',!['dashboard','transactions','accounts'].includes(id));renderAll();renderAccountMenu();window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>{navigate(b.dataset.page);toggleMobileMore(false)}));
-const mobilePages=[['dashboard','◫','Início'],['transactions','⇄','Lançamentos'],['accounts','▣','Contas bancárias'],['cards','▤','Cartões'],['recurring','↻','Recorrentes'],['planning','◎','Planejamento'],['assets','◇','Patrimônio'],['business','⌂','Imobiliário'],['law','⚖','Advocacia'],['home','⌂','Nossa Casa'],['settlements','⇆','Acertos'],['reports','▥','Relatórios'],['assistant','✧','Assistente IA'],['settings','⚙','Configurações']];document.getElementById('mobileMoreGrid').innerHTML=mobilePages.map(([id,ico,label])=>`<button data-page="${id}">${ico} &nbsp; ${label}</button>`).join('');document.querySelectorAll('#mobileMoreGrid [data-page]').forEach(b=>b.addEventListener('click',()=>{navigate(b.dataset.page);toggleMobileMore(false)}));
+const mobilePages=[['dashboard','▥','Dashboard'],['transactions','☷','Lançamentos'],['accounts','▣','Contas bancárias'],['cards','▤','Cartões de crédito'],['recurring','↻','Contas recorrentes'],['planning','◎','Planejamento'],['assets','◇','Patrimônio'],['business','⌂','Imobiliário'],['law','⚖','Minha advocacia'],['home','⌂','Nossa Casa'],['settlements','⇄','Acertos João & Laura'],['reports','▥','Relatórios'],['assistant','✧','Assistente IA'],['settings','⚙','Configurações']];document.getElementById('mobileMoreGrid').innerHTML=mobilePages.map(([id,ico,label])=>`<button data-page="${id}"><span class="more-icon">${ico}</span><b>${label}</b></button>`).join('');document.querySelectorAll('#mobileMoreGrid [data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
 function visibleTransactions(){return data.transactions.filter(t=>profile==='home'?t.profile==='home':t.profile===profile)}
 function sum(arr,fn){return arr.reduce((a,x)=>a+fn(x),0)}
 function stat(label,value,icon,note,color='blue'){return `<div class="card"><div class="stat-top">${label}<span class="stat-icon">${icon}</span></div><div class="stat-value ${color}">${money(value)}</div><div class="stat-note">${note}</div></div>`}
@@ -371,7 +466,7 @@ function renderDashboard(){
  const bal=(data.accounts.filter(a=>profile==='home'?a.profile==='home':a.profile===profile).reduce((s,a)=>s+a.balance,0));
  document.getElementById('stats').innerHTML=stat('Saldo total',bal,'▣','Soma dos saldos cadastrados','blue')+stat('Receitas',inc,'↗','No ambiente selecionado','green')+stat('Despesas',exp,'↘','No ambiente selecionado','red')+stat('Saldo do mês',inc-exp,'◈','Receitas menos despesas',inc-exp>=0?'green':'red');
  const dashAccounts=data.accounts.filter(a=>profile==='home'?a.profile==='home':a.profile===profile);document.getElementById('dashboardAccounts').innerHTML=dashAccounts.length?dashAccounts.slice(0,3).map(a=>`<div class="list-row"><div class="list-main"><div class="list-icon">▣</div><div><b>${esc(a.name)}</b><small>${esc(a.bank)}</small></div></div><span class="amount">${money(a.balance)}</span></div>`).join(''):'<div class="dashboard-empty"><span>▤</span><b>Nenhuma conta cadastrada</b><small>Adicione uma conta para acompanhar seus saldos.</small></div>';
- const vals=Array(12).fill(0),ex=Array(12).fill(0);document.getElementById('chart').innerHTML=vals.map((v,i)=>`<div class="bar-group"><div class="bar" style="height:${v}%"></div><div class="bar exp" style="height:${ex[i]}%"></div></div>`).join('');
+ const weekStart=new Date();weekStart.setHours(0,0,0,0);weekStart.setDate(weekStart.getDate()-((weekStart.getDay()+6)%7));const weekLabels=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];const weekIncome=Array(7).fill(0),weekExpense=Array(7).fill(0);tx.forEach(t=>{if(!t.date)return;const dt=new Date(t.date+'T12:00:00');const idx=(dt.getDay()+6)%7;if(dt>=weekStart&&idx>=0&&idx<7){if(t.type==='Receita')weekIncome[idx]+=Number(t.value||0);if(t.type==='Despesa')weekExpense[idx]+=Number(t.value||0)}});const weekMax=Math.max(0,...weekIncome,...weekExpense);document.getElementById('chart').innerHTML=weekLabels.map((label,i)=>{const ih=weekMax?Math.max(weekIncome[i]?5:0,weekIncome[i]/weekMax*100):0,eh=weekMax?Math.max(weekExpense[i]?5:0,weekExpense[i]/weekMax*100):0;return `<div class="bar-group"><div class="bar" style="height:${ih}%" title="${label}: ${money(weekIncome[i])} em receitas"></div><div class="bar exp" style="height:${eh}%" title="${label}: ${money(weekExpense[i])} em despesas"></div></div>`}).join('');const labelsEl=document.querySelector('#dashboard .bar-labels');if(labelsEl)labelsEl.innerHTML=weekLabels.map(x=>`<span>${x}</span>`).join('');
  document.getElementById('recent').innerHTML=tx.slice().reverse().slice(0,5).map(t=>`<div class="list-row"><div class="list-main"><div class="list-icon">${t.type==='Receita'?'↗':'↘'}</div><div><b>${esc(t.desc)}</b><small>${esc(t.category)} · ${dateBR(t.date)}</small></div></div><span class="amount ${t.type==='Receita'?'green':'red'}">${t.type==='Receita'?'+':'−'}${money(t.value)}</span></div>`).join('')||'<div class="empty">Nenhuma movimentação.</div>';
  const cats={};tx.filter(t=>t.type==='Despesa').forEach(t=>cats[t.category]=(cats[t.category]||0)+t.value);let entries=Object.entries(cats).sort((a,b)=>b[1]-a[1]).slice(0,5);document.getElementById('categories').innerHTML=entries.length?entries.map(([k,v])=>`<div class="goal"><div class="goal-head"><span>${esc(k)}</span><b>${money(v)}</b></div><div class="progress"><span style="width:${Math.min(100,v/Math.max(1,exp)*100)}%"></span></div></div>`).join(''):'<div class="empty">Sem despesas registradas.</div>';
  document.getElementById('upcoming').innerHTML=data.recurring.slice(0,4).map(r=>`<div class="list-row"><div class="list-main"><div class="list-icon">◷</div><div><b>${esc(r.desc)}</b><small>Vencimento dia ${r.due} · ${r.owner}</small></div></div><span class="amount">${money(r.value)}</span></div>`).join('');
