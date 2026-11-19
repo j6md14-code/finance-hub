@@ -844,6 +844,38 @@ body.mobile-f .tx-filter-button>.nexo-icon-plain{width:23px;height:23px;color:#7
  body.mobile-f .dashboard-date-actions .btn{min-height:42px}
 }
 
+
+
+/* AJUSTE DESKTOP: sidebar acompanha a rolagem global, sem scrollbar interno */
+@media (min-width:701px){
+  .app{align-items:stretch;min-height:100vh;}
+  .sidebar{
+    position:relative!important;
+    top:auto!important;
+    height:auto!important;
+    min-height:100vh;
+    max-height:none!important;
+    overflow:visible!important;
+    align-self:stretch;
+    overscroll-behavior:initial;
+  }
+  /* O filtro de período passa para a faixa de ações superior no desktop. */
+  .dashboard-heading .actions{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    flex-wrap:nowrap;
+    gap:10px;
+    min-width:max-content;
+  }
+  .dashboard-heading .actions .dashboard-filter-trigger{
+    flex:0 0 auto;
+    min-height:38px;
+    max-width:none;
+    padding:9px 12px;
+    font-size:11px;
+  }
+}
 </style>
 </head>
 <body class="mobile-f">
@@ -1428,6 +1460,30 @@ initAuthentication();
   document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeDashboardDateFilter();closeMobileAddSheet();const modal=document.getElementById('modal');if(modal&&modal.classList.contains('open'))closeModal();}});
   const modal=document.getElementById('modal');
   if(modal){const observer=new MutationObserver(()=>{if(!modal.classList.contains('open'))document.body.classList.remove('mobile-modal-open')});observer.observe(modal,{attributes:true,attributeFilter:['class']});}
+})();
+</script>
+
+
+<script>
+/* No desktop, o filtro fica junto de Exportar dados; no mobile, retorna ao lado do resumo. */
+(function(){
+  const filterButton=document.getElementById('dashboardDateFilterBtn');
+  if(!filterButton) return;
+  const subline=filterButton.closest('.dashboard-subline');
+  const actions=filterButton.closest('.dashboard-heading')?.querySelector('.actions');
+  if(!subline||!actions) return;
+  const desktopQuery=window.matchMedia('(min-width: 701px)');
+  const placeFilter=()=>{
+    if(desktopQuery.matches){
+      if(filterButton.parentElement!==actions) actions.insertBefore(filterButton,actions.firstChild);
+    }else if(filterButton.parentElement!==subline){
+      subline.appendChild(filterButton);
+    }
+  };
+  placeFilter();
+  if(typeof desktopQuery.addEventListener==='function') desktopQuery.addEventListener('change',placeFilter);
+  else if(typeof desktopQuery.addListener==='function') desktopQuery.addListener(placeFilter);
+  window.addEventListener('resize',placeFilter,{passive:true});
 })();
 </script>
 
