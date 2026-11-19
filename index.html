@@ -695,6 +695,74 @@ body.mobile-f .shortcut-grid button>.nexo-icon{width:42px;height:42px;display:in
 
 body.mobile-f .tx-search-box>.nexo-icon-plain{width:23px;height:23px;flex:0 0 23px;color:#75b2ff;font-size:initial}
 body.mobile-f .tx-filter-button>.nexo-icon-plain{width:23px;height:23px;color:#75b2ff;font-size:initial}
+
+
+/* NEXO MOBILE ACTIONS — um único botão flutuante de adicionar em todas as áreas */
+.mobile-fab,.mobile-add-backdrop{display:none}
+@media(max-width:700px){
+  /* Os botões de cadastro originais continuam no desktop; no mobile são substituídos pelo FAB. */
+  body.mobile-f .top-add{display:none!important}
+  body.mobile-f .section.active button[onclick*="openModal("]{display:none!important}
+  body.mobile-f .mobile-fab.is-visible{
+    display:grid!important;position:fixed;right:18px;bottom:calc(82px + env(safe-area-inset-bottom));
+    z-index:70;width:56px;height:56px;padding:0;place-items:center;border:0;border-radius:50%;
+    background:linear-gradient(145deg,#65a9ff,#3476df);color:#fff;box-shadow:0 9px 26px #1b62bd66, inset 0 1px 0 #ffffff44;
+    -webkit-tap-highlight-color:transparent;
+  }
+  body.mobile-f .mobile-fab svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+  body.mobile-f.mobile-has-fab .content{padding-bottom:calc(158px + env(safe-area-inset-bottom))}
+  body.mobile-f .mobile-add-backdrop{
+    position:fixed;inset:0;z-index:90;display:none;align-items:flex-end;justify-content:center;
+    padding:12px 12px calc(82px + env(safe-area-inset-bottom));background:#030914a8;backdrop-filter:blur(5px);
+  }
+  body.mobile-f .mobile-add-backdrop.open{display:flex}
+  body.mobile-f .mobile-add-panel{
+    width:min(520px,100%);max-height:min(62dvh,520px);overflow:auto;padding:17px 15px 15px;
+    border:1px solid #2b486b;border-radius:22px;background:linear-gradient(160deg,#142943,#0b192a);
+    box-shadow:0 18px 55px #0009;overscroll-behavior:contain;
+  }
+  body.mobile-f .mobile-add-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}
+  body.mobile-f .mobile-add-panel-head>div{display:grid;gap:4px}
+  body.mobile-f .mobile-add-panel-head b{font-size:16px;color:#f1f6ff}
+  body.mobile-f .mobile-add-panel-head small{font-size:10px;color:#9db0c9}
+  body.mobile-f .mobile-add-panel-head>button{width:34px;height:34px;border:1px solid #2b4564;border-radius:10px;background:#1b304a;color:#c7d7ec;font-size:22px;line-height:1}
+  body.mobile-f .mobile-add-choices{display:grid;gap:8px}
+  body.mobile-f .mobile-add-choice{display:flex;align-items:center;gap:11px;width:100%;min-height:54px;padding:9px 11px;border:1px solid #294765;border-radius:13px;background:#11243a;color:#eaf2ff;text-align:left}
+  body.mobile-f .mobile-add-choice-icon{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:#173e6c;color:#83bbff;font-size:20px;font-weight:500}
+  body.mobile-f .mobile-add-choice b{flex:1;font-size:12px;font-weight:650}
+  body.mobile-f .mobile-add-choice i{font-style:normal;color:#8fa8c8;font-size:20px}
+
+  /* Modal centralizado e acima da barra inferior; formulário rola dentro do painel. */
+  body.mobile-f .modal{
+    position:fixed;inset:0;z-index:1200;width:100%;max-width:100%;height:100%;height:100dvh;
+    display:none;align-items:center;justify-content:center;overflow:hidden;
+    padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));
+    background:rgba(3,8,17,.82);backdrop-filter:blur(5px);
+  }
+  body.mobile-f .modal.open{display:flex}
+  body.mobile-f .modal-box{
+    display:flex;flex-direction:column;width:min(560px,100%);max-width:560px;
+    max-height:calc(100dvh - max(12px,env(safe-area-inset-top)) - max(12px,env(safe-area-inset-bottom)) - 8px);
+    min-height:0;overflow:hidden;padding:17px 15px 12px;border-radius:21px;
+    background:#121c2e;border:1px solid #2b3e5a;box-shadow:0 20px 70px #000b;
+  }
+  body.mobile-f .modal-head{position:relative;top:auto;z-index:2;flex:0 0 auto;margin:0 0 13px;padding:0 0 11px;border-bottom:1px solid #263a55;background:#121c2e}
+  body.mobile-f .modal-head h2{font-size:17px;line-height:1.25}
+  body.mobile-f #modalForm{display:flex;flex:1 1 auto;flex-direction:column;min-height:0;overflow:hidden}
+  body.mobile-f #modalFields{display:grid;grid-template-columns:minmax(0,1fr);gap:11px;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:1px 3px 10px 0;align-content:start}
+  body.mobile-f #modalFields .field.full{grid-column:auto}
+  body.mobile-f #modalFields .field{min-width:0}
+  body.mobile-f #modalFields input,body.mobile-f #modalFields select,body.mobile-f #modalFields textarea{width:100%;min-width:0;min-height:44px;font-size:16px}
+  body.mobile-f .modal-actions{
+    position:relative;bottom:auto;z-index:3;flex:0 0 auto;display:flex;justify-content:flex-end;gap:9px;
+    margin:8px 0 0;padding:12px 0 2px;border-top:1px solid #263a55;background:#121c2e;
+  }
+  body.mobile-f .modal-actions .btn{min-height:43px;min-width:94px}
+  body.mobile-f.mobile-modal-open{overflow:hidden}
+  body.mobile-f.mobile-modal-open .mobile-nav{visibility:hidden;pointer-events:none}
+  body.mobile-f.mobile-add-open{overflow:hidden}
+}
+
 </style>
 </head>
 <body class="mobile-f">
@@ -834,6 +902,15 @@ body.mobile-f .tx-filter-button>.nexo-icon-plain{width:23px;height:23px;color:#7
     <button class="account-logout" onclick="logoutDemo();toggleAccountMenu(false)">↪ &nbsp; Sair do perfil</button>
   </section>
 </div>
+<button class="mobile-fab" id="mobileFab" type="button" aria-label="Adicionar" title="Adicionar" onclick="handleMobileFab()">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+</button>
+<div class="mobile-add-backdrop" id="mobileAddBackdrop" aria-hidden="true" onclick="if(event.target===this)closeMobileAddSheet()">
+  <div class="mobile-add-panel" role="dialog" aria-modal="true" aria-labelledby="mobileAddTitle">
+    <div class="mobile-add-panel-head"><div><b id="mobileAddTitle">Adicionar</b><small>Escolha o que deseja cadastrar</small></div><button type="button" aria-label="Fechar" onclick="closeMobileAddSheet()">×</button></div>
+    <div class="mobile-add-choices" id="mobileAddChoices"></div>
+  </div>
+</div>
 <div class="mobile-nav" id="mobileNav">
   <button class="active" data-page="dashboard"><span>⌂</span>Início</button><button data-page="transactions"><span>☷</span>Lançamentos</button><button data-page="accounts"><span>🏦</span>Contas</button><button id="mobileMoreTrigger" data-page="more"><span>⠿</span>Mais</button>
 </div>
@@ -955,12 +1032,48 @@ function showNotifications(){
  if(!messages.length)messages.push('Você não tem notificações pendentes neste ambiente.');
  alert(messages.join('\\n'));
 }
-async function logoutDemo(){if(!confirm('Deseja sair da sua conta?'))return;const {error}=await supabaseClient.auth.signOut();if(error){alert('Não foi possível encerrar a sessão: '+error.message);return;}authenticatedUser=null;sessionRole=null;document.body.classList.remove('authenticated');document.getElementById('authPassword').value='';document.getElementById('authEmail').value='';document.getElementById('authError').classList.remove('show');}
+async function logoutDemo(){if(!confirm('Deseja sair da sua conta?'))return;const {error}=await supabaseClient.auth.signOut();if(error){alert('Não foi possível encerrar a sessão: '+error.message);return;}authenticatedUser=null;sessionRole=null;document.body.classList.remove('authenticated');updateMobileFab();document.getElementById('authPassword').value='';document.getElementById('authEmail').value='';document.getElementById('authError').classList.remove('show');}
 function pageName(id){return ({dashboard:'Dashboard',transactions:'Lançamentos',accounts:'Contas bancárias',cards:'Cartões de crédito',recurring:'Contas recorrentes',planning:'Planejamento',assets:'Patrimônio',business:'Gestão imobiliária',law:'Minha advocacia',home:'Nossa casa',settlements:'Acertos João & Laura',reports:'Relatórios',assistant:'Assistente financeiro',settings:'Configurações',more:'Mais'})[id]}
-function navigate(id){currentPage=id;document.body.classList.toggle('mobile-page-transactions',id==='transactions');document.body.classList.toggle('mobile-page-more',id==='more');document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);renderAll();renderAccountMenu();window.scrollTo({top:0,behavior:'smooth'})}
+const MOBILE_ADD_LABELS={
+ transaction:'Novo lançamento',account:'Adicionar conta bancária',card:'Adicionar cartão de crédito',recurring:'Nova conta recorrente',
+ budget:'Definir orçamento mensal',goal:'Criar meta financeira',asset:'Cadastrar patrimônio',commission:'Nova comissão imobiliária',
+ lawincome:'Registrar recebimento',lawexpense:'Registrar gasto profissional',category:'Adicionar categoria',
+ homerecurring:'Despesa recorrente da casa',homeexpense:'Lançar despesa da casa',contribution:'Registrar contribuição',settlement:'Lançar gasto do João'
+};
+const MOBILE_ADD_ORDER=['transaction','account','card','recurring','budget','goal','asset','commission','lawincome','lawexpense','category','homerecurring','homeexpense','contribution','settlement'];
+function getMobileAddActions(){
+ const section=document.querySelector('.section.active');if(!section||section.id==='more')return [];
+ const types=new Set();
+ section.querySelectorAll('button[onclick*="openModal("]').forEach(button=>{
+   const match=(button.getAttribute('onclick')||'').match(/openModal\(['"]([^'"]+)['"]\)/);
+   if(match&&MOBILE_ADD_LABELS[match[1]])types.add(match[1]);
+ });
+ return MOBILE_ADD_ORDER.filter(type=>types.has(type));
+}
+function updateMobileFab(){
+ const fab=document.getElementById('mobileFab');if(!fab)return;
+ const isMobile=window.matchMedia('(max-width:700px)').matches;
+ const hasActions=isMobile&&document.body.classList.contains('authenticated')&&getMobileAddActions().length>0;
+ fab.classList.toggle('is-visible',hasActions);
+ document.body.classList.toggle('mobile-has-fab',hasActions);
+ if(!hasActions)closeMobileAddSheet();
+}
+function handleMobileFab(){
+ const actions=getMobileAddActions();if(!actions.length)return;
+ if(actions.length===1){openModal(actions[0]);return;}
+ const choices=document.getElementById('mobileAddChoices');
+ choices.innerHTML=actions.map(type=>`<button type="button" class="mobile-add-choice" onclick="runMobileAddAction('${type}')"><span class="mobile-add-choice-icon">＋</span><b>${MOBILE_ADD_LABELS[type]}</b><i>›</i></button>`).join('');
+ const sheet=document.getElementById('mobileAddBackdrop');sheet.classList.add('open');sheet.setAttribute('aria-hidden','false');document.body.classList.add('mobile-add-open');
+}
+function runMobileAddAction(type){closeMobileAddSheet();if(MOBILE_ADD_LABELS[type])openModal(type)}
+function closeMobileAddSheet(){const sheet=document.getElementById('mobileAddBackdrop');if(sheet){sheet.classList.remove('open');sheet.setAttribute('aria-hidden','true')}document.body.classList.remove('mobile-add-open')}
+function showNexoModal(){closeMobileAddSheet();const modal=document.getElementById('modal');const fields=document.getElementById('modalFields');if(fields)fields.scrollTop=0;modal.classList.add('open');document.body.classList.add('mobile-modal-open');}
+function closeNexoModalState(){document.getElementById('modal').classList.remove('open');document.body.classList.remove('mobile-modal-open')}
+function navigate(id){currentPage=id;document.body.classList.toggle('mobile-page-transactions',id==='transactions');document.body.classList.toggle('mobile-page-more',id==='more');document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));document.getElementById('crumb').textContent=pageName(id);renderAll();renderAccountMenu();updateMobileFab();window.scrollTo({top:0,behavior:'smooth'})}
 decorateStaticIcons();
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
 const mobilePages=[['dashboard','Dashboard'],['transactions','Lançamentos'],['accounts','Contas bancárias'],['cards','Cartões de crédito'],['recurring','Contas recorrentes'],['planning','Planejamento'],['assets','Patrimônio'],['business','Imobiliário'],['law','Minha advocacia'],['home','Nossa Casa'],['settlements','Acertos João & Laura'],['reports','Relatórios']];document.getElementById('mobileMoreGrid').innerHTML=mobilePages.map(([id,label])=>`<button data-page="${id}">${pageIcon(id,'lg')}<b>${label}</b></button>`).join('');document.querySelectorAll('#mobileMoreGrid [data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
+updateMobileFab();window.addEventListener('resize',updateMobileFab,{passive:true});
 function visibleTransactions(){return data.transactions.filter(t=>profile==='home'?t.profile==='home':t.profile===profile)}
 function sum(arr,fn){return arr.reduce((a,x)=>a+fn(x),0)}
 function stat(label,value,icon,note,color='blue'){const lower=String(label).toLowerCase();let key='balance',tone=color==='green'?'green':color==='red'?'red':color==='orange'?'orange':color==='purple'?'purple':'blue';if(lower.includes('receita')||lower.includes('recebido'))key='income';else if(lower.includes('despesa')||lower.includes('pendente'))key='expense';else if(lower.includes('patrim'))key='assets';else if(lower.includes('conta')||lower.includes('banco'))key='accounts';else if(lower.includes('cart'))key='cards';else if(lower.includes('meta')||lower.includes('orçamento'))key='planning';else if(lower.includes('lançamento')||lower.includes('compra'))key='transactions';else if(lower.includes('atendimento')||lower.includes('advocacia'))key='law';else if(lower.includes('imobili')||lower.includes('comiss'))key='business';else if(lower.includes('saldo'))key='wallet';return `<div class="card"><div class="stat-top">${label}${nexoIcon(key,tone,'sm','stat-icon')}</div><div class="stat-value ${color}">${money(value)}</div><div class="stat-note">${note}</div></div>`}
@@ -1083,7 +1196,7 @@ function generateHomeReport(){
 
 let editingRef=null;
 const editLabels={transactions:'Lançamento',accounts:'Conta bancária',cards:'Cartão de crédito',recurring:'Conta recorrente',goals:'Meta financeira',assets:'Patrimônio',commissions:'Comissão imobiliária',law:'Registro da advocacia',settlements:'Acerto João & Laura',contributions:'Contribuição familiar'};
-function editItem(collection,id,fallback){const arr=data[collection]||[];let item=arr.find(x=>String(x.id)===String(id));if(!item&&fallback)item=arr.find(x=>(x.desc||x.name||x.client||x.name)===fallback);if(!item)return;editingRef={collection,item};const fields=Object.entries(item).filter(([k,v])=>k!=='id'&&typeof v!=='object').map(([k,v])=>{let type=typeof v==='number'?'number':(k==='date'?'date':'text');let label=k.replace(/([A-Z])/g,' $1').replace(/^./,c=>c.toUpperCase());return field('edit_'+k,label,type,v)}).join('');document.getElementById('modalTitle').textContent='Editar '+(editLabels[collection]||'registro');document.getElementById('modalFields').innerHTML='<div class="field full"><p class="edit-hint">Toque em salvar para aplicar as alterações ou exclua este registro.</p></div>'+fields;document.getElementById('modalForm').onsubmit=saveEdit;document.getElementById('modalForm').querySelector('button[type="submit"]').textContent='Salvar alterações';document.getElementById('modalForm').querySelector('.modal-actions').insertAdjacentHTML('afterbegin','<button type="button" class="btn danger" onclick="deleteEditingItem()">Excluir</button>');document.getElementById('modal').classList.add('open')}
+function editItem(collection,id,fallback){const arr=data[collection]||[];let item=arr.find(x=>String(x.id)===String(id));if(!item&&fallback)item=arr.find(x=>(x.desc||x.name||x.client||x.name)===fallback);if(!item)return;editingRef={collection,item};const fields=Object.entries(item).filter(([k,v])=>k!=='id'&&typeof v!=='object').map(([k,v])=>{let type=typeof v==='number'?'number':(k==='date'?'date':'text');let label=k.replace(/([A-Z])/g,' $1').replace(/^./,c=>c.toUpperCase());return field('edit_'+k,label,type,v)}).join('');document.getElementById('modalTitle').textContent='Editar '+(editLabels[collection]||'registro');document.getElementById('modalFields').innerHTML='<div class="field full"><p class="edit-hint">Toque em salvar para aplicar as alterações ou exclua este registro.</p></div>'+fields;document.getElementById('modalForm').onsubmit=saveEdit;document.getElementById('modalForm').querySelector('button[type="submit"]').textContent='Salvar alterações';document.getElementById('modalForm').querySelector('.modal-actions').insertAdjacentHTML('afterbegin','<button type="button" class="btn danger" onclick="deleteEditingItem()">Excluir</button>');showNexoModal()}
 function saveEdit(e){e.preventDefault();if(!editingRef)return;const {collection,item}=editingRef;const f=new FormData(e.target);for(const [k,v] of f.entries()){if(!k.startsWith('edit_'))continue;const key=k.slice(5);item[key]=typeof item[key]==='number'?Number(v||0):v;}persist();editingRef=null;document.getElementById('modalForm').onsubmit=saveModal;document.getElementById('modalForm').querySelector('button[type="submit"]').textContent='Salvar';renderAll();closeModal()}
 function deleteEditingItem(){if(!editingRef)return;const {collection,item}=editingRef;if(!confirm('Excluir este registro?'))return;data[collection]=data[collection].filter(x=>x!==item);persist();editingRef=null;document.getElementById('modalForm').onsubmit=saveModal;renderAll();closeModal()}
 
@@ -1106,10 +1219,10 @@ if(type==='homerecurring'){title='Nova despesa recorrente da casa';fields=field(
 if(type==='category'){title='Adicionar categoria da casa';fields=field('name','Nome da nova categoria')}
 if(type==='contribution'){title='Registrar contribuição familiar';fields=field('name','Quem contribuiu','select','',['João','Laura'])+field('value','Valor','number')}
 if(type==='settlement'){title='Lançar gasto do João no cartão da Laura';fields=field('desc','Compra / estabelecimento')+field('value','Valor total','number')+field('date','Data da compra','date',today)+field('card','Cartão utilizado','select','',['INTER','NUBANK','MERCADO PAGO','BANCO DO BRASIL','C6','DINHEIRO EMPRESTADO'])+field('description','Descrição para João entender','textarea','',null,true)+field('installments','Número de parcelas','number')}
-document.getElementById('modalTitle').textContent=title;document.getElementById('modalFields').innerHTML=fields;document.getElementById('modal').classList.add('open')}
+document.getElementById('modalTitle').textContent=title;document.getElementById('modalFields').innerHTML=fields;showNexoModal()}
 function selectBudgetCategory(button){const input=document.getElementById('f_category');if(!input)return;input.value=button.dataset.category;document.querySelectorAll('.budget-category-chip').forEach(x=>x.classList.toggle('selected',x===button));input.focus()}
 function selectCustomBudgetCategory(){document.querySelectorAll('.budget-category-chip').forEach(x=>x.classList.remove('selected'));const input=document.getElementById('f_category');if(input){input.value='';input.focus()}}
-function closeModal(){document.getElementById('modal').classList.remove('open')}
+function closeModal(){closeNexoModalState()}
 function saveModal(e){e.preventDefault();let f=new FormData(e.target),v=Object.fromEntries(f.entries());let num=k=>Number(v[k]||0);
 if(modalType==='transaction'){data.transactions.push({id:Date.now(),profile:v.scope==='Casa'?'home':profile,desc:v.desc,category:v.category,type:v.type,date:v.date,status:v.status,value:num('value'),payment:v.payment||'',scope:v.scope})}
 if(modalType==='account')data.accounts.push({id:Date.now(),profile:v.owner==='João'?'joao':v.owner==='Laura'?'laura':'home',name:v.name,bank:v.bank,balance:num('balance')});
@@ -1143,7 +1256,7 @@ async function activateAuthenticatedSession(user){
   document.getElementById('accountAvatar').textContent=profile==='joao'?'J':'L';
   document.getElementById('welcome').textContent=profile==='joao'?'Bom dia, João':'Olá, Laura';
   document.body.classList.add('authenticated');
-  renderAll();renderAccountMenu();
+  renderAll();renderAccountMenu();updateMobileFab();
 }
 async function handleLogin(event){
   event.preventDefault();
@@ -1172,7 +1285,7 @@ async function initAuthentication(){
     const err=document.getElementById('authError');err.textContent=e.message;err.classList.add('show');
   }
   supabaseClient.auth.onAuthStateChange((event,session)=>{
-    if(event==='SIGNED_OUT'){authenticatedUser=null;sessionRole=null;document.body.classList.remove('authenticated')}
+    if(event==='SIGNED_OUT'){authenticatedUser=null;sessionRole=null;document.body.classList.remove('authenticated');updateMobileFab()}
   });
 }
 initAuthentication();
@@ -1185,6 +1298,15 @@ initAuthentication();
   const resetMobileEntryScroll=()=>{if(window.matchMedia('(max-width: 700px)').matches){requestAnimationFrame(()=>window.scrollTo(0,0));}};
   window.addEventListener('pageshow',resetMobileEntryScroll,{passive:true});
   document.addEventListener('DOMContentLoaded',resetMobileEntryScroll,{once:true});
+})();
+</script>
+
+
+<script>
+(function(){
+  document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeMobileAddSheet();const modal=document.getElementById('modal');if(modal&&modal.classList.contains('open'))closeModal();}});
+  const modal=document.getElementById('modal');
+  if(modal){const observer=new MutationObserver(()=>{if(!modal.classList.contains('open'))document.body.classList.remove('mobile-modal-open')});observer.observe(modal,{attributes:true,attributeFilter:['class']});}
 })();
 </script>
 
